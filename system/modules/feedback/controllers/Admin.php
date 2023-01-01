@@ -130,6 +130,7 @@ class Admin extends Controller
         }
 
 		$this->html->title   = 'Список форм на сайте';
+        $this->html->setJs('/assets/modules/feedback/js/listforms.js');
 		$this->html->content = $this->render(
 			'listform.php', [
 				'topmenu' => $this->render($this->menu),

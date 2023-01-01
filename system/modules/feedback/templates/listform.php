@@ -83,6 +83,9 @@
                             if (file_exists(__DIR__ . '/example.txt')) {
                                 echo file_get_contents(__DIR__ . '/example.txt');
                             }
+                            if (file_exists(__DIR__ . '/example.txt')) {
+                                echo file_get_contents(__DIR__ . '/example.txt');
+                            }
                             ?>
                         </div>
                     </div>
