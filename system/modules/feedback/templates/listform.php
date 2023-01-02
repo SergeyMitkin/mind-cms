@@ -40,7 +40,7 @@
                         </thead>
                         <tbody>
                         <?php foreach ($data['forms'] as $value) { ?>
-                        <tr>
+                        <tr class="form-item" data-id="<?= $value->id; ?>">
                             <td>
                                 <?= $value->id; ?>
                             </td>
