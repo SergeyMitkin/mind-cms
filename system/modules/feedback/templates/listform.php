@@ -16,7 +16,17 @@
 
             </form>
             <div class="panel-body">
-                <?php if (!empty($data['forms'])) {
+                <?php
+
+                // --- ОТЛАДКА НАЧАЛО
+//                echo '<pre>';
+//                var_dump($data['forms']);
+//                echo'</pre>';
+//                die;
+                // --- Отладка конец
+
+
+                if (!empty($data['forms'])) {
                     ?>
                     <table class="table table-bordered table-striped table-hover" id="result">
                         <thead>
@@ -81,10 +91,8 @@
                             <h4 class="text-success">Пример корректно заполненной формы:</h4>
                             <?
                             if (file_exists(__DIR__ . '/example.txt')) {
-                                echo file_get_contents(__DIR__ . '/example.txt');
-                            }
-                            if (file_exists(__DIR__ . '/example.txt')) {
-                                echo file_get_contents(__DIR__ . '/example.txt');
+//                                echo file_get_contents(__DIR__ . '/example.txt');
+                                include __DIR__ . '/example.txt';
                             }
                             ?>
                         </div>
