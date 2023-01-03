@@ -13,8 +13,9 @@ $(document).ready(function () {
                 alert('Что-то пошло не так!');
             },
             success: function (data) {
-                var obj = jQuery.parseJSON(data);
-                console.log(obj);
+                // var obj = jQuery.parseJSON(data);
+                $("#form-html-wrap").html(data);
+                console.log(data);
             }
         });
 

@@ -124,11 +124,27 @@ class Admin extends Controller
 
 	function actionListForms()
 	{
+//        $form_id = 2;
+//        $form = mFeedbackFields::getForm($form_id);
+//
+//        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump($form->name);
+//        echo'</pre>';
+//        die;
+//        // --- Отладка конец
+
         if (Request::instance()->isAjax()){
 
             $form_id = Request::instance()->get('form_id');
             $form = mFeedbackFields::getForm($form_id);
-            return $form;
+
+            $form_name = $form->name;
+
+            $form_html = include (__DIR__ . '\..\templates\form_html.txt');
+            return $form_html;
+        } else {
+            $form_name = 'LEGEND';
         }
 
         $feedback_allmail = Parameters::get('feedback_allmail');
@@ -144,6 +160,7 @@ class Admin extends Controller
 				'topmenu' => $this->render($this->menu),
 				'forms'   => mFeedbackFields::getlistForms(),
                 'allmail' => $data['allmail'],
+                'form_name' => $form_name
 			]
 		);
 		$this->showTemplate();
