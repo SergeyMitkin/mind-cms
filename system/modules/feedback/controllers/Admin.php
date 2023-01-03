@@ -5,6 +5,7 @@ namespace modules\feedback\controllers;
 use core\Controller;
 use core\Html;
 use core\Parameters;
+use core\Request;
 use modules\feedback\models\FeedbackModel;
 use modules\feedback\models\mFeedback;
 use modules\feedback\models\mFeedbackFields;
@@ -123,6 +124,11 @@ class Admin extends Controller
 
 	function actionListForms()
 	{
+
+        if (Request::instance()->isAjax()){
+            return Request::instance()->get('form_id');
+        }
+
         $feedback_allmail = Parameters::get('feedback_allmail');
         $data['allmail']='';
         if(isset($feedback_allmail->allmail)){

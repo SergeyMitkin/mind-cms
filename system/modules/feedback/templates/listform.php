@@ -17,15 +17,6 @@
             </form>
             <div class="panel-body">
                 <?php
-
-                // --- ОТЛАДКА НАЧАЛО
-//                echo '<pre>';
-//                var_dump($data['forms']);
-//                echo'</pre>';
-//                die;
-                // --- Отладка конец
-
-
                 if (!empty($data['forms'])) {
                     ?>
                     <table class="table table-bordered table-striped table-hover" id="result">
