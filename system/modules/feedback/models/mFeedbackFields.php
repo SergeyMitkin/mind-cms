@@ -62,6 +62,15 @@ class mFeedbackFields extends Model
         return $id;
     }
 
+    public static function getForm($form_id) {
+        $sql_result = mFeedbackFields::instance()->where([
+            'deleted' => 0,
+            'id' => $form_id
+        ])->getOne();
+
+        return $sql_result;
+    }
+
     public static function getlistForms() {
         $sql_result = mFeedbackFields::instance()->where('deleted', '=', 0)->getAll();
         return $sql_result;

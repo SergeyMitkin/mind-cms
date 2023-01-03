@@ -124,9 +124,11 @@ class Admin extends Controller
 
 	function actionListForms()
 	{
-
         if (Request::instance()->isAjax()){
-            return Request::instance()->get('form_id');
+
+            $form_id = Request::instance()->get('form_id');
+            $form = mFeedbackFields::getForm($form_id);
+            return $form;
         }
 
         $feedback_allmail = Parameters::get('feedback_allmail');

@@ -13,7 +13,8 @@ $(document).ready(function () {
                 alert('Что-то пошло не так!');
             },
             success: function (data) {
-                console.log(data);
+                var obj = jQuery.parseJSON(data);
+                console.log(obj);
             }
         });
 
