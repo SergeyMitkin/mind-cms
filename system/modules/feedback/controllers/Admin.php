@@ -124,22 +124,11 @@ class Admin extends Controller
 
 	function actionListForms()
 	{
-//        $form_id = 2;
-//        $form = mFeedbackFields::getForm($form_id);
-//
-//        // --- ОТЛАДКА НАЧАЛО
-//        echo '<pre>';
-//        var_dump($form->name);
-//        echo'</pre>';
-//        die;
-//        // --- Отладка конец
-
         if (Request::instance()->isAjax()){
 
             $form_id = Request::instance()->get('form_id');
             $form = mFeedbackFields::getForm($form_id);
-
-            $form_name = $form->name;
+            $fields = json_decode($form->fields);
 
             $form_html = include (__DIR__ . '\..\templates\form_html.txt');
             return $form_html;
