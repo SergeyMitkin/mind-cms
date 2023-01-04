@@ -9,6 +9,7 @@
 namespace modules\user\models;
 
 use core\Model;
+use core\Tools;
 use src\dbtree\DbTreeExt;
 use modules\user\services\UserPermissions;
 use modules\user\services\UserRoles;
@@ -842,6 +843,7 @@ class USER extends Model implements \core\interfaces\User
 		$obj->children       = $this->children;
 		$obj->root_parent    = $this->rootParent;
 		$obj->master_user_id = $master_id;
+        $obj->csrf_token     = Tools::generateRandomString();
 		if ($this->adminActivity) {
 			$obj->admin_activity = $this->adminActivity;
 		}

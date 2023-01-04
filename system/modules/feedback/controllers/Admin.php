@@ -6,9 +6,12 @@ use core\Controller;
 use core\Html;
 use core\Parameters;
 use core\Request;
+use core\Tools;
+use core\User;
 use modules\feedback\models\FeedbackModel;
 use modules\feedback\models\mFeedback;
 use modules\feedback\models\mFeedbackFields;
+use modules\user\models\UserToken;
 
 class Admin extends Controller
 {
