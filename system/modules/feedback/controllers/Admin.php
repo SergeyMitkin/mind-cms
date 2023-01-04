@@ -64,7 +64,6 @@ class Admin extends Controller
 
 	function actionAddForm($id = false)
 	{
-
 		if (!empty($_POST)) {
             $data = $_POST;
 
@@ -78,7 +77,7 @@ class Admin extends Controller
             $FeedbackFieldsData['fields'] = json_encode($fields);
 
             if($idFeedbackFields = mFeedbackFields::instance()->saveFeedbackFields($FeedbackFieldsData)){
-                header('Location: /feedback/admin/listforms');
+                header('Location: /feedback/admin/listforms/?form_id=' . $idFeedbackFields);
                 exit;
             }
 		} else {
@@ -124,14 +123,20 @@ class Admin extends Controller
 
 	function actionListForms()
 	{
-        if (Request::instance()->isAjax()){
-
+        // Html формы
+        if (Request::instance()->get('form_id')){
             $form_id = Request::instance()->get('form_id');
             $form = mFeedbackFields::getForm($form_id);
-            $fields = json_decode($form->fields);
-            $form_html = include (__DIR__ . '\..\templates\form_html.txt');
-
-            return $form_html;
+            if($form){
+                $fields = json_decode($form->fields);
+                if (Request::instance()->isAjax()){
+                    $form_html = include (__DIR__ . '\..\templates\form_html.txt');
+                    return $form_html;
+                }
+            }
+        } else {
+            $form = false;
+            $fields = false;
         }
 
         $feedback_allmail = Parameters::get('feedback_allmail');
@@ -147,6 +152,8 @@ class Admin extends Controller
 				'topmenu' => $this->render($this->menu),
 				'forms'   => mFeedbackFields::getlistForms(),
                 'allmail' => $data['allmail'],
+                'form' => $form,
+                'fields' => $fields
 			]
 		);
 		$this->showTemplate();

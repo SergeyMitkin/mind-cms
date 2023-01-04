@@ -1,3 +1,9 @@
+<?php
+
+use core\Request;
+use modules\feedback\models\mFeedbackFields;
+
+?>
 <div class="row">
     <div class="col-sm-12 panel-heading">
         <?= $data['topmenu']; ?>
@@ -82,7 +88,10 @@
                             <h4 class="text-success">Пример корректно заполненной формы:</h4>
                             <div id="form-html-wrap">
                             <?
-                            if (file_exists(__DIR__ . '/example.txt')) {
+                            if ($form && $fields){
+                                $form_html = include (__DIR__ . '/form_html.txt');
+                            }
+                            else if (file_exists(__DIR__ . '/example.txt')) {
                                 echo file_get_contents(__DIR__ . '/example.txt');
                             }
                             ?>
