@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    // Html для выбранной формы
     $("#result .form-item").on('click', function (){
         let form_id = $(this).attr('data-id');
         $(".test-input").text(form_id);
@@ -13,9 +15,7 @@ $(document).ready(function () {
                 alert('Что-то пошло не так!');
             },
             success: function (data) {
-                // var obj = jQuery.parseJSON(data);
                 $("#form-html-wrap").html(data);
-                console.log(data);
             }
         });
 

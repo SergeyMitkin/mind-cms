@@ -83,17 +83,10 @@
                             <div id="form-html-wrap">
                             <?
                             if (file_exists(__DIR__ . '/example.txt')) {
-//                                echo file_get_contents(__DIR__ . '/example.txt');
-                                include (__DIR__ . '/example.txt');
+                                echo file_get_contents(__DIR__ . '/example.txt');
                             }
                             ?>
                             </div>
-
-<!--                            --><?//
-//                            if (file_exists(__DIR__ . '/example-old.txt')) {
-//                                include __DIR__ . '/example.txt';
-//                            }
-//                            ?>
                         </div>
                     </div>
                     <h2>Пример ajax</h2>

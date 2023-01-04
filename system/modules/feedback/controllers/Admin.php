@@ -129,11 +129,9 @@ class Admin extends Controller
             $form_id = Request::instance()->get('form_id');
             $form = mFeedbackFields::getForm($form_id);
             $fields = json_decode($form->fields);
-
             $form_html = include (__DIR__ . '\..\templates\form_html.txt');
+
             return $form_html;
-        } else {
-            $form_name = 'LEGEND';
         }
 
         $feedback_allmail = Parameters::get('feedback_allmail');
@@ -149,7 +147,6 @@ class Admin extends Controller
 				'topmenu' => $this->render($this->menu),
 				'forms'   => mFeedbackFields::getlistForms(),
                 'allmail' => $data['allmail'],
-                'form_name' => $form_name
 			]
 		);
 		$this->showTemplate();
