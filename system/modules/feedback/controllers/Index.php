@@ -27,17 +27,21 @@ class Index extends Controller {
 
     function actionSend() {
 
-        $info  = mFeedback::saveFeedback($_POST);
-        if($info['status'] == 'OK') {
+        if (!empty($_POST['csrf_token']) && $this->csrfTokenMatch($_POST['csrf_token'])) {
+            $info  = mFeedback::saveFeedback($_POST);
+            if($info['status'] == 'OK') {
 
-            $this->sendMailNotification($_POST['form_id']);
+                $this->sendMailNotification($_POST['form_id']);
 
-            if(isset($_POST['redirect'])) {
-                header('Location: '.$_POST['redirect']);
-                die();
+                if(isset($_POST['redirect'])) {
+                    header('Location: '.$_POST['redirect']);
+                    die();
+                }
+            } else {
+                print_r($info);
             }
         } else {
-            print_r($info);
+            print_r (['status' => 'error', 'message' => 'Неверный CSRF-токен!']);
         }
     }
 
@@ -133,6 +137,10 @@ class Index extends Controller {
     function showTemplate($layout = '@admin') {
         $this->html->setTemplate($layout);
         $this->html->renderTemplate()->show();
+    }
+
+    function csrfTokenMatch($csrf_token){
+        return hash_equals($csrf_token, json_decode($_SESSION['user'])->csrf_token);
     }
 
 }

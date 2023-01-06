@@ -130,6 +130,8 @@ class Admin extends Controller
         if (Request::instance()->get('form_id')){
             $form_id = Request::instance()->get('form_id');
             $form = mFeedbackFields::getForm($form_id);
+            $php_str = htmlspecialchars('<?= json_decode($_SESSION["user"])->csrf_token ?>');
+
             if($form){
                 $fields = json_decode($form->fields);
                 if (Request::instance()->isAjax()){
@@ -140,6 +142,7 @@ class Admin extends Controller
         } else {
             $form = false;
             $fields = false;
+            $php_str = false;
         }
 
         $feedback_allmail = Parameters::get('feedback_allmail');
@@ -156,7 +159,8 @@ class Admin extends Controller
 				'forms'   => mFeedbackFields::getlistForms(),
                 'allmail' => $data['allmail'],
                 'form' => $form,
-                'fields' => $fields
+                'fields' => $fields,
+                'php_str' => $php_str
 			]
 		);
 		$this->showTemplate();
