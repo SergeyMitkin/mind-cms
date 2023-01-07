@@ -22,14 +22,14 @@ class Admin extends Controller
 	function __construct()
 	{
 		$this->html = Html::instance();
+        $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
+        $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
 		parent::__construct();
 	}
 
 	function actionIndex()
 	{
 		$this->html->title   = 'Управление feedback';
-        $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
-        $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
 
         $this->html->content = $this->render(
             'index.php', [
@@ -99,8 +99,6 @@ class Admin extends Controller
             ]);
 
 			$this->html->title = 'Добавление новой формы на сайте';
-            $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
-            $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
 			$this->html->setJs('/assets/modules/feedback/js/fields.js');
 			$this->html->content = $this->render('add.php', $data);
 		}
@@ -161,8 +159,6 @@ class Admin extends Controller
         }
 
 		$this->html->title   = 'Список форм на сайте';
-        $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
-        $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
         $this->html->setJs('/assets/modules/feedback/js/listforms.js');
 		$this->html->content = $this->render(
 			'listform.php', [
