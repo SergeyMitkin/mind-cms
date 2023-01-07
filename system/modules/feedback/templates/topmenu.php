@@ -8,13 +8,18 @@
     <div class="highlight">
         <span><a href="/feedback/admin">Feedback</a></span>
     </div>
-    <span class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Управление</button>
-        <ul class="dropdown-menu">
-            <li><a href="/feedback/admin">Управление обращениями</a></li>
-            <li><a href="/feedback/admin/addform">Добавить новую форму обращения</a></li>
-            <li><a href="/feedback/admin/listforms">Список форм обращения</a></li>
-        </ul>
-    </span>
+
+    <div class="control-links">
+        <a href="/feedback/admin" class="btn btn-primary<?=($action == 'index') ? ' active' : '' ?>">
+            Управление обращениями
+        </a>
+        <a href="/feedback/admin/addform" class="btn btn-primary<?=($action == 'addform') ? ' active' : '' ?>">
+            Добавить новую форму обращения
+        </a>
+        <a href="/feedback/admin/listforms" class="btn btn-primary<?=($action == 'listforms') ? ' active' : '' ?>">
+            Список форм обращения
+        </a>
+    </div>
+
 </div>
 

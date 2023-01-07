@@ -28,9 +28,14 @@ class Admin extends Controller
 	function actionIndex()
 	{
 		$this->html->title   = 'Управление feedback';
+        $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
+        $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
+
         $this->html->content = $this->render(
             'index.php', [
-                'topmenu'   => $this->render($this->menu),
+                'topmenu'   => $this->render($this->menu, [
+                    'action' => 'index'
+                ]),
                 'feedbacks' => mFeedback::listFeedbacks()
             ]
         );
@@ -89,9 +94,13 @@ class Admin extends Controller
             }
             $data=[];
             $data['model'] = mFeedbackFields::instance()->factory($id);
-            $data['topmenu'] = $this->render($this->menu);
+            $data['topmenu'] = $this->render($this->menu, [
+                'action' => 'addform'
+            ]);
 
 			$this->html->title = 'Добавление новой формы на сайте';
+            $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
+            $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
 			$this->html->setJs('/assets/modules/feedback/js/fields.js');
 			$this->html->content = $this->render('add.php', $data);
 		}
@@ -152,10 +161,14 @@ class Admin extends Controller
         }
 
 		$this->html->title   = 'Список форм на сайте';
+        $this->html->setCss('/assets/modules/feedback/css/topmenu.css');
+        $this->html->setJs('/assets/modules/feedback/js/topmenu.js');
         $this->html->setJs('/assets/modules/feedback/js/listforms.js');
 		$this->html->content = $this->render(
 			'listform.php', [
-				'topmenu' => $this->render($this->menu),
+				'topmenu' => $this->render($this->menu, [
+                    'action' => 'listforms'
+                ]),
 				'forms'   => mFeedbackFields::getlistForms(),
                 'allmail' => $data['allmail'],
                 'form' => $form,
