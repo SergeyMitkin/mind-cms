@@ -28,6 +28,7 @@ class Index extends Controller {
     function actionSend() {
 
         if (!empty($_POST['csrf_token']) && $this->csrfTokenMatch($_POST['csrf_token'])) {
+
             $info  = mFeedback::saveFeedback($_POST);
             if($info['status'] == 'OK') {
 

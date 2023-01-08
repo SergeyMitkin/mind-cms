@@ -74,10 +74,20 @@ class mFeedback extends Model
             unset($data['form_id']);
             $mFeedback = new mFeedback;
             $mFeedback->id_form = $id_form;
+
+            $mFeedback->email = json_decode($_SESSION['user'])->email; //new
+            // ещё нужны name, theme, department_id, спросить про email
+
             $mFeedback->info = json_encode($data);
             $mFeedback->date = date("Y-m-d H:i:s");
-            $mFeedback->save();
-            return ['status' => 'OK', 'message' => 'Спасибо! Ваше сообщение успешно отправлено!'];
+
+            if ($mFeedback->save()) {
+                return ['status' => 'OK', 'message' => 'Спасибо! Ваше сообщение успешно отправлено!'];
+            } else {
+                return ['status' => 'error', 'message' => 'Сообщение не отправлено!'];
+            }
+
+
     }
 
 
