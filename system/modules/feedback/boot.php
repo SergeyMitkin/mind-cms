@@ -16,7 +16,6 @@ $this->event->on('core.template.render', function (\core\Html $html) {
         $forms = $dom->getElementsByTagName('form');
 
         if ($forms->length > 0) {
-
             $xpath = new DOMXPath($dom);
             $_SESSION['csrf'] = [];
 
