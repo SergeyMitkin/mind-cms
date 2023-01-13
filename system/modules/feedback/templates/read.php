@@ -34,9 +34,10 @@
 							<?
 							reset($t);
 							foreach ($t as $k1 => $v1) {
+                                $name_in_form = str_replace(' ', '_', $v1['name_in_form'])
 								?>
 								<td>
-									<?= (isset($message[$v1['name_in_form']]))?$message[$v1['name_in_form']]:''; ?></td>
+									<?= (isset($message[$name_in_form ])) ? $message[$name_in_form] : ''; ?></td>
 							<?
 							}
 							?>
