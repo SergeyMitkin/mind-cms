@@ -27,7 +27,7 @@ class Index extends Controller {
 
     function actionSend() {
 
-        if (!empty($_POST['csrf_token']) && $this->csrfTokenMatch($_POST['csrf_token'])) {
+        if (!empty($_POST['csrf_token']) && $this->csrfTokenMatch($_POST['form_id'], $_POST['csrf_token'])) {
             $info  = mFeedback::saveFeedback($_POST);
             if($info['status'] == 'OK') {
 
@@ -122,14 +122,7 @@ class Index extends Controller {
         /*
          * Отправляем уведомление админу
          */
-
-        // --- ОТЛАДКА НАЧАЛО
-//        echo '<pre>';
-//        var_dump(new \modules\messenger\controllers\Index);
-//        echo'</pre>';
-//        die;
-        // --- Отладка конец
-        if(!empty($mailSend)){
+        if(class_exists('\modules\messenger\controllers\Index') && !empty($mailSend)){
             $messengerData=[];
             $messengerData['when_date_send'] = date('Y-m-d');
             $messengerData['title'] = 'Новое сообщение от пользователя';
@@ -146,8 +139,8 @@ class Index extends Controller {
         $this->html->renderTemplate()->show();
     }
 
-    function csrfTokenMatch($csrf_token){
-        return hash_equals($csrf_token, json_decode($_SESSION['user'])->csrf_token);
+    function csrfTokenMatch($form_id, $csrf_token){
+        return hash_equals($csrf_token, $_SESSION['csrf'][$form_id]);
     }
 
 }

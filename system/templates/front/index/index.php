@@ -41,7 +41,7 @@
 </div>
 
 
-<div id="test-id" class="clearfix panel-body">
+<div class="clearfix panel-body">
     <div class="wrapper">
         <?= \core\Html::instance()->content; ?>
     </div>
