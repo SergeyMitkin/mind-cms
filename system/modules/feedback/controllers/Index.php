@@ -122,6 +122,13 @@ class Index extends Controller {
         /*
          * Отправляем уведомление админу
          */
+
+        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump(new \modules\messenger\controllers\Index);
+//        echo'</pre>';
+//        die;
+        // --- Отладка конец
         if(!empty($mailSend)){
             $messengerData=[];
             $messengerData['when_date_send'] = date('Y-m-d');

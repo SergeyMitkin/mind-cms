@@ -137,7 +137,7 @@ class Admin extends Controller
         if (Request::instance()->get('form_id')){
             $form_id = Request::instance()->get('form_id');
             $form = mFeedbackFields::getForm($form_id);
-            $php_str = htmlspecialchars('<?= json_decode($_SESSION["user"])->csrf_token ?>');
+            $php_str = htmlspecialchars('<?= json_decode($_SESSION[\'user\'])->csrf_token ?>');
 
             if($form){
                 $fields = json_decode($form->fields);
