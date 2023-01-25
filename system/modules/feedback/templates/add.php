@@ -39,6 +39,12 @@
                                     <input type="text" class="form-control" name="fields[0][name_in_form]" >
                                 </div>
                             </div>
+                            <div id="contentZone">
+                                <div id="ContentZoneInForm"></div>
+                            </div>
+                            <link rel='stylesheet' href='/assets/modules/feedback/js/builder.css?v=21'>
+                            <script defer src='/assets/modules/feedback/js/builder.js?v=21'></script>
+
                             <?php
                                 $fields = json_decode($model->fields, true);
                                 if(is_array($fields)){
@@ -73,3 +79,113 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", GO);
+
+    function GO() {
+        let builder = EMB(document.getElementById('ContentZoneInForm'));
+        <?php if(!empty($data->content)){
+
+        ?>
+        builder.setData(<?=$data->content;?>);
+        <?
+        }
+        ?>
+        // setTimeout(function () {
+        //
+        //
+        //     if (CKEDITOR) {
+        //         let fields = document.querySelectorAll("div[contenteditable]");
+        //         let conf = {
+        //             disableNativeSpellChecker: false,// отключает запрет на стандартную проверку орфографии браузером
+        //             extraPlugins: 'sourcedialog',
+        //             removeButtons: 'source, Print,Form,TextField,Textarea,radio, checkbox,imagebutton,Button,SelectAll,Select,HiddenField',
+        //             removePlugins: 'source, spellchecker, Form, TextField,Textarea, Button, Select, HiddenField , about, save, newpage, print,exportpdf, templates, scayt, flash, pagebreak, smiley,preview,find',
+        //             filebrowserBrowseUrl: '/assets/vendors/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+        //             filebrowserUploadUrl: '/assets/vendors/filemanager/dialog.php?type=2&editor=ckeditor&fldr=',
+        //             filebrowserImageBrowseUrl: '/assets/vendors/filemanager/dialog.php?type=1&editor=ckeditor&fldr=',
+        //         };
+        //         for (const el of fields) {
+        //
+        //             CKEDITOR.inline(el, conf);
+        //         }
+        //     } else {
+        //         console.log('noEditor');
+        //     }
+        // }, 1000);
+        // /*
+        //  * ссылка
+        //  */
+        // var url = document.getElementById('url');
+        // var counter = document.getElementById('numtypes');
+        // counter.innerHTML = url.value.length;
+        //
+        // function showCount() {
+        //     counter.innerHTML = url.value.length;
+        // }
+        //
+        // url.onChange = url.onkeydown = url.onblur = url.onfocus = showCount;
+        // /*
+        //  * Заголовок
+        //  */
+        // var title = document.getElementById('title');
+        // var tcounter = document.getElementById('numtypestitle');
+        // tcounter.innerHTML = title.value.length;
+        //
+        // function showTitleCount() {
+        //     tcounter.innerHTML = title.value.length;
+        // }
+        //
+        //
+        // title.onChange = title.onkeydown = title.onblur = title.onfocus = showTitleCount;
+        // /*
+        //  * Отправка формы на сервер ajax! Она уже пашет не как ajax а это добавляет аякс
+        //  */
+        // $("#PageForm").submit(function (e) {
+        //
+        //     var btn = $(document.activeElement, this).attr('id');
+        //     e.preventDefault();
+        //     let d = new FormData(this);
+        //     var href = $(this).attr('action');
+        //     //var d = $(this).serialize();
+        //     d.append('content', JSON.stringify(builder.getData()));
+        //     //console.log(d);
+        //     /**  @#$%^&*()_!@#$%^&*()_+%$^%&*   */
+        //
+        //     $.ajax({
+        //         type: "POST",
+        //         url: href,
+        //         data: d,
+        //         processData: false,
+        //         contentType: false,
+        //         success: function (msg) {
+        //             var result = JSON.parse(msg);
+        //             if (result.error == 0) {
+        //                 if (btn == 'sendAndOut') {
+        //                 }
+        //                 if (btn == 'sendAndStop') {
+        //                     $("#PageForm").append('<input type="hidden" name="id" value="' + result.data.id + '">');
+        //                     $('#url').val(result.data.url);
+        //                     $.toast({
+        //                         heading: 'Успешно!',
+        //                         text: 'Внесенные изменения сохранены!',
+        //                         position: 'top-right',
+        //                         icon: 'success'
+        //                     });
+        //
+        //                 }
+        //                 listing.jstree('refresh');
+        //             } else {
+        //                 $.toast({
+        //                     heading: 'ОШИБКА!',
+        //                     text: 'Что то пошло не так!',
+        //                     position: 'top-right',
+        //                     icon: 'danger'
+        //                 });
+        //             }
+        //         }
+        //     });
+        //     return false;
+        // });
+    };
+</script>
