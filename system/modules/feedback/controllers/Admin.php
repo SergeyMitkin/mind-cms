@@ -99,6 +99,7 @@ class Admin extends Controller
             ]);
 
 			$this->html->title = 'Добавление новой формы на сайте';
+            $this->html->setCss('/assets/modules/feedback/css/add.css');
 			$this->html->setJs('/assets/modules/feedback/js/fields.js');
 			$this->html->content = $this->render('add.php', $data);
 		}

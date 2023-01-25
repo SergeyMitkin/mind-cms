@@ -1,0 +1,41 @@
+.form-builder input, .form-builder button, .form-builder select, .form-builder textarea {
+    font-family: inherit;
+    font-size: inherit;
+    -webkit-padding: 0.4em 0;
+    padding: 0.4em;
+    margin: 0 0 0.5em 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.form-builder input:disabled {
+    color: #ccc;
+}
+
+.form-builder button {
+    color: #333;
+    background-color: #f4f4f4;
+    outline: none;
+}
+
+.form-builder button:disabled {
+    color: #999;
+}
+
+.form-builder button:not(:disabled):active {
+    background-color: #ddd;
+}
+
+.form-builder button:focus {
+    border-color: #666;
+}
+
+.form-builder .badge {
+    background-color: unset;
+}
+
+.form-builder .sortable-item .form-group {
+    margin-left: unset;
+    margin-right: unset;
+}
