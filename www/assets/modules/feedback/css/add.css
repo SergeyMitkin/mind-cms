@@ -39,3 +39,13 @@
     margin-left: unset;
     margin-right: unset;
 }
+
+.custom-control-label {
+    color: #797979;
+    font-weight: 300;
+    font-size: 14px;
+}
+.contentPanel .custom-control-label:before {
+    height: 1.3rem !important;
+    width: 1.3rem !important;
+}

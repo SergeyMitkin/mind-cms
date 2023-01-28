@@ -26,19 +26,19 @@
                         </fieldset>
                         <fieldset class="input_fields_wrap">
                             <legend>Поля формы</legend>
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Название поля</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="fields[0][name]" >
-                                </div>
-                                <div class="col-sm-2"><button class="add_field_button">Добавить поле</button></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Input name</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="fields[0][name_in_form]" >
-                                </div>
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="name" class="col-sm-2 control-label">Название поля</label>-->
+<!--                                <div class="col-sm-8">-->
+<!--                                    <input type="text" class="form-control" name="fields[0][name]" >-->
+<!--                                </div>-->
+<!--                                <div class="col-sm-2"><button class="add_field_button">Добавить поле</button></div>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="name" class="col-sm-2 control-label">Input name</label>-->
+<!--                                <div class="col-sm-8">-->
+<!--                                    <input type="text" class="form-control" name="fields[0][name_in_form]" >-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div id="contentZone">
                                 <div id="ContentZoneInForm"></div>
                             </div>
