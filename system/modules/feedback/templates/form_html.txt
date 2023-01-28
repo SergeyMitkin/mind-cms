@@ -2,15 +2,28 @@
     &lt;fieldset&gt;<br />
     &lt;legend&gt;<?=$form->name;?>&lt;/legend&gt;<br />
 
+        <? $i=0 ?>
         <?foreach ($fields as $field): ?>
+
+            <?if($field->type == 'checkbox' || $field->type == 'radio'):?>
+
+            &lt;div class="form-group col-sm-10"&gt;<br />
+                &lt;label for="name" class="col-sm-2 control-label"&gt;<strong><?=$field->name?></strong>&lt;/label&gt;<br />
+                &lt;input type="<strong><?=$field->type?></strong>" class="custom-<?=$field->type?>" name="<strong><?=$field->name_in_form?></strong>"<?=(isset($field->is_required))?' required':''?>&gt;<br />
+            &lt;/div&gt;<br />
+
+            <?else:?>
 
             &lt;div class="form-group"&gt;<br />
                 &lt;label for="name" class="col-sm-2 control-label"&gt;<strong><?=$field->name?></strong>&lt;/label&gt;<br />
                 &lt;div class="col-sm-10"&gt;
-                    &lt;input type="text" class="form-control" name="<strong><?=$field->name_in_form?></strong>"&gt;<br />
+                    &lt;input type="<strong><?=$field->type?></strong>" class="form-control" name="<strong><?=$field->name_in_form?></strong>"<?=(isset($field->is_required))?' required':''?>&gt;<br />
                 &lt;/div&gt;<br />
             &lt;/div&gt;<br />
 
+            <?endif?>
+
+        <? $i++ ?>
         <?endforeach?>
 
        &lt;input type="hidden" name="csrf_token" value="_CSRF_"&gt;<br />
