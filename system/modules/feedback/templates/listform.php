@@ -88,7 +88,7 @@ use modules\feedback\models\mFeedbackFields;
                             <h4 class="text-success">Пример корректно заполненной формы:</h4>
                             <div id="form-html-wrap">
                             <?
-                            if ($form && $fields && $php_str){
+                            if (isset($form) && isset($fields) && isset($php_str)){
                                 $form_html = include (__DIR__ . '/form_html.txt');
                             }
                             else if (file_exists(__DIR__ . '/example.txt')) {
