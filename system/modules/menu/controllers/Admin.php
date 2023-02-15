@@ -13,6 +13,8 @@ use modules\menu\widgets\Show;
 
 class Admin extends Controller
 {
+    public $menu = 'topmenu.php';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -23,20 +25,20 @@ class Admin extends Controller
 		$this->nested->right = 'right_key';
 		$this->nested->level = 'level';
 		$this->nested->table = 'menu';
+        $this->html = Html::instance();
+        $this->html->setCss('/assets/modules/menu/css/topmenu.css');
+        $this->html->setJs('/assets/modules/menu/js/topmenu.js');
 	}
 
 	public function actionIndex()
 	{
-
-        // --- ОТЛАДКА НАЧАЛО
-//        echo '<pre>';
-//        var_dump(Menu::getRootMenu());
-//        echo'</pre>';
-//        die;
-        // --- Отладка конец
-
 		Html::instance()->content = $this->render(
-            "Menulist.php", $this->model->GetForList()
+            "Menulist.php", [
+                $this->model->GetForList(),
+                'topmenu'   => $this->render($this->menu, [
+                    'action' => 'index'
+                ])
+            ]
         );
 		Html::instance()->renderTemplate("@admin")->show();
 	}
