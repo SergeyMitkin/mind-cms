@@ -20,7 +20,7 @@
 				<input type="text" name="finded" id="finded">
 			</div>
 			<div class="clear clearfix" id="list_pages">
-				<?php \modules\menu\helpers\Nested::printNestedTree($data, 0, false); ?>
+<!--				--><?php //\modules\menu\helpers\Nested::printNestedTree($data, 0, false); ?>
 			</div>
 		</div>
 		<div class="col-sm-9" id="contentZone"></div>

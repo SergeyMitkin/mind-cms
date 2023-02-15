@@ -27,9 +27,18 @@ class Admin extends Controller
 
 	public function actionIndex()
 	{
-		Html::instance()->content = $this->render("Menulist.php", $this->model->GetForList());
-		Html::instance()->renderTemplate("@admin")->show();
 
+        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump(Menu::getRootMenu());
+//        echo'</pre>';
+//        die;
+        // --- Отладка конец
+
+		Html::instance()->content = $this->render(
+            "Menulist.php", $this->model->GetForList()
+        );
+		Html::instance()->renderTemplate("@admin")->show();
 	}
 
 	/**

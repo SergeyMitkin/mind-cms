@@ -2,6 +2,7 @@
 
 namespace modules\menu\models;
 
+use core\App;
 use core\Model;
 use core\Tools;
 use modules\user\models\USER;
@@ -115,6 +116,25 @@ class Menu extends Model
         $new_array = "";
         return $this->clear()->select('id,name, url ,left_key,right_key, level, visible, position')->orderBy('position ASC, left_key ASC')->getAll();
 
+    }
+
+    public static function getRootMenu() {
+        $sql_result = self::instance()
+            ->where('visible', '=', 1)
+            ->getAll();
+
+        // --- ОТЛАДКА НАЧАЛО
+        echo '<pre>';
+        var_dump($sql_result);
+        echo'</pre>';
+        die;
+        // --- Отладка конец
+//        $new_array = [];
+//        foreach ($sql_result as $value) {
+//            $value['count'] = self::getCountMenu($value['id']);
+//            $new_array[] = $value;
+//        }
+//        return $new_array;
     }
 
     public function moveNode($pk, $pid)
