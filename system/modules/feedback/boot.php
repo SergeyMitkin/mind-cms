@@ -5,7 +5,9 @@
 
 $this->event->on('core.template.render', function (\core\Html $html) {
 	if (!$html->isSystemTemplate()) {
-		if (isset($_GET['wysiwyg']) and \core\User::current()->isAdmin()) {
+		if ((isset($_GET['wysiwyg']) and \core\User::current()->isAdmin())
+            // Если находимся в админке
+            or array_search('admin', explode('/',$_SERVER['REQUEST_URI'])) !== false) {
 			return $html->render;
 		}
 
