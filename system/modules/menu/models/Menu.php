@@ -111,12 +111,12 @@ class Menu extends Model
     }
 
 
-    public function GetForList()
-    {
-        $new_array = "";
-        return $this->clear()->select('id,name, url ,left_key,right_key, level, visible, position')->orderBy('position ASC, left_key ASC')->getAll();
-
-    }
+//    public function GetForList()
+//    {
+//        $new_array = "";
+//        return $this->clear()->select('id,name, url ,left_key,right_key, level, visible, position')->orderBy('position ASC, left_key ASC')->getAll();
+//
+//    }
 
     public static function getRootMenu() {
         $sql_result = self::instance()

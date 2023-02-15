@@ -8,6 +8,7 @@ use core\Html;
 use core\Parameters;
 use core\Response;
 use modules\menu\models\Menu;
+use modules\menu\models\MenuTemplates;
 use modules\menu\services\MenuActions;
 use modules\menu\widgets\Show;
 
@@ -42,6 +43,25 @@ class Admin extends Controller
         );
 		Html::instance()->renderTemplate("@admin")->show();
 	}
+
+    function actionListTemplates()
+    {
+        // --- ОТЛАДКА НАЧАЛО
+        echo '<pre>';
+        var_dump('Список шаблонов');
+        echo'</pre>';
+        die;
+        // --- Отладка конец
+//        $this->html->title   = 'Список шаблонов';
+//        $this->html->content = $this->render(
+//            'listtemplates.php', [
+//                'topmenu'       => $this->render($this->menu),
+//                'breadcrumb'    => $this->render($this->breadcrumd),
+//                'listtemplates' => MenuTemplates::getListTemplates(),
+//            ]
+//        );
+//        $this->showTemplate();
+    }
 
 	/**
 	 * Рисует форму для аякс без дизайна, а без аякса - дизайн админки
