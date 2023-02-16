@@ -11,10 +11,10 @@
     </div>
 
     <div class="control-links">
-        <a href="/menu/admin" class="btn btn-primary<?=($action == 'index') ? ' active' : '' ?>">
+        <a href="/menu/admin" class="btn btn-primary<?=(isset($action) && $action == 'index') ? ' active' : '' ?>">
             Список меню
         </a>
-        <a href="/menu/admin/listtemplates" class="btn btn-primary<?=($action == 'listtemplates') ? ' active' : '' ?>">
+        <a href="/menu/admin/listtemplates" class="btn btn-primary<?=(isset($action) && $action == 'listtemplates') ? ' active' : '' ?>">
             Управление шаблонами вывода
         </a>
     </div>

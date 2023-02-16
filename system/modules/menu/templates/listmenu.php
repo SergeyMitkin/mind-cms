@@ -1,38 +1,32 @@
-<div class="panel clearfix">
-	<? if (isset($_SESSION['answer'])) { ?>
-		<div class="<?= $_SESSION['answer']['type'] ?> session-answer">
-			<div class="alert alert-success" role="alert"><h4><?=
-					$_SESSION['answer']['text'];
-					unset($_SESSION['answer']);
-					?></h4>
-			</div>
-		</div>
-	<? } ?>
-	<div class="col-sm-12 panel-heading">
-		<div class="col-sm-3"><h5 class="pull-left text-uppercase">Список меню в категории</h5></div>
-		<div class="col-sm-9 pull-right"><a
-				href="/menu/admin/add/<?= $data['parent_id']; ?>"
-				class="btn btn-group-lg btn-success">Добавить новый пункт
-				меню</a><?= $data['topmenu']; ?></div>
-	<div class="col-sm-12 panel-body clearfix">
+<div class="row">
+    <div class="col-sm-12 panel-heading">
+        <?= $data['topmenu']; ?>
 
-		<div class="main-info">
+        <div class="col-sm-3"><h5 class="pull-left text-uppercase">Список меню в категории</h5></div>
+        <div class="col-sm-9 pull-right">
+            <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
+                class="btn btn-group-lg btn-success">Добавить новый пункт меню
+            </a>
+        </div>
+    <div class="col-sm-12 panel-body clearfix">
 
-<!--			--><?// if (!empty($data['newlist'])) { ?>
-<!--				<ol id="result" class="list-group" data-id="--><?//= $data['parent_id'] ?><!--">-->
-<!---->
-<!--					--><?//= $data['newlist']; ?>
-<!---->
-<!--				</ol>-->
-<!--			--><?// } else { ?>
-<!--				<div class="warning">Меню на сайте нет! Создать новое меню?</div>-->
-<!--			--><?// } ?>
+        <div class="main-info">
 
-		</div>
-		<div>*Меню сортируется путем перетаскивания строк, зажмите левю кнопку мышки над строкой и тянетие на новое место.</div>
-	</div>
+    <!--			--><?// if (!empty($data['newlist'])) { ?>
+    <!--				<ol id="result" class="list-group" data-id="--><?//= $data['parent_id'] ?><!--">-->
+    <!---->
+    <!--					--><?//= $data['newlist']; ?>
+    <!---->
+    <!--				</ol>-->
+    <!--			--><?// } else { ?>
+    <!--				<div class="warning">Меню на сайте нет! Создать новое меню?</div>-->
+    <!--			--><?// } ?>
 
+        </div>
+        <div>*Меню сортируется путем перетаскивания строк, зажмите левю кнопку мышки над строкой и тянетие на новое место.</div>
+    </div>
 </div>
+
 <style>
 	body.dragging, body.dragging * {
 		cursor: move !important;

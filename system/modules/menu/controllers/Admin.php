@@ -53,14 +53,13 @@ class Admin extends Controller
 
         Html::instance()->content = $this->render(
             'listmenu.php', [
-                'topmenu'    => $this->render($this->menu),
+                'topmenu'   => $this->render($this->menu),
 //                'newlist'    => Menu::tree(Menu::getChildMenuInfo($menuId, false), $id),
                 'parent_id'  => $id,
             ]
         );
 
         Html::instance()->renderTemplate("@admin")->show();
-//        $this->showTemplate();
     }
 
     function actionListTemplates()
