@@ -34,13 +34,6 @@ class Admin extends Controller
 
 	public function actionIndex()
 	{
-        // --- ОТЛАДКА НАЧАЛО
-//        echo '<pre>';
-//        var_dump(Menu::getRootMenu());
-//        echo'</pre>';
-//        die;
-        // --- Отладка конец
-
 		Html::instance()->content = $this->render(
             "Menulist.php", [
                 'topmenu'   => $this->render($this->menu, [

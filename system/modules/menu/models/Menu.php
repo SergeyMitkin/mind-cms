@@ -124,7 +124,20 @@ class Menu extends Model
             ->where('type', '=', 'root')
             ->getAll();
 
-        return $sql_result;
+        $new_array = [];
+        foreach ($sql_result as $value) {
+            $value->count = self::getCountMenu($value->id);;
+            $new_array[] = $value;
+        }
+
+        return $new_array;
+    }
+
+    public static function getCountMenu($id) {
+        $stm = "SELECT count(`id`) as count FROM " . self::$currentTable . "
+               WHERE  `parent_id` ='" . $id . "'";
+        $sql_result = self::instance()->pdo->query($stm)->fetchAll();
+        return $sql_result[0]['count'];
     }
 
     public function moveNode($pk, $pid)
