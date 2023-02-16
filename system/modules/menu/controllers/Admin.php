@@ -6,6 +6,7 @@ use core\App;
 use core\Controller;
 use core\Db;
 use core\Html;
+use core\Model;
 use core\Parameters;
 use core\Response;
 use modules\menu\models\Menu;
@@ -49,7 +50,7 @@ class Admin extends Controller
     {
         $this->html->title = 'Список пунктов в выбранном меню';
         $this->html->setJs('/assets/vendors/jquery-sortable/jquery-sortable.js');
-        $this->html->setJs('/assets/system/menu/menu.js');
+        $this->html->setJs('/assets/modules/menu/js/menu.js');
 
         Html::instance()->content = $this->render(
             'RootMenu.php', [
@@ -63,6 +64,14 @@ class Admin extends Controller
         );
 
         Html::instance()->renderTemplate("@admin")->show();
+    }
+
+    function actionChangeVisible()
+    {
+        $status = $_POST['status']=='1'?'0':'1';
+        Menu::instance()->where('id', '=', $_POST['id'])
+            ->update(['visible' => $status]);
+        echo 'ok';
     }
 
     function actionListTemplates()

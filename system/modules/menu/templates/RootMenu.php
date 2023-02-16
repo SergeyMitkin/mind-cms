@@ -8,9 +8,7 @@
 
     			<? if (!empty($data['menuItems'])) { ?>
     				<ol id="result" class="list-group" data-id="<?= $data['parent_id'] ?>">
-
     					<?= $data['menuItems']; ?>
-
     				</ol>
     			<? } else { ?>
     				<div class="warning">Меню на сайте нет! Создать новое меню?</div>
