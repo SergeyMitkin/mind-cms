@@ -52,12 +52,12 @@ class Admin extends Controller
         $this->html->setJs('/assets/system/menu/menu.js');
 
         Html::instance()->content = $this->render(
-            'MenuItem.php', [
+            'RootMenu.php', [
                 'topmenu'   => $this->render($this->menu, [
-                    'action' => 'menuItem',
+                    'action' => 'rootMenu',
                     'parent_id'  => $id
                 ]),
-//                'newlist'    => Menu::tree(Menu::getChildMenuInfo($menuId, false), $id),
+                'menuItems'    => Menu::tree(Menu::getChildMenuInfo($id, false), $id),
                 'parent_id'  => $id,
             ]
         );

@@ -18,7 +18,7 @@
             Управление шаблонами вывода
         </a>
 
-        <?if (isset($action) && $action == 'menuItem'):?>
+        <?if (isset($action) && $action == 'rootMenu'):?>
             <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
                class="btn btn-group-lg btn-success">Добавить новый пункт меню
             </a>

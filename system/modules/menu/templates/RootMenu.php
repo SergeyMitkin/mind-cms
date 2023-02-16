@@ -6,15 +6,15 @@
 
         <div class="main-info">
 
-    <!--			--><?// if (!empty($data['newlist'])) { ?>
-    <!--				<ol id="result" class="list-group" data-id="--><?//= $data['parent_id'] ?><!--">-->
-    <!---->
-    <!--					--><?//= $data['newlist']; ?>
-    <!---->
-    <!--				</ol>-->
-    <!--			--><?// } else { ?>
-    <!--				<div class="warning">Меню на сайте нет! Создать новое меню?</div>-->
-    <!--			--><?// } ?>
+    			<? if (!empty($data['menuItems'])) { ?>
+    				<ol id="result" class="list-group" data-id="<?= $data['parent_id'] ?>">
+
+    					<?= $data['menuItems']; ?>
+
+    				</ol>
+    			<? } else { ?>
+    				<div class="warning">Меню на сайте нет! Создать новое меню?</div>
+    			<? } ?>
 
         </div>
         <div>*Меню сортируется путем перетаскивания строк, зажмите левю кнопку мышки над строкой и тянетие на новое место.</div>

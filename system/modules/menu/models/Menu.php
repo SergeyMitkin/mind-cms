@@ -140,6 +140,55 @@ class Menu extends Model
         return $sql_result[0]['count'];
     }
 
+    public static function getChildMenuInfo($id = FALSE, $widget = FALSE) {
+        if ($widget == FALSE) {
+            $sql_result = self::instance()
+                ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.parent_id' => $id])
+                ->orderBy('position')->getAll();
+        } else {
+            $sql_result = App::instance()->db->from(self::$currentTable)
+                ->where([self::$currentTable . '.deleted' => 0, self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id, self::$currentTable . '.type' => 'children'])
+                ->orderBy('position')->fetchAll();
+        }
+        return $sql_result;
+    }
+
+    public static function tree($array, $parentId) {
+        if (empty($array)) {
+            return;
+        }
+        foreach ($array as $node) {
+            $treeData[$node->parent_id][] = $node;
+        }
+
+        function buildTree($data, $pid = 0, $first = true) {
+
+            $html = '';
+            if (isset($data[$pid])) {
+                foreach ($data[$pid] as $item) {
+                    $link = " <a style='font-size: 10px;' href='" . $item->url . "'>[" . $item->url . "]</a>";
+                    $html .= "<li class ='list-group-item' data-id='" . $item->id . "'>" . $item->name . $link . showButtons($item) . buildTree($data, $item->id) . "</li>";
+                }
+            }
+            if ($first) {
+                $html = '<ol>' . $html . '</ol>';
+            }
+            return $html;
+        }
+
+        function showButtons($item) {
+            $out = '<span class="actions">
+            <a href="#" class="change_status" data-id="' . $item->id . '" data-current="1">
+            <i class="glyphicon glyphicon-eye-open"></i></a>
+            <a href="/menu/admin/add/' . $item->id . '/' . $item->parent_id . '" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i> Добавить</a>
+            <a href="/menu/admin/edit/' . $item->id . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Редактировать</a>
+            <a href="/menu/admin/delete/' . $item->id . '" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Удалить</a></span>';
+            return $out;
+        }
+
+        return buildTree($treeData, $parentId, FALSE);
+    }
+
     public function moveNode($pk, $pid)
     {
         $primary_row = $this->clear()->where(['id' => $pk])->getOne();
