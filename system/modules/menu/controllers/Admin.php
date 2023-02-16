@@ -46,6 +46,38 @@ class Admin extends Controller
 		Html::instance()->renderTemplate("@admin")->show();
 	}
 
+    function actionAdd($id = false, $menuId = false)
+    {
+        $this->html->title = 'Добавление нового меню';
+        if (!empty($_POST)) {
+            if (isset($_POST['link']) && substr($_POST['link'], 0, 1)!="/") {
+                $_POST['link'] = "/".$_POST['link'];
+            }
+            /*
+             * ВЕРОЯТНО ЭТО ОГРОМНАЯ УЯЗВИМОСТЬ, НАДО ПРОВЕРИТЬ!
+             */
+            Menu::saveMenu('add', $_POST, $menuId);
+        } elseif ($id=='root') {
+            $this->html->content = $this->render(
+                '_form_add_root.php', [
+                    'topmenu'    => $this->render($this->menu),
+                    'breadcrumb' => $this->render($this->breadcrumd),
+                ]
+            );
+        } else {
+//            $newMenu             = !empty($menuId)?$menuId:Menu::getMenuId($id);
+            Html::instance()->content = $this->render(
+                '_form_add.php', [
+                    'topmenu'   => $this->render($this->menu, [
+                        'action' => 'add'
+                    ]),
+                    'parent_id'  => $id
+                ]
+            );
+        }
+        Html::instance()->renderTemplate("@admin")->show();
+    }
+
     function actionListMenu($id = false)
     {
         $this->html->title = 'Список пунктов в выбранном меню';
@@ -258,8 +290,5 @@ class Admin extends Controller
 			Menu::instance()->clear()->save(['id' => $item->id, 'position' => $i]);
 		}
 		Response::back();
-
-
 	}
-
 }
