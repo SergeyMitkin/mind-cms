@@ -17,6 +17,9 @@
         <a href="/menu/admin/listtemplates" class="btn btn-primary<?=(isset($action) && $action == 'listTemplates') ? ' active' : '' ?>">
             Управление шаблонами вывода
         </a>
+        <a href="/menu/admin/add" class="btn btn-primary<?=(isset($action) && $action == 'addMenuItem') ? ' active' : '' ?>">
+            Cоздать меню
+        </a>
 
         <?if (isset($action) && $action == 'rootMenu'):?>
             <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
