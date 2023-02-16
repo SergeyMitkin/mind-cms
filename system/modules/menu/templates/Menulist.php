@@ -9,6 +9,46 @@
 <div class="row">
     <div class="col-sm-12 panel-heading">
         <?= $data['topmenu']; ?>
+
+        <div class="col-sm-12">
+            <div class="panel-body">
+                <?php if (!empty($data['listmenus'])) {
+                    ?>
+                    <table class="table table-bordered table-striped table-hover" id="result">
+                        <thead>
+                        <tr class="info">
+                            <td>№ формы</td>
+                            <td>С какой формы обращались</td>
+                            <td>Количество обращений</td>
+                            <td>Дата последнего обращения</td>
+                            <td>Управление</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?
+                        foreach ($data['listmenus'] as $value) {
+                        $message = json_decode($value->name, TRUE);
+                        ?>
+                        <tr>
+                            <td><?= $value->id; ?></td>
+                            <td><a href="/menu/admin/.../<?= $value->id; ?>"><?= $value->name; ?></a></td>
+                            <td><?= $value->parent_id; ?></td>
+                            <td><?= $value->create_at; ?></td>
+                            <td>
+                                <a href="/menu/admin/delete/<?= $value->id; ?>" class="btn btn-xs btn-danger" onclick="return confirm('Вместе с удалением формы, удалятся также и все Feedbacks, Вы уверены?') ? true : false;"><i class="fa fa-trash-o"></i></a>
+                            </td>
+                            <?php } ?>
+                        </tr>
+                        </tbody>
+                    </table>
+                <?php } else { ?>
+                    <div class="warning">Обращений нет!</div>
+                <?php } ?>
+            </div>
+        </div>
+
+
+
 <!--        <div class="main-info">-->
 <!--            <div class="panel-body">-->
 <!---->

@@ -29,6 +29,7 @@ use modules\user\models\USER;
 class Menu extends Model
 {
     public $table = 'menu';
+    public static $currentTable = 'menu';
 
 	public function factory($id = false)
 	{
@@ -120,21 +121,10 @@ class Menu extends Model
 
     public static function getRootMenu() {
         $sql_result = self::instance()
-            ->where('visible', '=', 1)
+            ->where('type', '=', 'root')
             ->getAll();
 
-        // --- ОТЛАДКА НАЧАЛО
-        echo '<pre>';
-        var_dump($sql_result);
-        echo'</pre>';
-        die;
-        // --- Отладка конец
-//        $new_array = [];
-//        foreach ($sql_result as $value) {
-//            $value['count'] = self::getCountMenu($value['id']);
-//            $new_array[] = $value;
-//        }
-//        return $new_array;
+        return $sql_result;
     }
 
     public function moveNode($pk, $pid)

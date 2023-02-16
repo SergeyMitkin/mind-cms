@@ -2,6 +2,7 @@
 
 namespace modules\menu\controllers;
 
+use core\App;
 use core\Controller;
 use core\Db;
 use core\Html;
@@ -33,16 +34,30 @@ class Admin extends Controller
 
 	public function actionIndex()
 	{
+        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump(Menu::getRootMenu());
+//        echo'</pre>';
+//        die;
+        // --- Отладка конец
+
 		Html::instance()->content = $this->render(
             "Menulist.php", [
-                $this->model->GetForList(),
                 'topmenu'   => $this->render($this->menu, [
                     'action' => 'index'
-                ])
+                ]),
+                'listmenus' => Menu::getRootMenu(),
             ]
         );
 		Html::instance()->renderTemplate("@admin")->show();
 	}
+
+    public static function getCountMenu($id) {
+        $stm = "SELECT count(`id`) as count FROM " . self::$currentTable . "
+               WHERE  `parent_id` ='" . $id . "' and `deleted` = 0";
+        $sql_result = App::instance()->pdo->query($stm)->fetchAll(\PDO::FETCH_ASSOC);
+        return $sql_result[0]['count'];
+    }
 
     function actionListTemplates()
     {
