@@ -45,11 +45,22 @@ class Admin extends Controller
 		Html::instance()->renderTemplate("@admin")->show();
 	}
 
-    public static function getCountMenu($id) {
-        $stm = "SELECT count(`id`) as count FROM " . self::$currentTable . "
-               WHERE  `parent_id` ='" . $id . "' and `deleted` = 0";
-        $sql_result = App::instance()->pdo->query($stm)->fetchAll(\PDO::FETCH_ASSOC);
-        return $sql_result[0]['count'];
+    function actionListMenu($id = false)
+    {
+        $this->html->title = 'Список пунктов в выбранном меню';
+        $this->html->setJs('/assets/vendors/jquery-sortable/jquery-sortable.js');
+        $this->html->setJs('/assets/system/menu/menu.js');
+
+        Html::instance()->content = $this->render(
+            'listmenu.php', [
+                'topmenu'    => $this->render($this->menu),
+//                'newlist'    => Menu::tree(Menu::getChildMenuInfo($menuId, false), $id),
+                'parent_id'  => $id,
+            ]
+        );
+
+        Html::instance()->renderTemplate("@admin")->show();
+//        $this->showTemplate();
     }
 
     function actionListTemplates()

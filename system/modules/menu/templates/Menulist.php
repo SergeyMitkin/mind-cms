@@ -29,7 +29,7 @@
                         ?>
                         <tr>
                             <td><?= $value->id; ?></td>
-                            <td><a href="/menu/admin/.../<?= $value->id; ?>"><?= $value->name . ' ( ' . $value->count . ' )'; ?></a></td>
+                            <td><a href="/menu/admin/ListMenu/<?= $value->id; ?>"><?= $value->name . ' ( ' . $value->count . ' )'; ?></a></td>
                             <td>
                                 <a href="/menu/admin/delete/<?= $value->id; ?>" class="btn btn-xs btn-danger" onclick="return confirm('Вместе с удалением формы, удалятся также и все Feedbacks, Вы уверены?') ? true : false;"><i class="fa fa-trash-o"></i></a>
                             </td>
