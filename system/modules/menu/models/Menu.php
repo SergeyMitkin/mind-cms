@@ -177,9 +177,12 @@ class Menu extends Model
         }
 
         function showButtons($item) {
+
+            $eye = ($item->visible == 1) ? 'glyphicon-eye-open' : 'glyphicon-eye-close';
+
             $out = '<span class="actions">
-            <a href="#" class="change_status" data-id="' . $item->id . '" data-current="1">
-            <i class="glyphicon glyphicon-eye-open"></i></a>
+            <a href="javascript:void(0);" class="change_status" data-id="' . $item->id . '" data-current="' . $item->visible . '">
+            <i class="glyphicon ' . $eye . '"></i></a>
             <a href="/menu/admin/add/' . $item->id . '/' . $item->parent_id . '" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i> Добавить</a>
             <a href="/menu/admin/edit/' . $item->id . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Редактировать</a>
             <a href="/menu/admin/delete/' . $item->id . '" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Удалить</a></span>';

@@ -1,13 +1,13 @@
 $(document).ready(function () {
     $('#result').on('click', '.change_status', function () {
         var $this = $(this);
-        var news_id = $this.data('id');
+        var menu_id = $this.data('id');
         var status = $this.data('current');
         var icon = $this.children('.glyphicon');
         $.ajax({
             type: 'post',
             url: '/menu/admin/changevisible',
-            data: {id: news_id, status: status},
+            data: {id: menu_id, status: status},
             _obj: icon,
             success: function (data) {
                 if (data == 'ok') {
