@@ -14,9 +14,15 @@
         <a href="/menu/admin" class="btn btn-primary<?=(isset($action) && $action == 'index') ? ' active' : '' ?>">
             Список меню
         </a>
-        <a href="/menu/admin/listtemplates" class="btn btn-primary<?=(isset($action) && $action == 'listtemplates') ? ' active' : '' ?>">
+        <a href="/menu/admin/listtemplates" class="btn btn-primary<?=(isset($action) && $action == 'listTemplates') ? ' active' : '' ?>">
             Управление шаблонами вывода
         </a>
+
+        <?if (isset($action) && $action == 'menuItem'):?>
+            <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
+               class="btn btn-group-lg btn-success">Добавить новый пункт меню
+            </a>
+        <?endif;?>
     </div>
 </div>
 

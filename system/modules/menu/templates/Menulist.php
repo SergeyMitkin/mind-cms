@@ -12,7 +12,7 @@
 
         <div class="col-sm-12">
             <div class="panel-body">
-                <?php if (!empty($data['listmenus'])) {
+                <?php if (!empty($data['listMenus'])) {
                     ?>
                     <table class="table table-bordered table-striped table-hover" id="result">
                         <thead>
@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                         <?
-                        foreach ($data['listmenus'] as $value) {
+                        foreach ($data['listMenus'] as $value) {
                             $message = json_decode($value->name, TRUE);
                         ?>
                         <tr>

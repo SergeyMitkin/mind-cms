@@ -39,7 +39,7 @@ class Admin extends Controller
                 'topmenu'   => $this->render($this->menu, [
                     'action' => 'index'
                 ]),
-                'listmenus' => Menu::getRootMenu(),
+                'listMenus' => Menu::getRootMenu(),
             ]
         );
 		Html::instance()->renderTemplate("@admin")->show();
@@ -54,7 +54,8 @@ class Admin extends Controller
         Html::instance()->content = $this->render(
             'MenuItem.php', [
                 'topmenu'   => $this->render($this->menu, [
-                    'action' => 'menuItem'
+                    'action' => 'menuItem',
+                    'parent_id'  => $id
                 ]),
 //                'newlist'    => Menu::tree(Menu::getChildMenuInfo($menuId, false), $id),
                 'parent_id'  => $id,

@@ -2,12 +2,6 @@
     <div class="col-sm-12 panel-heading">
         <?= $data['topmenu']; ?>
 
-        <div class="col-sm-3"><h5 class="pull-left text-uppercase">Список меню в категории</h5></div>
-        <div class="col-sm-9 pull-right">
-            <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
-                class="btn btn-group-lg btn-success">Добавить новый пункт меню
-            </a>
-        </div>
     <div class="col-sm-12 panel-body clearfix">
 
         <div class="main-info">
