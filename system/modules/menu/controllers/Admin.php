@@ -52,8 +52,10 @@ class Admin extends Controller
         $this->html->setJs('/assets/system/menu/menu.js');
 
         Html::instance()->content = $this->render(
-            'listmenu.php', [
-                'topmenu'   => $this->render($this->menu),
+            'MenuItem.php', [
+                'topmenu'   => $this->render($this->menu, [
+                    'action' => 'menuItem'
+                ]),
 //                'newlist'    => Menu::tree(Menu::getChildMenuInfo($menuId, false), $id),
                 'parent_id'  => $id,
             ]
