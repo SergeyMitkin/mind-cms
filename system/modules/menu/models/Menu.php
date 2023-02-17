@@ -25,6 +25,8 @@ use modules\user\models\USER;
  * @property string is_nofollow
  * @property string is_noindex
  * @property string position
+ * @property integer parent_id
+ * @property string type
  * @property string extData
  */
 class Menu extends Model
@@ -52,7 +54,6 @@ class Menu extends Model
             $this->type = "";
             $this->parent_id = 0;
 			$this->extData = null;
-
         }
         return $this;
     }
@@ -63,17 +64,6 @@ class Menu extends Model
      */
     public function beforeInsert()
     {
-        //Вычисляем границы если они не переданы
-        if (empty($_POST['left_key'])) { //если границы переданы
-            $time = new self();
-            $time->clear()->select('max(right_key) as m')->getOne();
-            $this->left_key  = $time->m + 1; //взводим левую границу
-            $this->right_key = $time->m + 2; //взводим правую границу
-            $this->level     = 0;
-            $time->clear()->select('max(position) as p')->where(['level' => 0])->getOne();
-            $this->position = $time->p + 1;
-        }
-
         //время создания
         $this->create_at = date("Y-m-d H:i:s", time());
 
@@ -87,7 +77,6 @@ class Menu extends Model
         //  $this->clear()->select('max(position) as m')->where()->getOne();
         //возвращаем тру есил все ок
         return true;
-
     }
 
     /**
