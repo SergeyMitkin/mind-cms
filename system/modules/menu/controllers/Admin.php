@@ -49,12 +49,22 @@ class Admin extends Controller
     function actionAdd($id = false, $menuId = false)
     {
         if (!empty($_POST)) {
-//            if (isset($_POST['link']) && substr($_POST['link'], 0, 1)!="/") {
-//                $_POST['link'] = "/".$_POST['link'];
-//            }
-
+            // К url добавляется слэш
+            if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
+                $_POST['url'] = "/".$_POST['url'];
+            }
             Menu::instance()->saveMenu('add', $_POST);
 
+            Html::instance()->content = $this->render(
+                'RootMenu.php', [
+                    'topmenu'   => $this->render($this->menu, [
+                        'action' => 'rootMenu',
+                        'parent_id'  => $id
+                    ]),
+                    'menuItems'    => Menu::tree(Menu::getChildMenuInfo($id, false), $id),
+                    'parent_id'  => $id,
+                ]
+            );
 
         } elseif ($id=='root') {
             $this->html->content = $this->render(
@@ -65,7 +75,7 @@ class Admin extends Controller
                 ]
             );
         } else {
-            Html::instance()->content = $this->render(
+            $this->html->content = $this->render(
                 'addMenuItem.php', [
                     'topmenu'   => $this->render($this->menu, [
                         'action' => 'addMenuItem'

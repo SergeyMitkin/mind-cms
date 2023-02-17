@@ -15,7 +15,7 @@
         <div class="col-sm-12">
 
             <div class="panel-body">
-                <form class="form-horizontal" method="POST" action="add" id="sumbit_form">
+                <form class="form-horizontal" method="POST" action="" id="sumbit_form">
                     <fieldset>
                         <legend>Основная информация</legend>
                         <div class="form-group">
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="link" class="col-sm-2 control-label">Ссылка</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" name="link" placeholder="Ссылка на меню" value="<?= $link; ?>" required>
+                                <input type="text" class="form-control" id="name" name="url" placeholder="Ссылка на меню" value="<?= $link; ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
