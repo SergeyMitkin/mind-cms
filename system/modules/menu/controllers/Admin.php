@@ -55,7 +55,7 @@ class Admin extends Controller
             }
             Menu::instance()->saveMenu('add', $_POST);
 
-            Html::instance()->content = $this->render(
+            $this->html->content = $this->render(
                 'RootMenu.php', [
                     'topmenu'   => $this->render($this->menu, [
                         'action' => 'rootMenu',
@@ -113,6 +113,11 @@ class Admin extends Controller
         Menu::instance()->where('id', '=', $_POST['id'])
             ->update(['visible' => $status]);
         echo 'ok';
+    }
+
+    function actionUpdateSort()
+    {
+        Menu::UpdateSort($_POST);
     }
 
     function actionListTemplates()

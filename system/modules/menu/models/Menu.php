@@ -147,6 +147,23 @@ class Menu extends Model
         }
     }
 
+    public static function UpdateSort($data) {
+        $positions = $data['positions'];
+//        echo print_r($positions);
+        $i = 1;
+        foreach ($positions as $value) {
+            self::instance()
+                ->where('id', '=', $value)
+                ->update(['position' => $i, 'parent_id' => $data['parentID']]);
+
+//            App::instance()->db->update(self::$currentTable)
+//                ->set(['position' => $i, 'parent_id' => $data['parentID']])
+//                ->where('id', $value)
+//                ->execute();
+            $i++;
+        }
+    }
+
     public static function getRootMenu() {
         $sql_result = self::instance()
             ->where('type', '=', 'root')

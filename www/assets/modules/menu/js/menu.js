@@ -19,12 +19,10 @@ $(document).ready(function () {
     });
     $("#result").sortable({
         onDrop: function ($item, container, _super) {
-//            var currentID = $($item).data('id');
             var arr = [];
             $($item).parent().find('>li').each(function (indx, element) {
                 arr[arr.length] = $(element).attr('data-id');
             });
-//            var currentIndex = $($item).index();
             var parentID = $($item).parents('.list-group-item').data('id') || $($item).parents('#result').data('id');
             $.ajax({
                 data: {positions: arr, parentID: parentID},
