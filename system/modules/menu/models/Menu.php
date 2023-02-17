@@ -27,6 +27,7 @@ use modules\user\models\USER;
  * @property string position
  * @property integer parent_id
  * @property string type
+ * @property integer menu_id
  * @property string extData
  */
 class Menu extends Model
@@ -53,6 +54,7 @@ class Menu extends Model
 			$this->position = 1;
             $this->type = "";
             $this->parent_id = 0;
+            $this->menu_id = 0;
 			$this->extData = null;
         }
         return $this;
@@ -138,9 +140,10 @@ class Menu extends Model
         $data['nofollow'] = isset($data['nofollow']) ? $data['nofollow'] : '0';
 
         if ($action == 'add') {
+
+            $data['menu_id'] = !empty($data['menu_id']) || (isset($data['menu_id']) && $data['menu_id'] == '0') ? $data['menu_id'] : self::getMaxMenu();
             $parent_id = isset($data['parent_id']) ? $data['parent_id'] : '0';
             $data['position'] = self::getMaxPosition($parent_id);
-
 
             self::instance()->factory()->fill($data)->save();
         } elseif ($action == 'edit') {
@@ -148,19 +151,31 @@ class Menu extends Model
         }
     }
 
+    public static function getMaxMenu() {
+        $stm = "SELECT MAX(`menu_id`) + 1  as 'max_menu'
+                FROM " . self::$currentTable;
+        $sql_result = self::instance()->pdo->query($stm)->fetchColumn();
+        if (empty($sql_result)) {
+            $sql_result = 1;
+        }
+        return $sql_result;
+    }
+
+    public static function getMenuId($catid) {
+        $stm = "SELECT `menu_id`
+                FROM " . self::$currentTable . " "
+            . "WHERE `id` = '" . $catid . "'";
+        $sql_result = self::instance()->pdo->query($stm)->fetchColumn();
+        return $sql_result;
+    }
+
     public static function UpdateSort($data) {
         $positions = $data['positions'];
-//        echo print_r($positions);
         $i = 1;
         foreach ($positions as $value) {
             self::instance()
                 ->where('id', '=', $value)
                 ->update(['position' => $i, 'parent_id' => $data['parentID']]);
-
-//            App::instance()->db->update(self::$currentTable)
-//                ->set(['position' => $i, 'parent_id' => $data['parentID']])
-//                ->where('id', $value)
-//                ->execute();
             $i++;
         }
     }
