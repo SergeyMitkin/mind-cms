@@ -71,8 +71,8 @@ class Menu extends Model
             $this->left_key  = $time->m + 1; //взводим левую границу
             $this->right_key = $time->m + 2; //взводим правую границу
             $this->level     = 0;
-            $time->clear()->select('max(position) as p')->where(['level' => 0])->getOne();
-            $this->position = $time->p + 1;
+//            $time->clear()->select('max(position) as p')->where(['level' => 0])->getOne();
+//            $this->position = $time->p + 1;
         }
 
         //время создания
@@ -140,6 +140,7 @@ class Menu extends Model
         if ($action == 'add') {
             $parent_id = isset($data['parent_id']) ? $data['parent_id'] : '0';
             $data['position'] = self::getMaxPosition($parent_id);
+
 
             self::instance()->factory()->fill($data)->save();
         } elseif ($action == 'edit') {

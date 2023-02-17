@@ -1070,9 +1070,11 @@ abstract class Model
 		if ($this->beforeSave() === false) {
 			return false;
 		}
+
 		if ($this->beforeInsert() === false) {
 			return false;
 		}
+
 		if ($data == false and !empty($this->_result)) {
 			$data = (array)$this->_result;
 		}

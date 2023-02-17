@@ -53,6 +53,7 @@ class Admin extends Controller
             if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
                 $_POST['url'] = "/".$_POST['url'];
             }
+
             Menu::instance()->saveMenu('add', $_POST);
 
             $this->html->content = $this->render(
