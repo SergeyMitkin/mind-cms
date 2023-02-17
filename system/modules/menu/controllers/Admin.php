@@ -58,9 +58,10 @@ class Admin extends Controller
             Menu::saveMenu('add', $_POST, $menuId);
         } elseif ($id=='root') {
             $this->html->content = $this->render(
-                '_form_add_root.php', [
-                    'topmenu'    => $this->render($this->menu),
-                    'breadcrumb' => $this->render($this->breadcrumd),
+                'addRootMenu.php', [
+                    'topmenu'   => $this->render($this->menu, [
+                        'action' => 'addRootMenu'
+                    ])
                 ]
             );
         } else {
