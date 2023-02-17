@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-sm-12 panel-heading">
-            <?= $data['topmenu']; ?>
+        <?= $data['topmenu']; ?>
         <div class="col-sm-12">
             <div class="panel-body">
-                <form class="form-horizontal" method="POST" action="<?= $this->app->url['path']; ?>" id="sumbit_form">
+                <form class="form-horizontal" method="POST" action="add/root" id="sumbit_form">
                     <fieldset>
                         <legend>Основная информация</legend>
                         <div class="form-group">

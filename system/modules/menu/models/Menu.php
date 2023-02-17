@@ -5,6 +5,7 @@ namespace modules\menu\models;
 use core\App;
 use core\Model;
 use core\Tools;
+use modules\feedback\models\mFeedbackFields;
 use modules\user\models\USER;
 
 
@@ -48,6 +49,8 @@ class Menu extends Model
 			$this->is_nofollow = "0";
 			$this->is_noindex = "0";
 			$this->position = 1;
+            $this->type = "";
+            $this->parent_id = 0;
 			$this->extData = null;
 
         }
@@ -111,13 +114,55 @@ class Menu extends Model
         return true;
     }
 
-
 //    public function GetForList()
 //    {
 //        $new_array = "";
 //        return $this->clear()->select('id,name, url ,left_key,right_key, level, visible, position')->orderBy('position ASC, left_key ASC')->getAll();
-//
 //    }
+
+    public static function getMaxPosition($parent_id) {
+        $stm = "SELECT MAX(`position`) + 1 as 'position'
+                FROM " . self::$currentTable . " "
+            . "WHERE `parent_id` = '" . $parent_id . "'";
+
+        $sql_result = self::instance()->pdo->query($stm)->fetchColumn();
+        $sql_result = !empty($sql_result) ? $sql_result : 1;
+
+        return $sql_result;
+    }
+
+    public function saveMenu($action, $data){
+
+        $data['noindex'] = isset($data['noindex']) ? $data['noindex'] : '0';
+        $data['nofollow'] = isset($data['nofollow']) ? $data['nofollow'] : '0';
+
+        if ($action == 'add') {
+            $parent_id = isset($data['parent_id']) ? $data['parent_id'] : '0';
+            $data['position'] = self::getMaxPosition($parent_id);
+
+            self::instance()->factory()->fill($data)->save();
+            if (!isset($id)) {
+                $id = self::instance()->insertId();
+            }
+            // --- ОТЛАДКА НАЧАЛО
+            echo '<pre>';
+            var_dump($id);
+            echo'</pre>';
+            die;
+            // --- Отладка конец
+
+            $sql_result = App::instance()->db->insertInto(self::$currentTable, $data)->execute();
+        } elseif ($action == 'edit') {
+            $sql_result = App::instance()->db->update(self::$currentTable, $data)->where(self::$currentTable . '.id', $data['id'])->execute();
+        }
+        $id = (isset($data['id'])) ? $data['id'] : false;
+        $model = new mFeedbackFields;
+        $model->factory($id)->fill($data)->save();
+        if (!$id) {
+            $id = $model->insertId();
+        }
+        return $id;
+    }
 
     public static function getRootMenu() {
         $sql_result = self::instance()

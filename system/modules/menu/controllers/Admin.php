@@ -49,13 +49,13 @@ class Admin extends Controller
     function actionAdd($id = false, $menuId = false)
     {
         if (!empty($_POST)) {
-            if (isset($_POST['link']) && substr($_POST['link'], 0, 1)!="/") {
-                $_POST['link'] = "/".$_POST['link'];
-            }
-            /*
-             * ВЕРОЯТНО ЭТО ОГРОМНАЯ УЯЗВИМОСТЬ, НАДО ПРОВЕРИТЬ!
-             */
-            Menu::saveMenu('add', $_POST, $menuId);
+//            if (isset($_POST['link']) && substr($_POST['link'], 0, 1)!="/") {
+//                $_POST['link'] = "/".$_POST['link'];
+//            }
+
+            Menu::instance()->saveMenu('add', $_POST);
+
+
         } elseif ($id=='root') {
             $this->html->content = $this->render(
                 'addRootMenu.php', [
