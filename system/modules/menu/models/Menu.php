@@ -209,6 +209,47 @@ class Menu extends Model
         return $sql_result[0]['count'];
     }
 
+    public static function deleteMenu($id) {
+
+        self::instance()->delete($id);
+
+        // Дочерние элементы удаляются рекурсивно
+        $children_items = self::getChildrenMenuItems($id);
+        if (!empty($children_items)){
+            $implode = implode(', ', $children_items);
+            $stm = "DELETE FROM " . self::$currentTable . "
+               WHERE `id` IN (" . $implode . ")";
+            $result = self::instance()->pdo->query($stm)->execute();
+        }
+    }
+
+    public static function getChildrenMenuItems($id, $children=[]) {
+
+        $sql_result = self::instance()
+            ->select('id')
+            ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.parent_id' => $id])
+            ->getAll();
+
+        foreach ($sql_result as $item) {
+            $children[] = $item->id;
+
+            $item_result = self::instance()
+                ->select('id')
+                ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.parent_id' => $item->id])
+                ->getAll();
+
+            if (!empty($item_result)) {
+                $children = self::getChildrenMenuItems($item->id, $children);
+            }
+        }
+
+        return $children;
+    }
+
+    public static function selectChildren($id) {
+
+    }
+
     public static function getChildMenuInfo($id = FALSE, $widget = FALSE) {
 
         if ($widget == FALSE) {
