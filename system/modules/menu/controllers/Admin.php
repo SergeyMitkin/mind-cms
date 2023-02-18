@@ -53,6 +53,7 @@ class Admin extends Controller
             if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
                 $_POST['url'] = "/".$_POST['url'];
             }
+
             Menu::instance()->saveMenu('add', $_POST);
 
             // Направляем на страницу корневой категории
@@ -190,16 +191,25 @@ class Admin extends Controller
 
 	public function actionDelete($id)
 	{
+        Menu::deleteMenu($id);
+
+        // Направляем на страницу корневой категории
+//        if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
+//            $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
+//            header('Location:/menu/admin/listmenu/' . $root_id);
+//        } else {
+//            header('Location:/menu/admin');
+//        }
 		/*
 		 * Удаление просто красота, но смотреть модельку!!!! Там есть before и это пока без пересчета!!!!
 		 */
-		$this->model->factory($id);
-		if ($this->model->delete()) {
-			echo json_encode(['error' => 0, 'data' => 'ВСЕ ГУД!']);
-		} else {
-			echo json_encode(['error' => 1, 'data' => 'ОПА!']);
-		}
-		die();
+//		$this->model->factory($id);
+//		if ($this->model->delete()) {
+//			echo json_encode(['error' => 0, 'data' => 'ВСЕ ГУД!']);
+//		} else {
+//			echo json_encode(['error' => 1, 'data' => 'ОПА!']);
+//		}
+//		die();
 	}
 
 	public function actionChangePosition()
