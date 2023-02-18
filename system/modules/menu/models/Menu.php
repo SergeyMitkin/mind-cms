@@ -169,6 +169,14 @@ class Menu extends Model
         return $sql_result;
     }
 
+    public static function getParentIdByMenuId($menu_id) {
+        $stm = "SELECT `id` FROM " . self::$currentTable .
+            " WHERE `type` = 'root' AND `menu_id` = " . $menu_id;
+
+        $sql_result = self::instance()->pdo->query($stm)->fetchColumn();
+        return $sql_result;
+    }
+
     public static function UpdateSort($data) {
         $positions = $data['positions'];
         $i = 1;
@@ -202,9 +210,10 @@ class Menu extends Model
     }
 
     public static function getChildMenuInfo($id = FALSE, $widget = FALSE) {
+
         if ($widget == FALSE) {
             $sql_result = self::instance()
-                ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.parent_id' => $id])
+                ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.menu_id' => $id])
                 ->orderBy('position')->getAll();
         } else {
             $sql_result = App::instance()->db->from(self::$currentTable)
@@ -244,7 +253,7 @@ class Menu extends Model
             $out = '<span class="actions">
             <a href="javascript:void(0);" class="change_status" data-id="' . $item->id . '" data-current="' . $item->visible . '">
             <i class="glyphicon ' . $eye . '"></i></a>
-            <a href="/menu/admin/add/' . $item->id . '/' . $item->parent_id . '" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i> Добавить</a>
+            <a href="/menu/admin/add/' . $item->id . '/' . $item->menu_id . '" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i> Добавить</a>
             <a href="/menu/admin/edit/' . $item->id . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Редактировать</a>
             <a href="/menu/admin/delete/' . $item->id . '" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Удалить</a></span>';
             return $out;

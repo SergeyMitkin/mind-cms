@@ -54,7 +54,14 @@ class Admin extends Controller
                 $_POST['url'] = "/".$_POST['url'];
             }
             Menu::instance()->saveMenu('add', $_POST);
-            (isset($_POST['parent_id'])) ? header('Location:/menu/admin/listmenu/' . $_POST['parent_id']) : header('Location:/menu/admin');
+
+            // Направляем на страницу корневой категории
+            if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
+                $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
+                header('Location:/menu/admin/listmenu/' . $root_id);
+            } else {
+                header('Location:/menu/admin');
+            }
         } elseif ($id=='root') {
             $this->html->content = $this->render(
                 'addRootMenu.php', [
@@ -91,14 +98,14 @@ class Admin extends Controller
         $this->html->title = 'Список пунктов в выбранном меню';
         $this->html->setJs('/assets/vendors/jquery-sortable/jquery-sortable.js');
         $this->html->setJs('/assets/modules/menu/js/menu.js');
-
+        $menuId              = Menu::getMenuId($id);
         Html::instance()->content = $this->render(
             'RootMenu.php', [
                 'topmenu'   => $this->render($this->menu, [
                     'action' => 'rootMenu',
                     'parent_id'  => $id
                 ]),
-                'menuItems'    => Menu::tree(Menu::getChildMenuInfo($id, false), $id),
+                'menuItems'    => Menu::tree(Menu::getChildMenuInfo($menuId, false), $id),
                 'parent_id'  => $id,
             ]
         );

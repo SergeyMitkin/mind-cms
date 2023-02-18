@@ -5,7 +5,6 @@
     <div class="col-sm-12 panel-body clearfix">
 
         <div class="main-info">
-
     			<? if (!empty($data['menuItems'])) { ?>
     				<ol id="result" class="list-group" data-id="<?= $data['parent_id'] ?>">
     					<?= $data['menuItems']; ?>
@@ -65,6 +64,6 @@
 	}
 
 </style>
-<!--<link rel="stylesheet" type="text/css" href="/assets/system/admin/css/jquery-ui.structure.min.css">-->
-<!--<link rel="stylesheet" type="text/css" href="/assets/system/admin/css/jquery-ui.theme.min.css">-->
-<!--<link rel="stylesheet" type="text/css" href="/assets/system/admin/css/jquery-ui.min.css">-->
+<link rel="stylesheet" type="text/css" href="/assets/templates/admin/css/jquery-ui.structure.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/templates/admin/css/jquery-ui.theme.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/templates/admin/css/jquery-ui.min.css">
