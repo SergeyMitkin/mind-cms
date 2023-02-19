@@ -9,10 +9,10 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Название меню</label>
                             <div class="col-sm-10">
-                                <? $value = isset($data['menuinfo']) ? $data['menuinfo']['name'] : FALSE; ?>
+                                <? $value = isset($data['menuinfo']) ? $data['menuinfo']->name : FALSE; ?>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Название меню" required value="<?= $value; ?>">
                                 <? if (!empty($data['menuinfo'])) { ?>
-                                    <input type="hidden" class="form-control" id="name" name="id" value="<?= $data['menuinfo']['id']; ?>">
+                                    <input type="hidden" class="form-control" id="name" name="id" value="<?= $data['menuinfo']->id; ?>">
                                 <? } ?>
                             </div>
                         </div>
