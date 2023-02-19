@@ -17,9 +17,7 @@ class Widget extends Menu {
     }
 
     function showMenu($id) {
-        $template = "default.php";
-
-
+        $template = "test";
 
         $result = parent::getChildMenuInfo($id, true);
         $result = $result ? Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $result]) : FALSE;
