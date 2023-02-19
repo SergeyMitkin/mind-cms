@@ -151,13 +151,6 @@ class Admin extends Controller
 //		die();
     }
 
-    function showTemplate($layout = '@admin')
-    {
-        $this->html->setTemplate($layout);
-        $this->html->renderTemplate()
-            ->show();
-    }
-
     function actionListMenu($id = false)
     {
         $this->html->title = 'Список пунктов в выбранном меню';
@@ -178,6 +171,20 @@ class Admin extends Controller
         Html::instance()->renderTemplate("@admin")->show();
     }
 
+    function actionTemplatesList()
+    {
+        $this->html->title   = 'Список шаблонов';
+        $this->html->content = $this->render(
+            'TemplatesList.php', [
+                'topmenu'   => $this->render($this->menu, [
+                    'action' => 'templatesList',
+                ]),
+//                'templateslist' => MenuTemplates::getListTemplates(),
+            ]
+        );
+        Html::instance()->renderTemplate("@admin")->show();
+    }
+
     function actionChangeVisible()
     {
         $status = $_POST['status']=='1'?'0':'1';
@@ -189,25 +196,6 @@ class Admin extends Controller
     function actionUpdateSort()
     {
         Menu::UpdateSort($_POST);
-    }
-
-    function actionListTemplates()
-    {
-        // --- ОТЛАДКА НАЧАЛО
-        echo '<pre>';
-        var_dump('Список шаблонов');
-        echo'</pre>';
-        die;
-        // --- Отладка конец
-//        $this->html->title   = 'Список шаблонов';
-//        $this->html->content = $this->render(
-//            'listtemplates.php', [
-//                'topmenu'       => $this->render($this->menu),
-//                'breadcrumb'    => $this->render($this->breadcrumd),
-//                'listtemplates' => MenuTemplates::getListTemplates(),
-//            ]
-//        );
-//        $this->showTemplate();
     }
 
 	/**
@@ -362,4 +350,11 @@ class Admin extends Controller
 		}
 		Response::back();
 	}
+
+    function showTemplate($layout = '@admin')
+    {
+        $this->html->setTemplate($layout);
+        $this->html->renderTemplate()
+            ->show();
+    }
 }

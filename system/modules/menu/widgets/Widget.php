@@ -5,9 +5,9 @@ namespace modules\menu\widgets;
 use core\Html;
 use modules\menu\models\Menu;
 
-class Widget {
+class Widget extends Menu {
 
-    private static $instance;
+    public static $instance;
 
     public static function instance() {
         if (!isset(self::$instance)) {
@@ -16,12 +16,13 @@ class Widget {
         return self::$instance;
     }
 
-    function showMenu($id, $template = "default.php") {
+    function showMenu($id) {
+        $template = "default.php";
 
-//        $result = parent::getChildMenuInfo($id, true);
-//        $result = $result ? $this->app->html->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $result]) : FALSE;
 
-        $result = Html::instance()->render(__DIR__ . '/templates/' . $template);
+
+        $result = parent::getChildMenuInfo($id, true);
+        $result = $result ? Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $result]) : FALSE;
 
         return $result;
 

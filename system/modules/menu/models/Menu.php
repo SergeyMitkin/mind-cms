@@ -256,20 +256,15 @@ class Menu extends Model
         return $children;
     }
 
-    public static function selectChildren($id) {
-
-    }
-
     public static function getChildMenuInfo($id = FALSE, $widget = FALSE) {
-
         if ($widget == FALSE) {
             $sql_result = self::instance()
                 ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.menu_id' => $id])
                 ->orderBy('position')->getAll();
         } else {
-            $sql_result = App::instance()->db->from(self::$currentTable)
-                ->where([self::$currentTable . '.deleted' => 0, self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id, self::$currentTable . '.type' => 'child'])
-                ->orderBy('position')->fetchAll();
+            $sql_result = self::instance()
+                ->where([self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id, self::$currentTable . '.type' => 'child'])
+                ->orderBy('position')->getAll();
         }
         return $sql_result;
     }

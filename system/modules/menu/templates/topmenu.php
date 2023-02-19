@@ -14,11 +14,11 @@
         <a href="/menu/admin" class="btn btn-primary<?=(isset($action) && $action == 'index') ? ' active' : '' ?>">
             Список меню
         </a>
-        <a href="/menu/admin/listtemplates" class="btn btn-primary<?=(isset($action) && $action == 'listTemplates') ? ' active' : '' ?>">
-            Управление шаблонами вывода
-        </a>
-        <a href="/menu/admin/add/root" class="btn btn-primary<?=(isset($action) && $action == 'addMenuItem') ? ' active' : '' ?>">
+        <a href="/menu/admin/add/root" class="btn btn-primary<?=(isset($action) && $action == 'addRootMenu') ? ' active' : '' ?>">
             Создать основное меню
+        </a>
+        <a href="/menu/admin/templateslist" class="btn btn-primary<?=(isset($action) && $action == 'templatesList') ? ' active' : '' ?>">
+            Управление шаблонами вывода
         </a>
 
         <?if (isset($action) && $action == 'rootMenu'):?>
