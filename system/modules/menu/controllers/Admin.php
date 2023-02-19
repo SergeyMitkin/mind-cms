@@ -191,15 +191,14 @@ class Admin extends Controller
 
 	public function actionDelete($id)
 	{
+        $menu_id = Menu::getMenuId($id);
+        $root_id = Menu::getParentIdByMenuId($menu_id);
+
         Menu::deleteMenu($id);
 
-        // Направляем на страницу корневой категории
-//        if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
-//            $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
-//            header('Location:/menu/admin/listmenu/' . $root_id);
-//        } else {
-//            header('Location:/menu/admin');
-//        }
+        // Направляем на страницу корневой категори
+        header('Location:/menu/admin/listmenu/' . $root_id);
+
 		/*
 		 * Удаление просто красота, но смотреть модельку!!!! Там есть before и это пока без пересчета!!!!
 		 */

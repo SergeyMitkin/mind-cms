@@ -164,8 +164,9 @@ class Menu extends Model
     public static function getMenuId($catid) {
         $stm = "SELECT `menu_id`
                 FROM " . self::$currentTable . " "
-            . "WHERE `id` = '" . $catid . "'";
+            . "WHERE `id` = " . $catid;
         $sql_result = self::instance()->pdo->query($stm)->fetchColumn();
+
         return $sql_result;
     }
 
