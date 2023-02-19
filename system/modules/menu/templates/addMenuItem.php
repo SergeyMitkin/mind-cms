@@ -2,15 +2,15 @@
     <div class="col-sm-12 panel-heading">
         <?= $data['topmenu']; ?>
         <?
-        $id = isset($data['menuinfo']) && !empty($data['menuinfo']) ? $data['menuinfo']['id'] : FALSE;
-        $parent_id = !empty($data['parent_id']) ? $data['parent_id'] : FALSE;
-//        $parent_id = !empty($data['parent_id']) ? $data['parent_id'] : $data['menuinfo']['parent_id'];
+        $id = isset($data['menuinfo']) && !empty($data['menuinfo']) ? $data['menuinfo']->id : FALSE;
+//        $parent_id = !empty($data['parent_id']) ? $data['parent_id'] : FALSE;
+        $parent_id = !empty($data['parent_id']) ? $data['parent_id'] : $data['menuinfo']->parent_id;
         $menu_id = !empty($data['menu_id']) || (isset($data['menu_id']) && $data['menu_id'] == '0') ? $data['menu_id'] : '';
-        $name = !empty($data['menuinfo']['name']) ? $data['menuinfo']['name'] : FALSE;
-        $link = !empty($data['menuinfo']['link']) ? $data['menuinfo']['link'] : FALSE;
-        $icon = !empty($data['menuinfo']['icon']) ? $data['menuinfo']['icon'] : FALSE;
-        $noindex = !empty($data['menuinfo']['noindex']) ? $data['menuinfo']['noindex'] : FALSE;
-        $nofollow = !empty($data['menuinfo']['nofollow']) ? $data['menuinfo']['nofollow'] : FALSE;
+        $name = !empty($data['menuinfo']->name) ? $data['menuinfo']->name : FALSE;
+        $link = !empty($data['menuinfo']->url) ? $data['menuinfo']->url : FALSE;
+        $icon = !empty($data['menuinfo']->icon) ? $data['menuinfo']->icon : FALSE;
+        $noindex = !empty($data['menuinfo']->is_noindex) ? $data['menuinfo']->is_noindex : FALSE;
+        $nofollow = !empty($data['menuinfo']->is_nofollow) ? $data['menuinfo']->is_nofollow : FALSE;
         ?>
         <div class="col-sm-12">
 
@@ -37,15 +37,18 @@
                             </div>
                         </div>
                         <div class="">
-                            <label for="noindex" class="col-sm-2 control-label"><input type="checkbox" class="" name="noindex" value="1" <?= $noindex ? 'checked' : ''; ?>> -
-                                Noindex</label>
+                            <label for="noindex" class="col-sm-2 control-label">
+                                <input id="noindex" type="checkbox" class="" name="is_noindex" value="1" <?= $noindex ? 'checked' : ''; ?>> -
+                                Noindex
+                            </label>
                             <label for="nofollow" class="col-sm-2 control-label">
-                                <input type="checkbox" class="" name="nofollow" value="1"<?= $nofollow ? 'checked' : ''; ?>> -
-                                nofollow</label>
+                                <input id="nofollow" type="checkbox" class="" name="is_nofollow" value="1"<?= $nofollow ? 'checked' : ''; ?>> -
+                                nofollow
+                            </label>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10">
-                                <input type="hidden" class="form-control" name="type" value="children">
+                                <input type="hidden" class="form-control" name="type" value="child">
                                 <input type="hidden" class="form-control" name="parent_id" value="<?= $parent_id; ?>">
                                 <input type="hidden" class="form-control" name="menu_id" value="<?= $menu_id; ?>">
                                 <input type="hidden" class="form-control" name="id" value="<?= $id; ?>">

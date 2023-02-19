@@ -87,6 +87,70 @@ class Admin extends Controller
 //        Html::instance()->renderTemplate("@admin")->show();
     }
 
+    function actionEdit($id = false)
+    {
+        $this->html->title = 'Редактирование меню';
+        if (!empty($_POST)) {
+            Menu::instance()->saveMenu('edit', $_POST);
+            // Направляем на страницу корневой категории
+            if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
+                $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
+                header('Location:/menu/admin/listmenu/' . $root_id);
+            } else {
+                header('Location:/menu/admin');
+            }
+        } elseif ($id=='root') {
+            $this->html->content = $this->render(
+                'addRootMenu.php', [
+                    'topmenu'    => $this->render($this->menu),
+                    'menuinfo'   => Menu::getMenuInfo($_GET['menu']),
+                ]
+            );
+        } else {
+            $menuInfo            = Menu::getMenuInfo($id);
+            $this->html->content = $this->render(
+                'addMenuItem.php', [
+                    'topmenu'    => $this->render($this->menu),
+                    'menuinfo'   => $menuInfo,
+                    'id'         => $id,
+                    'menu_id'    => $menuInfo->menu_id
+                ]
+            );
+        }
+        $this->showTemplate();
+    }
+
+    public function actionDelete($id)
+    {
+        if (!empty(Menu::getMenuInfo($id))){
+            $menu_type = Menu::getMenuInfo($id)->type;
+            $menu_id = Menu::getMenuId($id);
+            $root_id = Menu::getParentIdByMenuId($menu_id);
+
+            Menu::deleteMenu($id);
+
+            // Направляем на страницу корневой категори
+            if ($menu_type === 'child') {
+                header('Location:/menu/admin/listmenu/' . $root_id);
+            } else if ($menu_type === 'root') {
+                header('Location:/menu/admin');
+            }
+        } else {
+            header('Location:/menu/admin');
+        }
+
+        /*
+         * Удаление просто красота, но смотреть модельку!!!! Там есть before и это пока без пересчета!!!!
+         */
+//		$this->model->factory($id);
+//		if ($this->model->delete()) {
+//			echo json_encode(['error' => 0, 'data' => 'ВСЕ ГУД!']);
+//		} else {
+//			echo json_encode(['error' => 1, 'data' => 'ОПА!']);
+//		}
+//		die();
+    }
+
     function showTemplate($layout = '@admin')
     {
         $this->html->setTemplate($layout);
@@ -187,28 +251,6 @@ class Admin extends Controller
 	public function actionSave()
 	{
 		echo MenuActions::saveMenu();
-	}
-
-	public function actionDelete($id)
-	{
-        $menu_id = Menu::getMenuId($id);
-        $root_id = Menu::getParentIdByMenuId($menu_id);
-
-        Menu::deleteMenu($id);
-
-        // Направляем на страницу корневой категори
-        header('Location:/menu/admin/listmenu/' . $root_id);
-
-		/*
-		 * Удаление просто красота, но смотреть модельку!!!! Там есть before и это пока без пересчета!!!!
-		 */
-//		$this->model->factory($id);
-//		if ($this->model->delete()) {
-//			echo json_encode(['error' => 0, 'data' => 'ВСЕ ГУД!']);
-//		} else {
-//			echo json_encode(['error' => 1, 'data' => 'ОПА!']);
-//		}
-//		die();
 	}
 
 	public function actionChangePosition()

@@ -136,8 +136,8 @@ class Menu extends Model
 
     public function saveMenu($action, $data){
 
-        $data['noindex'] = isset($data['noindex']) ? $data['noindex'] : '0';
-        $data['nofollow'] = isset($data['nofollow']) ? $data['nofollow'] : '0';
+        $data['is_noindex'] = isset($data['is_noindex']) ? $data['is_noindex'] : '0';
+        $data['is_nofollow'] = isset($data['is_nofollow']) ? $data['is_nofollow'] : '0';
 
         if ($action == 'add') {
 
@@ -147,7 +147,9 @@ class Menu extends Model
 
             self::instance()->factory()->fill($data)->save();
         } elseif ($action == 'edit') {
-            $sql_result = App::instance()->db->update(self::$currentTable, $data)->where(self::$currentTable . '.id', $data['id'])->execute();
+            $sql_result = self::instance()
+                ->where('id', '=', $data['id'])
+                ->update($data);
         }
     }
 
@@ -158,6 +160,13 @@ class Menu extends Model
         if (empty($sql_result)) {
             $sql_result = 1;
         }
+        return $sql_result;
+    }
+
+    public static function getMenuInfo($id) {
+        $sql_result = self::instance()
+            ->where(self::$currentTable . '.id', $id)
+            ->getOne();;
         return $sql_result;
     }
 
@@ -228,7 +237,7 @@ class Menu extends Model
 
         $sql_result = self::instance()
             ->select('id')
-            ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.parent_id' => $id])
+            ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.parent_id' => $id])
             ->getAll();
 
         foreach ($sql_result as $item) {
@@ -236,7 +245,7 @@ class Menu extends Model
 
             $item_result = self::instance()
                 ->select('id')
-                ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.parent_id' => $item->id])
+                ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.parent_id' => $item->id])
                 ->getAll();
 
             if (!empty($item_result)) {
@@ -255,11 +264,11 @@ class Menu extends Model
 
         if ($widget == FALSE) {
             $sql_result = self::instance()
-                ->where([self::$currentTable . '.type' => 'children', self::$currentTable . '.menu_id' => $id])
+                ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.menu_id' => $id])
                 ->orderBy('position')->getAll();
         } else {
             $sql_result = App::instance()->db->from(self::$currentTable)
-                ->where([self::$currentTable . '.deleted' => 0, self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id, self::$currentTable . '.type' => 'children'])
+                ->where([self::$currentTable . '.deleted' => 0, self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id, self::$currentTable . '.type' => 'child'])
                 ->orderBy('position')->fetchAll();
         }
         return $sql_result;
