@@ -31,14 +31,14 @@
                             <td><?= $value->menu_id; ?></td>
                             <td><a href="/menu/admin/listmenu/<?= $value->id; ?>"><?= $value->name . ' ( ' . $value->count . ' )'; ?></a></td>
                             <td>
-                                <a href="/menu/admin/delete/<?= $value->id; ?>" class="btn btn-xs btn-danger" onclick="return confirm('Вместе с удалением формы, удалятся также и все Feedbacks, Вы уверены?') ? true : false;"><i class="fa fa-trash-o"></i></a>
+                                <a href="/menu/admin/delete/<?= $value->id; ?>" class="btn btn-xs btn-danger" onclick="return confirm('Вы уверены, что хотите удалить меню?') ? true : false;"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                         <?php } ?>
                         </tbody>
                     </table>
                 <?php } else { ?>
-                    <div class="warning">Обращений нет!</div>
+                    <div class="warning">Нет созданных меню!</div>
                 <?php } ?>
             </div>
         </div>
