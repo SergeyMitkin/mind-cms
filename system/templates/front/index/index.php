@@ -28,13 +28,22 @@
         </button>
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
-        <ul class="nav navbar-nav navbar-right">
-            <? if (\core\User::current()->isAdmin()) { ?>
-                <li><a href="/admin" target="_blank">В административную панель</a></li> <? } ?>
-            <? if (\core\User::current()->isAuthorized()) { ?>
-                <li><a href="/user/profile" target="_blank">Мой профиль</a></li>
-                <li><a href="/user/logout" target="_blank">Выйти</a></li><? } ?>
-        </ul>
+        <?php
+        $left_menu = new modules\menu\widgets\Widget();
+        $menu = $left_menu->showMenu(1, 'test.php');
+        if ($menu != false) {
+            echo $menu;
+        } else {
+            echo 'Меню не найдено!';
+        }
+        ?>
+<!--        <ul class="nav navbar-nav navbar-right">-->
+<!--            --><?// if (\core\User::current()->isAdmin()) { ?>
+<!--                <li><a href="/admin" target="_blank">В административную панель</a></li> --><?// } ?>
+<!--            --><?// if (\core\User::current()->isAuthorized()) { ?>
+<!--                <li><a href="/user/profile" target="_blank">Мой профиль</a></li>-->
+<!--                <li><a href="/user/logout" target="_blank">Выйти</a></li>--><?// } ?>
+<!--        </ul>-->
     </div>
 </div>
 
