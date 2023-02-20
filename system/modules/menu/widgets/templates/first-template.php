@@ -1,15 +1,20 @@
 <ul class="nav first-template-nav">
-    <li><a href="/admin" target="_blank">В административную панель</a></li>
+    <li><a href="javascript:void(0);">В административную панель</a></li>
     <li>
-        <a href="/user/profile" target="_blank"><div class="link-name">Мой профиль</div>
+        <a href="javascript:void(0);"><div class="link-name">Мой профиль</div>
             <div class="fa-angle-wrap">
                 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             </div>
         </a>
+        <ul class="dropdown-menu">
+            <li><a href="javascript:void(0);">Первый пункт</a></li>
+            <li><a href="javascript:void(0);">Второй пункт</a></li>
+            <li><a href="javascript:void(0);">Третий пункт</a></li>
+        </ul>
     </li>
-    <li><a href="/user/logout" target="_blank">Выйти</a></li>
+    <li><a href="javascript:void(0);">Выйти</a></li>
 </ul>
-
+<!--"javascript:void(0);"-->
 <style>
     .first-template-nav li {
         width: 250px;
@@ -32,10 +37,6 @@
     .first-template-nav a:hover {
         background: #535353 !important;
         color: #fff !important;
-    }
-
-    .first-template-nav a .link-name {
-        min-width: 85%;
     }
 
     .first-template-nav .fa-angle-wrap {
