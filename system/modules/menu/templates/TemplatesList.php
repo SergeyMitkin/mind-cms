@@ -19,10 +19,7 @@ use core\Html;
                     <div id="first-template" class="tab-pane fade in active">
                         <h3>Первый шаблон</h3>
                         <div class="template-content">
-                            <?
-                            echo \modules\menu\widgets\Widget::instance()->showMenu(1, 'first-template');
-                            ?>
-<!--                            --><?//= Html::instance()->render(__DIR__ . '\..\widgets\templates\first-template.php');?>
+                            <?= \modules\menu\widgets\Widget::instance()->showMenu(1, 'first-template');?>
                         </div>
                     </div>
                     <div id="second-template" class="tab-pane fade">
