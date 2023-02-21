@@ -1,6 +1,3 @@
-<?
-use core\Html;
-?>
 
 <div class="templates-tabs">
     <ul class="nav nav-tabs">
@@ -14,7 +11,7 @@ use core\Html;
         <div id="first-template" class="tab-pane fade in active">
             <h3>Первый шаблон</h3>
             <div class="template-content">
-                <?= \modules\menu\widgets\Widget::instance()->showMenu(1, 'first-template');?>
+                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'first-template');?>
             </div>
         </div>
         <div id="second-template" class="tab-pane fade">

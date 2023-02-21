@@ -25,7 +25,10 @@
                     </fieldset>
 
                     <fieldset>
-                        <?= core\Html::instance()->render(__DIR__ . '\TemplatesList.php');?>
+                        <legend>Шаблоны вывода</legend>
+                        <?= core\Html::instance()->render(__DIR__ . '\TemplatesList.php', [
+                             'menu_id' => $data['menuinfo']->menu_id
+                        ]);?>
                     </fieldset>
 
                     <div class="form-group">
@@ -33,7 +36,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
