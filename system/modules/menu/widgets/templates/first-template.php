@@ -1,4 +1,8 @@
 
+<?php
+if ($menu === 'MOCK' || empty($menu)):
+?>
+
 <nav class="navbar first-template-navbar"">
     <ul class="nav first-template-nav">
         <li><a href="#">Link 1</a></li>
@@ -30,6 +34,8 @@
         <li><a href="#">Link 3</a></li>
     </ul>
 </nav>
+
+<?php endif; ?>
 
 <style>
     .nav.submenu {

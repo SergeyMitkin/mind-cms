@@ -27,7 +27,7 @@
                     <fieldset>
                         <legend>Шаблоны вывода</legend>
                         <?= core\Html::instance()->render(__DIR__ . '\TemplatesList.php', [
-                             'menu_id' => $data['menuinfo']->menu_id
+                             'menu_id' => isset($data['menuinfo']) ? $data['menuinfo']->menu_id : -1
                         ]);?>
                     </fieldset>
 
