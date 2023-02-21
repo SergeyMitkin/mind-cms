@@ -1,10 +1,10 @@
 
 <nav class="navbar first-template-navbar"">
     <ul class="nav first-template-nav">
-        <li><a href="#">Link 1.1</a></li>
+        <li><a href="#">Link 1</a></li>
         <li class="dropdown root-dropdown">
             <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
-                <div class="link-name">Link 1.2</div>
+                <div class="link-name">Link 2</div>
                 <div class="fa-angle-wrap">
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </div>
@@ -28,7 +28,6 @@
             </ul>
         </li>
         <li><a href="#">Link 3</a></li>
-        <li><a href="#">Link 4</a></li>
     </ul>
 </nav>
 

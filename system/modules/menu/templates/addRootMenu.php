@@ -23,6 +23,11 @@
                             </div>
                         </div>
                     </fieldset>
+
+                    <fieldset>
+                        <?= core\Html::instance()->render(__DIR__ . '\TemplatesList.php');?>
+                    </fieldset>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success pull-right">Сохранить меню</button>
                     </div>

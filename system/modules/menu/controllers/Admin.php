@@ -89,7 +89,6 @@ class Admin extends Controller
 
     function actionEdit($id = false)
     {
-        $this->html->title = 'Редактирование меню';
         if (!empty($_POST)) {
             Menu::instance()->saveMenu('edit', $_POST);
             // Направляем на страницу корневой категории
@@ -100,12 +99,16 @@ class Admin extends Controller
                 header('Location:/menu/admin');
             }
         } elseif ($id=='root') {
+
+            $this->html->setCss('/assets/modules/menu/css/templates-tabs.css');
+            $this->html->setJs('/assets/modules/menu/js/templates-tabs.js');
             $this->html->content = $this->render(
                 'addRootMenu.php', [
                     'topmenu'    => $this->render($this->menu),
                     'menuinfo'   => Menu::getMenuInfo($_GET['menu']),
                 ]
             );
+
         } else {
             $menuInfo            = Menu::getMenuInfo($id);
             $this->html->content = $this->render(
@@ -119,6 +122,21 @@ class Admin extends Controller
         }
         $this->showTemplate();
     }
+
+//    function actionTemplatesList()
+//    {
+//        $this->html->setCss('/assets/modules/menu/css/templates-tabs.css');
+//        $this->html->setJs('/assets/modules/menu/js/templates-tabs.js');
+//        $this->html->content = $this->render(
+//            'TemplatesList.php', [
+//                'topmenu'   => $this->render($this->menu, [
+//                    'action' => 'templatesList',
+//                ]),
+////                'templateslist' => MenuTemplates::getListTemplates(),
+//            ]
+//        );
+//        Html::instance()->renderTemplate("@admin")->show();
+//    }
 
     public function actionDelete($id)
     {
@@ -168,21 +186,6 @@ class Admin extends Controller
             ]
         );
 
-        Html::instance()->renderTemplate("@admin")->show();
-    }
-
-    function actionTemplatesList()
-    {
-        $this->html->setCss('/assets/modules/menu/css/templates-tabs.css');
-        $this->html->setJs('/assets/modules/menu/js/templates-tabs.js');
-        $this->html->content = $this->render(
-            'TemplatesList.php', [
-                'topmenu'   => $this->render($this->menu, [
-                    'action' => 'templatesList',
-                ]),
-//                'templateslist' => MenuTemplates::getListTemplates(),
-            ]
-        );
         Html::instance()->renderTemplate("@admin")->show();
     }
 
