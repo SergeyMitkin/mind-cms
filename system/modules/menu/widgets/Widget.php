@@ -17,12 +17,19 @@ class Widget extends Menu {
     }
 
     function showMenu($id, $template='first-template') {
-
-        // $id = -1 при создании нового меню
         $menu_items = ($id != -1) ? parent::getChildMenuInfo($id, true) : [];
+        $root_id = parent::getRootMenu()[0]->id;
+
+        // Id родительские элменты
+        $parents = [];
+        foreach ($menu_items as $item) {
+            if ($item->type == 'child' && !in_array($item->parent_id, $parents)){
+                $parents[] = $item->parent_id;
+            }
+        }
 
         Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
-        $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $menu_items]);
+        $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $menu_items, 'root_id' => $root_id, 'parents' => $parents]);
 
         return $result;
 

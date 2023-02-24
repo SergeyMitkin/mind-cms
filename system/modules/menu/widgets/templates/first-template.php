@@ -1,12 +1,38 @@
 
-<?php
-if ($menu === 'MOCK' || empty($menu)):
-?>
+<?php if (!empty($menu)) : ?>
+    <nav class="navbar first-template-navbar">
+        <ul class="nav first-template-nav">
+            <? function showRootMenu($menu, $root_id, $parents) {
+                foreach ($menu as $item) {?>
+                    <?if($item->type == 'child' && $item->parent_id == $root_id
+                        && array_search($item->id, $parents) === false
+                    ){?>
+                        <li><a href="#"><?= $item->name ?></a></li>
+                    <?} else if ($item->type == 'child' && $item->parent_id == $root_id) {?>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
+                                <div class="link-name"><?= $item->name ?></div>
+                                <div class="fa-angle-wrap">
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </div>
+                            </a>
+                            <ul class="nav collapse submenu">
+                                <? showRootMenu($menu, $item->id, $parents); ?>
+                            </ul>
+                        </li>
+                    <?}
+                }
+            }?>
+            <? showRootMenu($menu, $root_id, $parents); ?>
+        </ul>
+    </nav>
+
+<? else : ?>
 
 <nav class="navbar first-template-navbar"">
     <ul class="nav first-template-nav">
         <li><a href="#">Link 1</a></li>
-        <li class="dropdown root-dropdown">
+        <li class="dropdown">
             <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
                 <div class="link-name">Link 2</div>
                 <div class="fa-angle-wrap">

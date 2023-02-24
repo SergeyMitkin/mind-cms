@@ -208,8 +208,15 @@ class Menu extends Model
             $value->count = self::getCountMenu($value->id);;
             $new_array[] = $value;
         }
-
         return $new_array;
+    }
+
+    public function getRootMenuId($menu_id) {
+        $sql_result = self::instance()
+            ->select('id')
+            ->where(['type' => 'root', 'menu_id' =>  $menu_id])
+            ->getOne();
+        return $sql_result;
     }
 
     public static function getCountMenu($id) {
@@ -223,7 +230,7 @@ class Menu extends Model
 
         self::instance()->delete($id);
 
-        // Дочерние элементы удаляются рекурсивно
+        // Удаление дочерних элементов
         $children_items = self::getChildrenMenuItems($id);
         if (!empty($children_items)){
             $implode = implode(', ', $children_items);
@@ -263,9 +270,10 @@ class Menu extends Model
                 ->orderBy('position')->getAll();
         } else {
             $sql_result = self::instance()
-                ->where([self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id, self::$currentTable . '.type' => 'child'])
+                ->where([self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id])
                 ->orderBy('position')->getAll();
         }
+
         return $sql_result;
     }
 
