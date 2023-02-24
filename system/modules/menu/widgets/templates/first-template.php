@@ -4,11 +4,11 @@
         <ul class="nav first-template-nav">
             <? function showRootMenu($menu, $root_id, $parents) {
                 foreach ($menu as $item) {?>
-                    <?if($item->type == 'child' && $item->parent_id == $root_id
+                    <?if($item->parent_id == $root_id
                         && array_search($item->id, $parents) === false
                     ){?>
                         <li><a href="<?= $item->url ?>"><?= $item->name ?></a></li>
-                    <?} else if ($item->type == 'child' && $item->parent_id == $root_id) {?>
+                    <?} else if ($item->parent_id == $root_id) {?>
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="<?= $item->url ?>" data-toggle="collapse">
                                 <div class="link-name"><?= $item->name ?></div>

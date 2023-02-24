@@ -17,7 +17,8 @@ class Widget extends Menu {
     }
 
     function showMenu($id, $template='first-template') {
-        $menu_items = ($id != -1) ? parent::getChildMenuInfo($id, true) : [];
+
+        $menu_items = ($id != -1) ? parent::getMenuItemsInfo($id, true) : [];
         $root_id = parent::getRootMenu()[0]->id;
 
         // Id родительские элменты

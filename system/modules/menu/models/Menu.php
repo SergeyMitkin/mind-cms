@@ -270,6 +270,20 @@ class Menu extends Model
                 ->orderBy('position')->getAll();
         } else {
             $sql_result = self::instance()
+                ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id])
+                ->orderBy('position')->getAll();
+        }
+
+        return $sql_result;
+    }
+
+    public static function getMenuItemsInfo($id = FALSE, $widget = FALSE) {
+        if ($widget == FALSE) {
+            $sql_result = self::instance()
+                ->where([self::$currentTable . '.menu_id' => $id])
+                ->orderBy('position')->getAll();
+        } else {
+            $sql_result = self::instance()
                 ->where([self::$currentTable . '.visible' => 1, self::$currentTable . '.menu_id' => $id])
                 ->orderBy('position')->getAll();
         }
