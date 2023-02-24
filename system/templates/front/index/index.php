@@ -30,7 +30,7 @@
     <div class="navbar-collapse collapse" id="navbar-main">
         <?php
         $left_menu = new modules\menu\widgets\Widget();
-        $menu = $left_menu->showMenu(1, 'test.php');
+        $menu = $left_menu->showMenu(1, 'test');
         if ($menu != false) {
             echo $menu;
         } else {
