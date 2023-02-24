@@ -1,10 +1,9 @@
 $(function() {
     function onNavbar() {
         if (window.innerWidth >= 768) {
-            $('.first-template-navbar .dropdown').on('mouseenter', function(e){
+            $('.first-template-navbar .dropdown').on('mouseenter', function(){
                 $('.dropdown-toggle', this).next('.submenu').show().find('.submenu').hide();
-            });
-            $('.first-template-navbar .root-dropdown').on('mouseleave', function(){
+            }).on('mouseleave', function(){
                 $(this).find('.submenu').hide();
             });
             $('.dropdown-toggle').click(function() {
