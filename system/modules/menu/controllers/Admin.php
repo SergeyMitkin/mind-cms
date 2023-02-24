@@ -73,6 +73,7 @@ class Admin extends Controller
             );
         } else {
             $newMenu             = !empty($menuId)?$menuId:Menu::getMenuId($id);
+            $this->html->setJs('/assets/modules/menu/js/addMenuItem.js');
             $this->html->content = $this->render(
                 'addMenuItem.php', [
                     'topmenu'   => $this->render($this->menu, [
@@ -111,6 +112,7 @@ class Admin extends Controller
 
         } else {
             $menuInfo            = Menu::getMenuInfo($id);
+            $this->html->setJs('/assets/modules/menu/js/addMenuItem.js');
             $this->html->content = $this->render(
                 'addMenuItem.php', [
                     'topmenu'    => $this->render($this->menu),

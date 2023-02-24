@@ -28,6 +28,7 @@ use modules\user\models\USER;
  * @property integer parent_id
  * @property string type
  * @property integer menu_id
+ * @property integer is_subheader
  * @property string extData
  */
 class Menu extends Model
@@ -55,6 +56,7 @@ class Menu extends Model
             $this->type = "";
             $this->parent_id = 0;
             $this->menu_id = 0;
+            $this->is_subheader = 0;
 			$this->extData = null;
         }
         return $this;
@@ -138,6 +140,7 @@ class Menu extends Model
 
         $data['is_noindex'] = isset($data['is_noindex']) ? $data['is_noindex'] : '0';
         $data['is_nofollow'] = isset($data['is_nofollow']) ? $data['is_nofollow'] : '0';
+        $data['is_subheader'] = isset($data['is_subheader']) ? $data['is_subheader'] : '0';
 
         if ($action == 'add') {
 
@@ -304,7 +307,7 @@ class Menu extends Model
             $html = '';
             if (isset($data[$pid])) {
                 foreach ($data[$pid] as $item) {
-                    $link = " <a style='font-size: 10px;' href='" . $item->url . "'>[" . $item->url . "]</a>";
+                    $link = (!$item->is_subheader) ? " <a style='font-size: 10px;' href='" . $item->url . "'>[" . $item->url . "]</a>" : '';
                     $html .= "<li class ='list-group-item' data-id='" . $item->id . "'>" . $item->name . $link . showButtons($item) . buildTree($data, $item->id) . "</li>";
                 }
             }

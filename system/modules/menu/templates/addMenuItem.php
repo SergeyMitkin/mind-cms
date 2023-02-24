@@ -11,6 +11,7 @@
         $icon = !empty($data['menuinfo']->icon) ? $data['menuinfo']->icon : FALSE;
         $noindex = !empty($data['menuinfo']->is_noindex) ? $data['menuinfo']->is_noindex : FALSE;
         $nofollow = !empty($data['menuinfo']->is_nofollow) ? $data['menuinfo']->is_nofollow : FALSE;
+        $subheader = !empty($data['menuinfo']->is_subheader) ? $data['menuinfo']->is_subheader : FALSE;
         ?>
         <div class="col-sm-12">
 
@@ -24,10 +25,10 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Название меню" value="<?= $name; ?>" required>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div id="link-group" class="form-group"<?= !$subheader ? '' : ' style="display:none"'; ?>>
                             <label for="link" class="col-sm-2 control-label">Ссылка</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" name="url" placeholder="Ссылка на меню" value="<?= $link; ?>" required>
+                                <input type="text" class="form-control" id="link" name="url" placeholder="Ссылка на меню" value="<?= $link; ?>"<?= !$subheader ? ' required' : ''; ?>>
                             </div>
                         </div>
                         <div class="form-group">
@@ -44,6 +45,10 @@
                             <label for="nofollow" class="col-sm-2 control-label">
                                 <input id="nofollow" type="checkbox" class="" name="is_nofollow" value="1"<?= $nofollow ? 'checked' : ''; ?>> -
                                 nofollow
+                            </label>
+                            <label for="subheader" class="col-sm-2 control-label">
+                                <input id="subheader" type="checkbox" class="" name="is_subheader" value="1"<?= $subheader ? 'checked' : ''; ?>> -
+                                subheader
                             </label>
                         </div>
                         <div class="form-group">
