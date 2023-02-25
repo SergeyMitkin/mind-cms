@@ -4,7 +4,7 @@ $(function() {
             $('.first-template-navbar .dropdown').on('mouseenter', function(){
                 $('.dropdown-toggle', this).next('.submenu').show().find('.submenu').hide();
             }).on('mouseleave', function(){
-                $(this).find('.submenu').hide();
+                // $(this).find('.submenu').hide();
             });
             $('.dropdown-toggle').click(function() {
                 if ($(this).next('.submenu').is(':visible')) {

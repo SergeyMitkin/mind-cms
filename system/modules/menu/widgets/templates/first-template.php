@@ -1,14 +1,23 @@
 <?php if (!empty($menu)) : ?>
     <nav class="navbar first-template-navbar">
-        <ul class="nav first-template-nav">
+        <div class="nav first-template-nav">
             <? function showRootMenu($menu, $root_id, $parents) {
+                $subheader_index = 0;
                 foreach ($menu as $item) {?>
                     <? if ($item->parent_id == $root_id
                         && array_search($item->id, $parents) === false
-                        && $item->is_subheader){?>
-                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
-                    <?}
-
+                        && $item->is_subheader){
+                        if($subheader_index !== 0) {?>
+                        </div>
+                        <?}
+                    ?>
+                        <div class="sub-wrap">
+                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
+                    <? $subheader_index++;
+                        if ($subheader_index > 0 && $subheader_index == count($menu)){?>
+                        </div>
+                        <?}
+                    }
                     else if($item->parent_id == $root_id
                         && array_search($item->id, $parents) === false
                     ){?>
@@ -94,6 +103,10 @@
     }
     .first-template-nav li.menu-subheader a:hover {
         cursor: default;
+    }
+
+    .first-template-nav li.menu-subheader:nth-child(2) {
+        float: left;
     }
 
     .first-template-nav a {
