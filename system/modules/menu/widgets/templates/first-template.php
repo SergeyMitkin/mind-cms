@@ -3,7 +3,13 @@
         <ul class="nav first-template-nav">
             <? function showRootMenu($menu, $root_id, $parents) {
                 foreach ($menu as $item) {?>
-                    <?if($item->parent_id == $root_id
+                    <? if ($item->parent_id == $root_id
+                        && array_search($item->id, $parents) === false
+                        && $item->is_subheader){?>
+                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
+                    <?}
+
+                    else if($item->parent_id == $root_id
                         && array_search($item->id, $parents) === false
                     ){?>
                         <li><a href="<?= $item->url ?>"><?= $item->name ?></a></li>
@@ -81,6 +87,13 @@
 
     .first-template-nav li:last-child {
         border-width: 2px 2px 2px 2px !important;
+    }
+
+    .first-template-nav li.menu-subheader {
+        background: #535353;
+    }
+    .first-template-nav li.menu-subheader a:hover {
+        cursor: default;
     }
 
     .first-template-nav a {
