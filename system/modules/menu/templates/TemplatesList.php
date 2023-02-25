@@ -17,7 +17,7 @@
         <div id="second-template" class="tab-pane fade">
             <h3>Второй шаблон</h3>
             <div class="template-content">
-                <?= core\Html::instance()->render(__DIR__ . '\..\widgets\templates\test.php');?>
+<!--                --><?//= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'first-template');?>
             </div>
         </div>
         <div id="therd-template" class="tab-pane fade">
@@ -28,9 +28,16 @@
                 nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
         </div>
-        <div id="fourth-template" class="tab-pane fade"">
+        <div id="fourth-template" class="tab-pane fade">
         <h3>Четвертый заголовок</h3>
         <?= core\Html::instance()->render(__DIR__ . '\..\widgets\templates\test.php');?>
+
+        <div id="fifth-template" class="tab-pane fade">
+            <h3>Пятый шаблон</h3>
+            <div class="template-content">
+                <?= core\Html::instance()->render(__DIR__ . '\..\widgets\templates\test.php');?>
+            </div>
+        </div>
     </div>
 </div>
 

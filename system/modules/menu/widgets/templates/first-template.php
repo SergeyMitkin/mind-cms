@@ -1,4 +1,3 @@
-
 <?php if (!empty($menu)) : ?>
     <nav class="navbar first-template-navbar">
         <ul class="nav first-template-nav">

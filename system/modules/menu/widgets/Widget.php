@@ -21,7 +21,7 @@ class Widget extends Menu {
         $menu_items = ($id != -1) ? parent::getMenuItemsInfo($id, true) : [];
         $root_id = parent::getRootMenu()[0]->id;
 
-        // Id родительские элменты
+        // Id родительских элментов
         $parents = [];
         foreach ($menu_items as $item) {
             if ($item->type == 'child' && !in_array($item->parent_id, $parents)){

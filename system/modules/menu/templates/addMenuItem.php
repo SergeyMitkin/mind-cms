@@ -14,7 +14,6 @@
         $subheader = !empty($data['menuinfo']->is_subheader) ? $data['menuinfo']->is_subheader : FALSE;
         ?>
         <div class="col-sm-12">
-
             <div class="panel-body">
                 <form class="form-horizontal" method="POST" action="" id="sumbit_form">
                     <fieldset>
@@ -65,7 +64,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
