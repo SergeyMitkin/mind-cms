@@ -1,26 +1,28 @@
-$(function() {
-    function onNavbar() {
-        if (window.innerWidth >= 768) {
-            $('.first-template-navbar .dropdown').on('mouseenter', function(){
-                $('.dropdown-toggle', this).next('.submenu').show().find('.submenu').hide();
-            }).on('mouseleave', function(){
-                // $(this).find('.submenu').hide();
-            });
-            $('.dropdown-toggle').click(function() {
-                if ($(this).next('.submenu').is(':visible')) {
-                    window.location = $(this).attr('href');
-                }
-            });
-        } else {
-            $('.first-template-navbar .dropdown').off('mouseenter');
-            $('.first-template-navbar .root-dropdown').off('mouseleave');
-        }
-    }
-    $(window).resize(function() {
-        onNavbar();
-    });
-    onNavbar();
-});
+
+
+// $(function() {
+//     function onNavbar() {
+//         if (window.innerWidth >= 768) {
+//             $('.first-template-navbar .dropdown').on('mouseenter', function(){
+//                 $('.dropdown-toggle', this).next('.submenu').show().find('.submenu').hide();
+//             }).on('mouseleave', function(){
+//                 $(this).find('.submenu').hide();
+//             });
+//             $('.dropdown-toggle').click(function() {
+//                 if ($(this).next('.submenu').is(':visible')) {
+//                     window.location = $(this).attr('href');
+//                 }
+//             });
+//         } else {
+//             $('.first-template-navbar .dropdown').off('mouseenter');
+//             $('.first-template-navbar .root-dropdown').off('mouseleave');
+//         }
+//     }
+//     $(window).resize(function() {
+//         onNavbar();
+//     });
+//     onNavbar();
+// });
 // $(function() {
 //     function onNavbar() {
 //         if (window.innerWidth >= 768) {
