@@ -93,15 +93,16 @@
                     <?}?>
                     <? if ($sub_index == 0) {?>
                         <div class="sub-wrap">
-                        <div class="nav sub-item-wrap">
-                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
+                            <div class="nav sub-item-wrap">
+                                <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
                     <?} else if ($sub_index > 0){?>
                         <div class="nav sub-item-wrap">
-                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
+                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
                     <?}?>
                     <? $sub_index++;
                     if ($sub_index > 0 && $sub_index == count($menu)){?>
-                        </div></div>
+                            </div>
+                        </div>
                     <?}
                 }
                 else if($item->parent_id == $root_id
