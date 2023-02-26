@@ -78,7 +78,10 @@
         position: absolute;
         display: flex;
         flex-wrap: wrap;
-        width: 50vw;
+        width: max-content;
+        max-width: 600px;
+        align-content: flex-start;
+        padding-right: 100px;
         padding-bottom: 100px;
         left: -250px;
     }
