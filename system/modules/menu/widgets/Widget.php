@@ -24,7 +24,6 @@ class Widget extends Menu {
 
             $root_stm = "SELECT id FROM menu WHERE type = 'root' AND menu_id = $id";
             $root_id = parent::instance()->pdo->query($root_stm)->fetchColumn();
-
         } else {
             $menu_items = [];
             $root_id = 0;
@@ -37,7 +36,7 @@ class Widget extends Menu {
             }
         }
 
-//        Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
+        Html::instance()->setCSs('/assets/modules/menu/css/' . $template . '.css');
         $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $menu_items, 'root_id' => $root_id, 'parents' => $parents]);
 
         return $result;
