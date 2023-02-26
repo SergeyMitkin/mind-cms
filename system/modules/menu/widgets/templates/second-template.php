@@ -19,10 +19,6 @@
         padding: 0 !important;
     }
 
-    .second-template-nav li:last-child {
-        border-width: 2px 2px 2px 2px !important;
-    }
-
     .second-template-nav li.menu-subheader {
         background: #535353;
     }
@@ -30,15 +26,15 @@
         cursor: default;
     }
 
-    .second-template-nav a {
-        /*box-shadow: 0 5px 0 #333 !important;*/
+    .second-template-nav li a {
+        font-weight: 700;
         border-radius: 0 !important;
         display: flex !important;
         justify-content: space-between !important;
     }
     .second-template-nav a:hover {
-        background: #535353 !important;
-        color: #fff !important;
+        background: #4b4b4b !important;
+        color: #979797; !important;
     }
 
     .second-template-nav .fa-angle-wrap {
