@@ -17,7 +17,7 @@
         <div id="second-template" class="tab-pane fade">
             <h3>Второй шаблон</h3>
             <div class="template-content">
-<!--                --><?//= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'first-template');?>
+                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'second-template');?>
             </div>
         </div>
         <div id="therd-template" class="tab-pane fade">

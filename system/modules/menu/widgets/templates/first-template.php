@@ -79,25 +79,26 @@
     }
 </style>
 
-<?php if (!empty($menu)) : ?>
+<?php
+if (!empty($menu)) : ?>
 <nav class="navbar first-template-navbar">
     <ul class="nav first-template-nav">
-        <?php function showRootMenu($menu, $root_id, $parents) {
+        <?php function showFirstTemplate($menu, $root_id, $parents) {
             $sub_index = 0;
             foreach ($menu as $item) {
-                if ($item->parent_id == $root_id
-                    && array_search($item->id, $parents) === false
-                    && $item->is_subheader){
+                if ($item['parent_id'] == $root_id
+                    && array_search($item['id'], $parents) === false
+                    && $item['is_subheader']){
                     if($sub_index !== 0) {?>
                         </div>
                     <?}?>
                     <? if ($sub_index == 0) {?>
                         <div class="sub-wrap">
                             <div class="nav sub-item-wrap">
-                                <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
+                                <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                     <?} else if ($sub_index > 0){?>
                         <div class="nav sub-item-wrap">
-                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item->name ?></a></li>
+                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                     <?}?>
                     <? $sub_index++;
                     if ($sub_index > 0 && $sub_index == count($menu)){?>
@@ -105,26 +106,26 @@
                         </div>
                     <?}
                 }
-                else if($item->parent_id == $root_id
-                && array_search($item->id, $parents) === false
+                else if($item['parent_id'] == $root_id
+                && array_search($item['id'], $parents) === false
             ){?>
-                <li><a href="<?= $item->url ?>"><?= $item->name ?></a></li>
-            <?} else if ($item->parent_id == $root_id) {?>
+                <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
+            <?} else if ($item['parent_id'] == $root_id) {?>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="<?= $item->url ?>" data-toggle="collapse">
-                        <div class="link-name"><?= $item->name ?></div>
+                    <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
+                        <div class="link-name"><?= $item['name'] ?></div>
                         <div class="fa-angle-wrap">
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                         </div>
                     </a>
                     <ul class="nav collapse submenu">
-                        <? showRootMenu($menu, $item->id, $parents); ?>
+                        <? showFirstTemplate($menu, $item['id'], $parents); ?>
                     </ul>
                 </li>
             <?}
             }
         }?>
-        <?php showRootMenu($menu, $root_id, $parents); ?>
+        <?php showFirstTemplate($menu, $root_id, $parents); ?>
     </ul>
 </nav>
 
