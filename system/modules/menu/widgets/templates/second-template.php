@@ -69,6 +69,10 @@
         display: block;
     }
 
+    .second-template-nav .sub-item-wrap {
+        /*flex: 50%;*/
+    }
+
     .second-template-nav .sub-item-wrap li {
         border: none !important;
     }
@@ -78,7 +82,11 @@
         position: absolute;
         display: flex;
         flex-wrap: wrap;
-        width: 50vw;
+        justify-content: flex-start;
+        width: max-content;
+        max-width: 600px;
+        align-content: flex-start;
+        padding-right: 100px;
         padding-bottom: 100px;
         left: -250px;
     }
