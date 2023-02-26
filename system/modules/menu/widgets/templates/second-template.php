@@ -1,3 +1,86 @@
+<style>
+    .second-template-nav .nav.submenu,
+    .second-template-nav .nav.sub-item-wrap
+    {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .second-template-nav li
+    {
+        width: 250px;
+        background: #303030;
+        color: #979797;
+        border-width: 2px 2px 2px 2px !important;
+        border-style: solid !important;
+        border-color: #232323 !important;
+        border-top-color: #4b4b4b !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .second-template-nav li:last-child {
+        border-width: 2px 2px 2px 2px !important;
+    }
+
+    .second-template-nav li.menu-subheader {
+        background: #535353;
+    }
+    .second-template-nav li.menu-subheader a:hover {
+        cursor: default;
+    }
+
+    .second-template-nav a {
+        /*box-shadow: 0 5px 0 #333 !important;*/
+        border-radius: 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+    .second-template-nav a:hover {
+        background: #535353 !important;
+        color: #fff !important;
+    }
+
+    .second-template-nav .fa-angle-wrap {
+        width: 20px;
+        position: relative;
+        font-size: 15px;
+    }
+
+    .second-template-nav i.fa-angle-double-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+    }
+
+    .second-template-nav .submenu
+    {
+        position: absolute;
+        top: -2px;
+        right: -250px;
+    }
+
+    .second-template-nav li > ul
+    {
+        display: none;
+    }
+
+    .second-template-nav li:hover > ul
+    {
+        display: block;
+    }
+
+    .second-template-nav .sub-wrap {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        width: max-content;
+        max-width: 500px;
+        left: -250px;
+    }
+</style>
+
 <?php
 if (!empty($menu)) : ?>
     <nav class="navbar second-template-navbar">

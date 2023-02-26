@@ -2,7 +2,7 @@
 <div class="templates-tabs">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#first-template" data-toggle="tab">Первый шаблон</a></li>
-        <li><a href="#second-template" data-toggle="tab">Вторая ссылка</a></li>
+        <li><a href="#second-template" data-toggle="tab">Второй шаблон</a></li>
         <li><a href="#therd-template" data-toggle="tab">Третья ссылка</a></li>
         <li><a href="#fourth-template" data-toggle="tab">Четвертая ссылка</a></li>
     </ul>
