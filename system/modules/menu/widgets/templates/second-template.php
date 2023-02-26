@@ -19,8 +19,10 @@
         padding: 0 !important;
     }
 
+
+
     .second-template-nav li.menu-subheader {
-        background: #535353;
+        background: #fe8303;
     }
     .second-template-nav li.menu-subheader a:hover {
         cursor: default;
@@ -37,17 +39,17 @@
         color: #979797; !important;
     }
 
-    .second-template-nav .fa-angle-wrap {
-        width: 20px;
+    .second-template-nav .triangle {
         position: relative;
-        font-size: 15px;
+        width: 20px;
+        height: 100%;
     }
-
-    .second-template-nav i.fa-angle-double-right {
+    .triangle::after {
+        content: '';
         position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto 0;
+        border: 5px solid transparent;
+        border-left: 5px solid #fff;
+        margin: 5px 0;
     }
 
     .second-template-nav .submenu
@@ -67,12 +69,17 @@
         display: block;
     }
 
+    .second-template-nav .sub-item-wrap li {
+        border: none !important;
+    }
+
     .second-template-nav .sub-wrap {
+        background: #4b4b4b;
         position: absolute;
         display: flex;
         flex-wrap: wrap;
-        width: max-content;
-        max-width: 500px;
+        width: 50vw;
+        padding-bottom: 100px;
         left: -250px;
     }
 </style>
@@ -84,44 +91,42 @@ if (!empty($menu)) : ?>
             <?php function showSecondTemplate($menu, $root_id, $parents) {
             $sub_index = 0;
             foreach ($menu as $item) {
-            if ($item['parent_id'] == $root_id
-            && array_search($item['id'], $parents) === false
-            && $item['is_subheader']){
-            if($sub_index !== 0) {?>
-                </div>
-            <?}?>
-            <? if ($sub_index == 0) {?>
-            <div class="sub-wrap">
-                <div class="nav sub-item-wrap">
-                    <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                    <?} else if ($sub_index > 0){?>
-                    <div class="nav sub-item-wrap">
-                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                        <?}?>
-                        <? $sub_index++;
-                        if ($sub_index > 0 && $sub_index == count($menu)){?>
-                    </div>
-                </div>
-                <?}
-                }
-                else if($item['parent_id'] == $root_id
-                    && array_search($item['id'], $parents) === false
-                ){?>
-                    <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
-                <?} else if ($item['parent_id'] == $root_id) {?>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
-                            <div class="link-name"><?= $item['name'] ?></div>
-                            <div class="fa-angle-wrap">
-                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                if ($item['parent_id'] == $root_id
+                && array_search($item['id'], $parents) === false
+                && $item['is_subheader']){
+                    if($sub_index !== 0) {?>
+                        </div>
+                    <?}?>
+                    <? if ($sub_index == 0) {?>
+                    <div class="sub-wrap">
+                        <div class="nav sub-item-wrap">
+                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
+                            <?} else if ($sub_index > 0){?>
+                            <div class="nav sub-item-wrap">
+                                <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
+                                <?}?>
+                                <? $sub_index++;
+                                if ($sub_index > 0 && $sub_index == count($menu)){?>
                             </div>
-                        </a>
-                        <ul class="nav collapse submenu">
-                            <? showSecondTemplate($menu, $item['id'], $parents); ?>
-                        </ul>
-                    </li>
-                <?}
-                }
+                        </div>
+                    <?}
+                    }
+                    else if($item['parent_id'] == $root_id
+                        && array_search($item['id'], $parents) === false
+                    ){?>
+                        <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
+                    <?} else if ($item['parent_id'] == $root_id) {?>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
+                                <div class="link-name"><?= $item['name'] ?></div>
+                                <div class="triangle"></div>
+                            </a>
+                            <ul class="nav collapse submenu">
+                                <? showSecondTemplate($menu, $item['id'], $parents); ?>
+                            </ul>
+                        </li>
+                    <?}
+                    }
                 }?>
                 <?php showSecondTemplate($menu, $root_id, $parents); ?>
         </ul>
