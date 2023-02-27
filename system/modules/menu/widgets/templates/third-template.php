@@ -1,53 +1,55 @@
 
 <?php
-//if (!empty($menu)) : ?>
-<!--    <nav class="navbar third-template-navbar">-->
-<!--        <ul class="nav third-template-nav">-->
-<!--            --><?php //function showThirdTemplate($menu, $root_id, $parents) {
-//            $sub_index = 0;
-//            foreach ($menu as $item) {
-//            if ($item['parent_id'] == $root_id
-//            && array_search($item['id'], $parents) === false
-//            && $item['is_subheader']){
-//            if($sub_index !== 0) {?>
-<!--                </div>-->
-<!--            --><?//}?>
-<!--            --><?// if ($sub_index == 0) {?>
-<!--            <div class="sub-wrap">-->
-<!--                <div class="nav sub-item">-->
-<!--                    <li class="menu-subheader"><a href="javascript:void(0)">--><?//= $item['name'] ?><!--</a></li>-->
-<!--                    --><?//} else if ($sub_index > 0){?>
-<!--                    <div class="nav sub-item">-->
-<!--                        <li class="menu-subheader"><a href="javascript:void(0)">--><?//= $item['name'] ?><!--</a></li>-->
-<!--                        --><?//}?>
-<!--                        --><?// $sub_index++;
-//                        if ($sub_index > 0 && $sub_index == count($menu)){?>
-<!--                    </div>-->
-<!--                </div>-->
-<!--                --><?//}
-//                }
-//                else if($item['parent_id'] == $root_id
-//                    && array_search($item['id'], $parents) === false
-//                ){?>
-<!--                    <li><a href="--><?//= $item['url'] ?><!--">--><?//= $item['name'] ?><!--</a></li>-->
-<!--                --><?//} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
-<!--                    <li class="dropdown">-->
-<!--                        <a class="dropdown-toggle" href="--><?//= $item['url'] ?><!--" data-toggle="collapse">-->
-<!--                            <div class="link-name">--><?//= $item['name'] ?><!--</div>-->
-<!--                            <div class="triangle"></div>-->
-<!--                        </a>-->
-<!--                        <ul class="nav collapse submenu">-->
-<!--                            --><?// showThirdTemplate($menu, $item['id'], $parents); ?>
-<!--                        </ul>-->
-<!--                    </li>-->
-<!--                --><?//}
-//                }
-//            }?>
-<!--            --><?php //showThirdTemplate($menu, $root_id, $parents); ?>
-<!--        </ul>-->
-<!--    </nav>-->
-<!---->
-<?// else : ?>
+if (!empty($menu)) : ?>
+    <nav class="navbar third-template-navbar">
+        <ul class="nav third-template-nav">
+            <?php function showThirdTemplate($menu, $root_id, $parents) {
+            $sub_index = 0;
+            foreach ($menu as $item) {
+            if ($item['parent_id'] == $root_id
+            && array_search($item['id'], $parents) === false
+            && $item['is_subheader']){
+            if($sub_index !== 0) {?>
+                </div>
+            <?}?>
+            <? if ($sub_index == 0) {?>
+            <div class="sub-wrap">
+                <div class="nav sub-item">
+                    <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
+                    <?} else if ($sub_index > 0){?>
+                    <div class="nav sub-item">
+                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
+                        <?}?>
+                        <? $sub_index++;
+                        if ($sub_index > 0 && $sub_index == count($menu)){?>
+                    </div>
+                </div>
+                <?}
+                }
+                else if($item['parent_id'] == $root_id
+                    && array_search($item['id'], $parents) === false
+                ){?>
+                    <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
+                <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
+                            <div class="link-name"><?= $item['name'] ?></div>
+                            <div class="fa-angle-wrap">
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                        <ul class="nav collapse submenu">
+                            <? showThirdTemplate($menu, $item['id'], $parents); ?>
+                        </ul>
+                    </li>
+                <?}
+                }
+            }?>
+            <?php showThirdTemplate($menu, $root_id, $parents); ?>
+        </ul>
+    </nav>
+
+<? else : ?>
 
     <nav class="navbar third-template-navbar">
         <ul class="nav third-template-nav">
@@ -91,39 +93,30 @@
         </ul>
     </nav>
 
-<?php //endif; ?>
+<?php endif; ?>
 
 
 <style>
-    .third-template-nav .nav.submenu {
+    .third-template-nav .nav.submenu,
+    .third-template-nav .sub-item
+    {
         margin: 0 !important;
         padding: 0 !important;
     }
 
     .third-template-nav li {
-        width: 250px;
-        background: #48a7e2;
-        border-width: 2px 2px 0 2px !important;
+        border-width: 1px 1px 0 1px !important;
         border-style: solid !important;
+        width: 250px;
+    }
+
+    .third-template-nav > li {
+        background: #48a7e2;
         border-color: #438bbc !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
 
     .third-template-nav li:not(.submenu li):last-child {
-        border-width: 2px 2px 2px 2px !important;
-    }
-
-    .third-template-nav .sub-wrap li {
-        background: unset;
-    }
-
-    .third-template-nav li.menu-subheader {
-        background: #fe8303;
-    }
-    .third-template-nav li.menu-subheader a:hover {
-        cursor: default;
-        background: #fe8303 !important;
+        border-width: 1px 1px 1px 1px !important;
     }
 
     .third-template-nav li a {
@@ -138,8 +131,7 @@
         color: #f7f7f7 !important;
     }
 
-    .third-template-nav .submenu li {
-        left: -2px;
+    .third-template-nav > .dropdown > .submenu  li {
         background: #424952;
         border-color: #383e47 !important;
     }
@@ -155,44 +147,5 @@
         display: block;
     }
 
-    .third-template-nav .sub-item {
-        margin: 10px !important;
-    }
-
-    .third-template-nav .sub-item li {
-        border: none !important;
-        width: 200px;
-    }
-
-    .third-template-nav .sub-item li:not(.menu-subheader) a {
-        font-weight: 100;
-        justify-content: unset;
-    }
-    .third-template-nav .sub-item li:not(.menu-subheader) a:hover {
-        color: #4b4b4b !important;
-    }
-    .third-template-nav .sub-item li:not(.menu-subheader) a:before {
-        content: "";
-        background-image: url("/assets/modules/menu/img/dotted-arrow.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: 20px !important;
-        height: 10px !important;
-        display: inline-block;
-        margin: 5px 0 0 -5px;
-    }
-
-    .third-template-nav .sub-wrap {
-        background: #4b4b4b;
-        position: absolute;
-        display: flex;
-        flex-wrap: wrap;
-        width: max-content;
-        max-width: 600px;
-        align-content: flex-start;
-        padding-right: 100px;
-        padding-bottom: 50px;
-        left: -250px;
-    }
 </style>
 
