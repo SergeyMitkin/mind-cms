@@ -17,11 +17,11 @@
     padding: 0 !important;
 }
 
-.first-template-nav li:not(.submenu li):last-child {
+.first-template-nav li:not(.sub-item-wrap>li):last-child {
     border-width: 2px 2px 2px 2px !important;
 }
 
-.first-template-nav .sub-item-wrap:last-child li:last-child {
+.first-template-nav .sub-item-wrap:last-child>li:last-child {
     border-width: 2px 2px 2px 2px !important;
 }
 
