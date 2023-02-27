@@ -1,6 +1,5 @@
 <style>
-    .second-template-nav .nav.submenu,
-    .second-template-nav .nav.sub-item-wrap
+    .second-template-nav .nav.submenu
     {
         margin: 0 !important;
         padding: 0 !important;
@@ -10,7 +9,6 @@
     {
         width: 250px;
         background: #303030;
-        color: #979797;
         border-width: 2px 2px 2px 2px !important;
         border-style: solid !important;
         border-color: #232323 !important;
@@ -19,24 +17,28 @@
         padding: 0 !important;
     }
 
-
+    .second-template-nav .sub-wrap li {
+        background: unset;
+    }
 
     .second-template-nav li.menu-subheader {
         background: #fe8303;
     }
     .second-template-nav li.menu-subheader a:hover {
         cursor: default;
+        background: #fe8303 !important;
     }
 
     .second-template-nav li a {
+        color: #f7f7f7;
         font-weight: 700;
         border-radius: 0 !important;
-        display: flex !important;
-        justify-content: space-between !important;
+        display: flex;
+        justify-content: space-between;
     }
-    .second-template-nav a:hover {
+    .second-template-nav li a:hover {
         background: #4b4b4b !important;
-        color: #979797; !important;
+        color: #f7f7f7 !important;
     }
 
     .second-template-nav .triangle {
@@ -48,7 +50,7 @@
         content: '';
         position: absolute;
         border: 5px solid transparent;
-        border-left: 5px solid #fff;
+        border-left: 5px solid #f7f7f7;
         margin: 5px 0;
     }
 
@@ -69,8 +71,30 @@
         display: block;
     }
 
-    .second-template-nav .sub-item-wrap li {
+    .second-template-nav .sub-item {
+        margin: 10px !important;
+    }
+
+    .second-template-nav .sub-item li {
         border: none !important;
+        width: 200px;
+    }
+
+    .second-template-nav .sub-item li:not(.menu-subheader) a {
+        font-weight: 100;
+        justify-content: unset;
+    }
+    .second-template-nav .sub-item li:not(.menu-subheader) a:hover {
+        color: #4b4b4b !important;
+    }
+    .second-template-nav .sub-item li:not(.menu-subheader) a:before {
+        content: "";
+        background-image: url("/assets/modules/menu/img/dotted-arrow.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 10px;
+        margin: 5px 0;
     }
 
     .second-template-nav .sub-wrap {
@@ -82,9 +106,10 @@
         max-width: 600px;
         align-content: flex-start;
         padding-right: 100px;
-        padding-bottom: 100px;
+        padding-bottom: 50px;
         left: -250px;
     }
+
 </style>
 
 <?php
@@ -102,10 +127,10 @@ if (!empty($menu)) : ?>
                     <?}?>
                     <? if ($sub_index == 0) {?>
                     <div class="sub-wrap">
-                        <div class="nav sub-item-wrap">
+                        <div class="nav sub-item">
                             <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                             <?} else if ($sub_index > 0){?>
-                            <div class="nav sub-item-wrap">
+                            <div class="nav sub-item">
                                 <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                                 <?}?>
                                 <? $sub_index++;
@@ -118,7 +143,7 @@ if (!empty($menu)) : ?>
                         && array_search($item['id'], $parents) === false
                     ){?>
                         <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
-                    <?} else if ($item['parent_id'] == $root_id) {?>
+                    <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
                                 <div class="link-name"><?= $item['name'] ?></div>
@@ -131,7 +156,7 @@ if (!empty($menu)) : ?>
                     <?}
                     }
                 }?>
-                <?php showSecondTemplate($menu, $root_id, $parents); ?>
+            <?php showSecondTemplate($menu, $root_id, $parents); ?>
         </ul>
     </nav>
 
