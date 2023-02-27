@@ -51,33 +51,44 @@ if (!empty($menu)) : ?>
 
     <nav class="navbar second-template-navbar">
         <ul class="nav second-template-nav">
-            <li><a href="javascript:void(0)">Link 1</a></li>
+            <li><a href="javascript:void(0)">Menu Item A</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
-                    <div class="link-name">Link 2</div>
-                    <div class="fa-angle-wrap">
-                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    </div>
+                    <div class="link-name">Menu Item B</div>
+                    <div class="triangle"></div>
                 </a>
                 <ul class="nav collapse submenu">
-                    <li><a href="javascript:void(0)">Link 2.1</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="javascript:void(0);">
-                            <div class="link-name">Link 2.2</div>
-                            <div class="fa-angle-wrap">
-                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                            </div>
-                        </a>
-                        <ul class="nav collapse submenu">
-                            <li><a href="javascript:void(0)">Link 3.1</a></li>
-                            <li><a href="javascript:void(0)">Link 3.2</a></li>
-                            <li><a href="javascript:void(0)">Link 3.3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="javascript:void(0)">Link 2.3</a></li>
+                    <div class="sub-wrap">
+                        <div class="nav sub-item">
+                            <li class="menu-subheader"><a href="javascript:void(0)">SUB-HEADER 1</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 1.1</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 1.2</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 1.3</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 1.4</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 1.5</a></li>
+                        </div>
+                        <div class="nav sub-item">
+                            <li class="menu-subheader"><a href="javascript:void(0)">SUB-HEADER 2</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 2.1</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 2.2</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 2.3</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 2.4</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 2.5</a></li>
+                        </div>
+                        <div class="nav sub-item">
+                            <li class="menu-subheader"><a href="javascript:void(0)">SUB-HEADER 3</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 3.1</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 3.2</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 3.3</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 3.4</a></li>
+                            <li><a href="javascript:void(0)">Menu Link 3.5</a></li>
+                        </div>
+                    </div>
                 </ul>
             </li>
-            <li><a href="javascript:void(0)">Link 3</a></li>
+            <li><a href="javascript:void(0)">Menu Item C</a></li>
+            <li><a href="javascript:void(0)">Menu Item D</a></li>
+            <li><a href="javascript:void(0)">Menu Item E</a></li>
         </ul>
     </nav>
 

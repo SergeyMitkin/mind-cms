@@ -21,12 +21,10 @@
             </div>
         </div>
         <div id="therd-template" class="tab-pane fade">
-            <h3>Третий заголовок</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <h3>Третий шаблон</h3>
+            <div class="template-content">
+                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'third-template');?>
+            </div>
         </div>
         <div id="fourth-template" class="tab-pane fade">
         <h3>Четвертый заголовок</h3>
