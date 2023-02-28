@@ -32,7 +32,8 @@
     color: #f7f7f7 !important;
 }
 
-.third-template-nav > .dropdown > .submenu  li {
+.third-template-nav .submenu  li {
+    left: -1px;
     background: #424952;
     border-color: #383e47 !important;
 }
