@@ -36,7 +36,15 @@ class Widget extends Menu {
             }
         }
 
-        Html::instance()->setCSs('/assets/modules/menu/css/' . $template . '.css');
+        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump('/assets/modules/menu/js/' . $template . 'js');
+//        echo'</pre>';
+//        die;
+        // --- Отладка конец
+
+        Html::instance()->setCss('/assets/modules/menu/css/' . $template . '.css');
+        Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
         $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $menu_items, 'root_id' => $root_id, 'parents' => $parents]);
 
         return $result;
