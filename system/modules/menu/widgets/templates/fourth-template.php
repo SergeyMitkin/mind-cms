@@ -158,14 +158,14 @@
         border-radius: 0;
     }
 
-    .fourth-template-navbar li > ul.dropdown-menu {
-        display: none;
-        /*display: block !important;*/
-    }
+    /*.fourth-template-navbar li > ul.dropdown-menu {*/
+    /*    display: none;*/
+    /*    !*display: block !important;*!*/
+    /*}*/
 
-    .fourth-template-navbar li:hover > ul {
-        display: block;
-    }
+    /*.fourth-template-navbar li:hover > ul {*/
+    /*    display: block;*/
+    /*}*/
 
     .fourth-template-navbar li > ul {
         background-color: #384049;
