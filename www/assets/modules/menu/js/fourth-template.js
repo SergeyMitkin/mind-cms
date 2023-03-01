@@ -1,7 +1,11 @@
 $(function(){
     jQuery('.fourth-template-navbar li').hover(function() {
-        jQuery(this).children('.dropdown-menu').stop(true, true).show();
+        if (jQuery(this).children('.dropdown-menu').show().is(":visible")) {
+            $(this).addClass('open');
+        }
     }, function() {
-        jQuery(this).children('.dropdown-menu').stop(true, true).delay(200).hide();
+        if(!jQuery(this).children('.dropdown-menu').hide().is(":visible")){
+            $(this).removeClass('open');
+        }
     });
 });
