@@ -117,10 +117,10 @@
         <li><a href="javascript:void(0)"><i class="fa fa-newspaper-o" aria-hidden="true"></i>НОВОСТИ</a></li>
         <li><a href="javascript:void(0)"><i class="fa fa-users" aria-hidden="true"></i>НАША КОМАНДА</a></li>
         <li><a href="javascript:void(0)"><i class="fa fa-map-marker" aria-hidden="true"></i>КОНТАКТЫ</a></li>
+    </ul>
 </nav>
 
 <style>
-
     .fourth-template-navbar.navbar {
         background-color: #576472;
         border: unset;
@@ -141,7 +141,13 @@
         margin-right: 3px;
     }
 
+    .fourth-template-navbar .navbar-nav > li a{
+        color: #fff !important;
+        padding: 20px 25px !important;
+    }
+
     .fourth-template-navbar .navbar-nav > li.open > a {
+        color: #fff !important;
         background-color: #46505b !important;
     }
 
@@ -159,8 +165,7 @@
     }
 
     .fourth-template-navbar li > ul.dropdown-menu {
-        /*display: none;*/
-        display: block !important;
+        display: none;
     }
 
     .fourth-template-navbar li:hover > ul {
@@ -168,14 +173,18 @@
     }
 
     .fourth-template-navbar li > ul {
-        background-color: #384049;
-    }
-
-    .fourth-template-navbar li > ul > li.open {
-        background-color: #323a42 !important;
+        background-color: #384049 !important;
     }
 
     .fourth-template-navbar li > ul a:hover {
+        background-color:  #323a42 !important;
+    }
+
+    .fourth-template-navbar li > ul a:hover {
+        background-color: #323a42 !important;
+    }
+
+    .fourth-template-navbar li > ul > li.open a {
         background-color: #323a42 !important;
     }
 
@@ -183,64 +192,22 @@
         position: relative;
     }
 
+    .fourth-template-navbar .dropdown-menu li a{
+        color: #fff;
+    }
+
     .fourth-template-navbar .dropdown-menu ul {
         position: absolute;
     }
 
-    .fourth-template-navbar .dropdown-menu .dropdown-menu li a {
-        background-color: #384049 !important;
+    .fourth-template-navbar .dropdown-menu .dropdown-menu {
+        border-width: 0 0 0 4px;
+        border-style: solid;
+        border-color: #576472;
     }
 
-
-
-    /*.third-template-nav .nav.submenu,*/
-    /*.third-template-nav .sub-item*/
-    /*{*/
-    /*    margin: 0 !important;*/
-    /*    padding: 0 !important;*/
-    /*}*/
-
-    /*.third-template-nav li {*/
-    /*    border-width: 1px 1px 0 1px !important;*/
-    /*    border-style: solid !important;*/
-    /*    width: 250px;*/
-    /*}*/
-
-    /*.third-template-nav > li {*/
-    /*    background: #48a7e2;*/
-    /*    border-color: #438bbc !important;*/
-    /*}*/
-
-    /*.third-template-nav li:not(.submenu li):last-child {*/
-    /*    border-width: 1px 1px 1px 1px !important;*/
-    /*}*/
-
-    /*.third-template-nav li a {*/
-    /*    color: #f7f7f7;*/
-    /*    font-weight: 700;*/
-    /*    border-radius: 0 !important;*/
-    /*    display: flex !important;*/
-    /*    justify-content: space-between;*/
-    /*}*/
-    /*.third-template-nav li a:hover {*/
-    /*    background: #3c98d4 !important;*/
-    /*    color: #f7f7f7 !important;*/
-    /*}*/
-
-    /*.third-template-nav .submenu  li {*/
-    /*    background: #424952;*/
-    /*    border-color: #383e47 !important;*/
-    /*}*/
-    /*.third-template-nav .submenu li a:hover {*/
-    /*    background: #45545f !important;*/
-    /*}*/
-
-    /*.third-template-nav li > ul {*/
-    /*    display: none;*/
-    /*}*/
-
-    /*.third-template-nav li:hover > ul {*/
-    /*    display: block;*/
-    /*}*/
+    .fourth-template-navbar .dropdown-menu .dropdown-menu li a {
+        background-color: #323a42 !important;
+    }
 </style>
 

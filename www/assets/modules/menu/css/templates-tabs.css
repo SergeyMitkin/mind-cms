@@ -2,6 +2,24 @@
     margin: 15px;
 }
 
+.nav-tabs > li > a {
+    background: #41cac0;
+}
+
+.nav-tabs > li > a:hover {
+    color: #fff !important;
+    background: #39b2a9 !important;
+}
+
+.nav-tabs > li.active > a {
+    color: #fff !important;
+    background: #204d74 !important;
+}
+
+.nav-tabs > li.active > a:hover {
+    cursor: default;
+}
+
 .template-content {
     margin-top: 20px;
 }
