@@ -32,7 +32,7 @@ if (!empty($menu)) : ?>
                 <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
             <?} else if ($item['parent_id'] == $root_id) {?>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
+                    <a href="<?= $item['url'] ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <div class="link-name"><?= $item['name'] ?></div>
                         <div class="fa-angle-wrap">
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -47,6 +47,7 @@ if (!empty($menu)) : ?>
         }?>
         <?php showFirstTemplate($menu, $root_id, $parents); ?>
     </ul>
+    <div class="first-menu-mobile-hide"></div>
 </nav>
 
 <? else : ?>
@@ -80,6 +81,7 @@ if (!empty($menu)) : ?>
             </ul>
         </li>
         <li><a href="javascript:void(0)">Link 3</a></li>
+        <div class="first-menu-mobile-hide">FFFFFFFFFFF</div>
     </ul>
 </nav>
 
@@ -108,6 +110,11 @@ if (!empty($menu)) : ?>
 
     @media (min-width: 600px) {
         .first-template-nav li:not(.sub-item-wrap>li):last-child {
+            border-width: 2px 2px 2px 2px !important;
+        }
+    }
+    @media (max-width: 600px) {
+        .first-template-nav>li:last-child {
             border-width: 2px 2px 2px 2px !important;
         }
     }
@@ -170,13 +177,6 @@ if (!empty($menu)) : ?>
         top: -2px;
         right: -250px;
     }
-    @media (max-width: 600px) {
-        .first-template-nav .submenu {
-            position: relative;
-            top: 0;
-            right: 2px;
-        }
-    }
 
     .first-template-nav li > ul
     {
@@ -186,6 +186,21 @@ if (!empty($menu)) : ?>
     .first-template-nav li:hover > ul
     {
         display: block;
+    }
+
+    @media (max-width: 600px) {
+        .first-template-nav .submenu {
+            position: relative;
+            top: 0;
+            right: 2px;
+        }
+        .first-template-nav li:hover > ul
+        {
+            display: none;
+        }
+        .first-template-navbar .first-menu-mobile-hide {
+            display: none !important;
+        }
     }
 
     .first-template-nav .sub-wrap {

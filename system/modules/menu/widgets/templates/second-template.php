@@ -59,6 +59,7 @@ if (!empty($menu)) : ?>
                 }?>
             <?php showSecondTemplate($menu, $root_id, $parents); ?>
         </ul>
+        <div class="menu-mobile-hide"></div>
     </nav>
 
 <? else : ?>
@@ -104,6 +105,7 @@ if (!empty($menu)) : ?>
             <li><a href="javascript:void(0)">Menu Item D</a></li>
             <li><a href="javascript:void(0)">Menu Item E</a></li>
         </ul>
+        <div class="menu-mobile-hide"></div>
     </nav>
 
 <?php endif; ?>
