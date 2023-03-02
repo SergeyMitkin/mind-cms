@@ -46,9 +46,9 @@ if (!empty($menu)) : ?>
 
                     <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
                         <li class="dropdown">
-                            <a class="dropdown-toggle" href="<?= $item['url'] ?>" data-toggle="collapse">
+                            <a href="<?= $item['url'] ?>">
                                 <div class="link-name"><?= $item['name'] ?></div>
-                                <div class="triangle"></div>
+                                <div class="triangle-right"></div>
                             </a>
                             <ul class="nav collapse submenu">
                                 <? showSecondTemplate($menu, $item['id'], $parents); ?>
@@ -60,7 +60,6 @@ if (!empty($menu)) : ?>
             <?php showSecondTemplate($menu, $root_id, $parents); ?>
         </ul>
         <div class="second-menu-mobile"></div>
-        <div class="menu-mobile-hide"></div>
     </nav>
 
 <? else : ?>
@@ -71,7 +70,7 @@ if (!empty($menu)) : ?>
             <li class="dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
                     <div class="link-name">Menu Item B</div>
-                    <div class="triangle"></div>
+                    <div class="triangle-right"></div>
                 </a>
                 <ul class="nav collapse submenu">
                     <li class="sub-wrap">
@@ -107,7 +106,6 @@ if (!empty($menu)) : ?>
             <li><a href="javascript:void(0)">Menu Item E</a></li>
         </ul>
         <div class="second-menu-mobile"></div>
-        <div class="menu-mobile-hide"></div>
     </nav>
 
 <?php endif; ?>
@@ -150,22 +148,34 @@ if (!empty($menu)) : ?>
         display: flex !important;
         justify-content: space-between;
     }
-    .second-template-nav li a:hover {
+    .second-template-nav li a:hover,
+    .second-template-nav li a:focus
+    {
         background: #4b4b4b !important;
         color: #f7f7f7 !important;
     }
 
-    .second-template-nav .triangle {
+    .second-template-nav .triangle-right,
+    .second-template-nav .triangle-down
+    {
         position: relative;
         width: 20px;
         height: 100%;
     }
-    .triangle::after {
+    .triangle-right::after {
         content: '';
         position: absolute;
         border: 5px solid transparent;
         border-left: 5px solid #f7f7f7;
         margin: 5px 0;
+    }
+    .triangle-down::after {
+        content: '';
+        position: absolute;
+        border: 5px solid transparent;
+        top: 7px;
+        left: -4px;
+        border-top: 5px solid #f7f7f7;
     }
 
     .second-template-nav .submenu
@@ -178,12 +188,47 @@ if (!empty($menu)) : ?>
     .second-template-nav li > .submenu
     {
         display: none;
-        /*display: block;*/
     }
 
-    .second-template-nav li:hover > .submenu
-    {
-        display: block;
+    .second-menu-mobile {
+        display: block !important;
+    }
+
+    @media (max-width: 600px) {
+        .second-template-nav .submenu {
+            position: relative;
+            top: 0;
+            right: 2px;
+        }
+        .second-template-nav li.dropdown:hover > ul
+        {
+            display: none;
+        }
+    }
+    @media (min-width: 600px) {
+
+        .second-template-navbar .second-menu-mobile {
+            display: none !important;
+        }
+
+        .second-template-nav li:hover > .submenu
+        {
+            display: block;
+        }
+
+        .second-template-nav .sub-wrap {
+            background: #4b4b4b;
+            position: absolute;
+            display: flex;
+            flex-wrap: wrap;
+            width: max-content;
+            max-width: 600px;
+            align-content: flex-start;
+            padding-right: 100px;
+            padding-bottom: 50px;
+            left: -250px;
+        }
+
     }
 
     .second-template-nav .sub-item {
@@ -211,18 +256,5 @@ if (!empty($menu)) : ?>
         height: 10px !important;
         display: inline-block;
         margin: 5px 0 0 -5px;
-    }
-
-    .second-template-nav .sub-wrap {
-        background: #4b4b4b;
-        position: absolute;
-        display: flex;
-        flex-wrap: wrap;
-        width: max-content;
-        max-width: 600px;
-        align-content: flex-start;
-        padding-right: 100px;
-        padding-bottom: 50px;
-        left: -250px;
     }
 </style>
