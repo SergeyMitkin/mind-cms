@@ -32,7 +32,7 @@ if (!empty($menu)) : ?>
                 <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
             <?} else if ($item['parent_id'] == $root_id) {?>
                 <li class="dropdown">
-                    <a href="<?= $item['url'] ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a href="<?= $item['url'] ?>">
                         <div class="link-name"><?= $item['name'] ?></div>
                         <div class="fa-angle-wrap">
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
