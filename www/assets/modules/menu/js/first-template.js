@@ -1,6 +1,6 @@
 $(function (){
     if ( $(".first-menu-mobile").is(":visible") ) {
-        $("li.dropdown > a").on("touchstart click", function(e){
+        $(".first-template-nav li.dropdown > a").on("touchstart click", function(e){
             e.preventDefault();
             if ( $(this).siblings(".submenu").is(":visible") ){
                 $(this).children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
@@ -14,9 +14,9 @@ $(function (){
 
     $( window ).resize(function() {
         if ( !$(".first-menu-mobile").is(":visible")) {
-            $("li.dropdown > a").off("touchstart click").children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
+            $(".first-template-nav li.dropdown > a").off("touchstart click").children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
         } else {
-            $("li.dropdown > a").on("touchstart click", function(e){
+            $(".first-template-nav li.dropdown > a").on("touchstart click", function(e){
                 e.preventDefault();
                 if ( $(this).siblings(".submenu").is(":visible") ){
                     $(this).children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
