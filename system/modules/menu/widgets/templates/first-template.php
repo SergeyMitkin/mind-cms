@@ -88,7 +88,6 @@ if (!empty($menu)) : ?>
 <?php endif; ?>
 
 <style>
-
     .first-template-nav .nav.submenu,
     .first-template-nav .nav.sub-item-wrap
     {
@@ -208,7 +207,6 @@ if (!empty($menu)) : ?>
         {
             display: none !important;
         }
-
         .first-template-nav li.dropdown:hover > ul
         {
             display: block !important;
@@ -218,5 +216,4 @@ if (!empty($menu)) : ?>
     .first-template-nav .sub-wrap {
         left: -250px;
     }
-
 </style>

@@ -59,6 +59,7 @@ if (!empty($menu)) : ?>
                 }?>
             <?php showSecondTemplate($menu, $root_id, $parents); ?>
         </ul>
+        <div class="second-menu-mobile"></div>
         <div class="menu-mobile-hide"></div>
     </nav>
 
@@ -105,6 +106,7 @@ if (!empty($menu)) : ?>
             <li><a href="javascript:void(0)">Menu Item D</a></li>
             <li><a href="javascript:void(0)">Menu Item E</a></li>
         </ul>
+        <div class="second-menu-mobile"></div>
         <div class="menu-mobile-hide"></div>
     </nav>
 
@@ -175,8 +177,8 @@ if (!empty($menu)) : ?>
 
     .second-template-nav li > .submenu
     {
-        /*display: none;*/
-        display: block;
+        display: none;
+        /*display: block;*/
     }
 
     .second-template-nav li:hover > .submenu
