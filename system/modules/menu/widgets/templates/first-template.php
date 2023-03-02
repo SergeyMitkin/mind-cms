@@ -47,7 +47,7 @@ if (!empty($menu)) : ?>
         }?>
         <?php showFirstTemplate($menu, $root_id, $parents); ?>
     </ul>
-    <div class="first-menu-mobile-hide"></div>
+    <div class="first-menu-mobile"></div>
 </nav>
 
 <? else : ?>
@@ -81,7 +81,7 @@ if (!empty($menu)) : ?>
             </ul>
         </li>
         <li><a href="javascript:void(0)">Link 3</a></li>
-        <div class="first-menu-mobile-hide">FFFFFFFFFFF</div>
+        <div class="first-menu-mobile"></div>
     </ul>
 </nav>
 
@@ -178,12 +178,12 @@ if (!empty($menu)) : ?>
         right: -250px;
     }
 
-    .first-template-nav li > ul
+    .first-template-nav li.dropdown > ul
     {
         display: none;
     }
 
-    .first-template-nav li:hover > ul
+    .first-template-nav li.dropdown:hover > ul
     {
         display: block;
     }
@@ -194,12 +194,24 @@ if (!empty($menu)) : ?>
             top: 0;
             right: 2px;
         }
-        .first-template-nav li:hover > ul
+        .first-template-nav li.dropdown:hover > ul
         {
             display: none;
         }
-        .first-template-navbar .first-menu-mobile-hide {
+    }
+    @media (min-width: 600px) {
+        .first-template-navbar .first-menu-mobile {
             display: none !important;
+        }
+
+        .first-template-nav li.dropdown > ul
+        {
+            display: none !important;
+        }
+
+        .first-template-nav li.dropdown:hover > ul
+        {
+            display: block !important;
         }
     }
 
