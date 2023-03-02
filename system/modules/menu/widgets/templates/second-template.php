@@ -200,13 +200,16 @@ if (!empty($menu)) : ?>
             top: 0;
             right: 2px;
         }
-        .second-template-nav li.dropdown:hover > ul
-        {
+
+        .second-template-nav li.dropdown:hover > ul {
             display: none;
+        }
+
+        .second-template-nav .submenu>li:last-child {
+            border-bottom-width: 0 !important;
         }
     }
     @media (min-width: 600px) {
-
         .second-template-navbar .second-menu-mobile {
             display: none !important;
         }
@@ -228,7 +231,6 @@ if (!empty($menu)) : ?>
             padding-bottom: 50px;
             left: -250px;
         }
-
     }
 
     .second-template-nav .sub-item {
