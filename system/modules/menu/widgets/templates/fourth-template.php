@@ -13,7 +13,7 @@ if (!empty($menu)) : ?>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
+                <ul class="fourth-template-nav nav navbar-nav">
                     <?php function showFourthTemplate($menu, $root_id, $parents) {
                     $sub_index = 0;
                     foreach ($menu as $item) {
@@ -137,6 +137,11 @@ if (!empty($menu)) : ?>
         margin-right: 3px;
     }
 
+    .fourth-template-navbar .navbar-nav > li {
+        width: 100%;
+        float: left;
+    }
+
     .fourth-template-navbar .navbar-nav > li a {
         color: #fff !important;
         padding: 20px 25px !important;
@@ -162,10 +167,6 @@ if (!empty($menu)) : ?>
 
     .fourth-template-navbar li > ul.dropdown-menu {
         display: none;
-    }
-
-    .fourth-template-navbar li:hover > ul {
-        display: block;
     }
 
     .fourth-template-navbar li > ul {
@@ -219,6 +220,14 @@ if (!empty($menu)) : ?>
         .fourth-menu-mobile {
             display: block;
         }
+
+        .fourth-template-navbar ul.dropdown-menu {
+            position: relative;
+            width: 100%;
+        }
+        /*.fourth-template-navbar li:hover > ul {*/
+        /*    display: none !important;*/
+        /*}*/
     }
 
 </style>
