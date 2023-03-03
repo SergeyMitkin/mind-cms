@@ -107,7 +107,7 @@ if (!empty($menu)) : ?>
         padding: 0 !important;
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 601px) {
         .first-template-nav li:not(.sub-item-wrap>li):last-child {
             border-width: 2px 2px 2px 2px !important;
         }
@@ -198,7 +198,7 @@ if (!empty($menu)) : ?>
             display: none;
         }
     }
-    @media (min-width: 600px) {
+    @media (min-width: 601px) {
         .first-template-navbar .first-menu-mobile {
             display: none !important;
         }

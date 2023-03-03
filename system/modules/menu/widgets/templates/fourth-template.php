@@ -54,6 +54,7 @@ if (!empty($menu)) : ?>
                 </ul>
             </div>
         </div>
+        <div class="fourth-menu-mobile"></div>
     </nav>
 
 <? else : ?>
@@ -93,6 +94,7 @@ if (!empty($menu)) : ?>
             </ul>
         </div>
     </div>
+    <div class="fourth-menu-mobile"></div>
 </nav>
 
 <?php endif; ?>
@@ -207,5 +209,17 @@ if (!empty($menu)) : ?>
     .fourth-template-navbar .sub-item {
         margin: 0;
     }
+
+    @media (min-width: 768px) {
+        .fourth-menu-mobile {
+            display: none;
+        }
+    }
+    @media (max-width: 767px) {
+        .fourth-menu-mobile {
+            display: block;
+        }
+    }
+
 </style>
 

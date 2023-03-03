@@ -1,7 +1,16 @@
 $(function(){
-    jQuery('.fourth-template-navbar li').hover(function() {
 
-        let child_menu = jQuery(this).children('.dropdown-menu').show();
+    // В мобильной версии, подменю открывается при клике
+    $('.templates-tabs a').on('shown.bs.tab', function(){
+        if ( $(".fourth-menu-mobile").is(":visible") ) {
+            console.log('visible');
+        }
+    });
+
+
+    $('.fourth-template-navbar li').hover(function() {
+        let child_menu = $(this).children('.dropdown-menu');
+        child_menu.show();
 
         if (child_menu.is(":visible")) {
             $(this).addClass('open');
@@ -11,8 +20,9 @@ $(function(){
             }
         }
     }, function() {
-        if(!jQuery(this).children('.dropdown-menu').hide().is(":visible")){
+        if(!$(this).children('.dropdown-menu').is(":visible")){
             $(this).removeClass('open');
         }
     });
+
 });

@@ -209,7 +209,7 @@ if (!empty($menu)) : ?>
             border-bottom-width: 0 !important;
         }
     }
-    @media (min-width: 600px) {
+    @media (min-width: 601px) {
         .second-template-navbar .second-menu-mobile {
             display: none !important;
         }
