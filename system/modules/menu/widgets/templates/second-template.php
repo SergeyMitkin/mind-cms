@@ -216,7 +216,7 @@ if (!empty($menu)) : ?>
 
         .second-template-nav li:hover > .submenu
         {
-            display: block;
+            display: block !important;
         }
 
         .second-template-nav .sub-wrap {

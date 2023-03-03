@@ -1,14 +1,10 @@
 $(function (){
+
+    // В мобильной версии, подменю открывается при клике
     if ( $(".first-menu-mobile").is(":visible") ) {
         $(".first-template-nav li.dropdown > a").on("touchstart click", function(e){
             e.preventDefault();
-            if ( $(this).siblings(".submenu").is(":visible") ){
-                $(this).children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
-                $(this).siblings(".submenu").hide();
-            } else {
-                $(this).children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-down\" aria-hidden=\"true\"></i>");
-                $(this).siblings(".submenu").show();
-            }
+            firstSubmenuEvent(this);
         });
     }
 
@@ -26,10 +22,10 @@ $(function (){
 
         } else {
             $(".first-template-nav li.dropdown > a").each(function(){
-                if (!checkEvent($(this), 'click')) {
-                    $(this).on("click", function(e){
+                if ( !checkEvent($(this), 'touchstart') || !checkEvent($(this), 'click') ) {
+                    $(this).on("touchstart click", function(e){
                         e.preventDefault();
-                        submenuShowEvent(this);
+                        firstSubmenuEvent(this);
                     });
                 }
                 if ( !$(this).siblings(".submenu").is(":visible") ){
@@ -42,7 +38,7 @@ $(function (){
     });
 });
 
-function submenuShowEvent(element){
+function firstSubmenuEvent(element){
     if ( $(element).siblings(".submenu").is(":visible") ){
         $(element).children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
         $(element).siblings(".submenu").hide();
