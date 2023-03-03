@@ -134,6 +134,16 @@
 </nav>
 
 <style>
+    .fourth-template-navbar .navbar-collapse {
+        margin-left: 0 !important;
+    }
+
+    .fourth-template-navbar .navbar-collapse.collapse.in > .navbar-nav,
+    .fourth-template-navbar .navbar-collapse.collapsing > .navbar-nav
+    {
+        margin-left: -15px !important;
+    }
+
     .fourth-template-navbar button {
         border: 2px solid #fff!important;
     }
