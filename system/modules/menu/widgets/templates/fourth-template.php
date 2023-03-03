@@ -12,35 +12,34 @@ if (!empty($menu)) : ?>
                 </button>
             </div>
 
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <?php function showFourthTemplate($menu, $root_id, $parents) {
                     $sub_index = 0;
                     foreach ($menu as $item) {
-                    if ($item['parent_id'] == $root_id
-                    && array_search($item['id'], $parents) === false
-                    && $item['is_subheader']){
-                    if($sub_index !== 0) {?>
-                        </div>
-                    <?}?>
-                    <? if ($sub_index == 0) {?>
-                    <div class="sub-wrap">
-                        <div class="nav sub-item">
-                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
+                        if ($item['parent_id'] == $root_id
+                        && array_search($item['id'], $parents) === false
+                        && $item['is_subheader']){
+                            if($sub_index !== 0) {?>
+                                </div>
+                            <?}?>
+                            <? if ($sub_index == 0) {?>
+                            <div class="sub-wrap">
+                                <div class="nav sub-item">
+                                    <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                             <?} else if ($sub_index > 0){?>
-                            <div class="nav sub-item">
-                                <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                                <?}?>
+                                <div class="nav sub-item">
+                                    <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
+                            <?}?>
                                 <? $sub_index++;
-                                if ($sub_index > 0 && $sub_index == count($menu)){?>
+                            if ($sub_index > 0 && $sub_index == count($menu)){?>
+                                </div>
                             </div>
-                        </div>
-                        <?}
-                        }
-                        else if($item['parent_id'] == $root_id
-                            && array_search($item['id'], $parents) === false
-                        ){?>
-                            <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
+                            <?}
+                        } else if($item['parent_id'] == $root_id
+                                && array_search($item['id'], $parents) === false
+                            ){?>
+                                <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
                         <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
                             <li class="dropdown">
                                 <a href="<?= $item['url'] ?>"><?= $item['name'] ?></a>
@@ -70,7 +69,7 @@ if (!empty($menu)) : ?>
             </button>
         </div>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbar-main">
             <ul class="nav navbar-nav">
                 <li><a href="javascript:void(0)"><i class="fa fa-home" aria-hidden="true"></i>ГЛАВНАЯ</a></li>
                 <li class="dropdown">
