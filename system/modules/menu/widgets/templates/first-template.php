@@ -38,7 +38,7 @@ if (!empty($menu)) : ?>
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <ul class="nav collapse submenu">
+                    <ul class="nav submenu">
                         <? showFirstTemplate($menu, $item['id'], $parents); ?>
                     </ul>
                 </li>
@@ -56,22 +56,22 @@ if (!empty($menu)) : ?>
     <ul class="nav first-template-nav">
         <li><a href="javascript:void(0)">Link 1</a></li>
         <li class="dropdown">
-            <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
+            <a href="javascript:void(0);">
                 <div class="link-name">Link 2</div>
                 <div class="fa-angle-wrap">
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                 </div>
             </a>
-            <ul class="nav collapse submenu">
+            <ul class="nav submenu">
                 <li><a href="javascript:void(0)">Link 2.1</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="javascript:void(0);">
+                    <a href="javascript:void(0);">
                         <div class="link-name">Link 2.2</div>
                         <div class="fa-angle-wrap">
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                         </div>
                     </a>
-                    <ul class="nav collapse submenu">
+                    <ul class="nav submenu">
                         <li><a href="javascript:void(0)">Link 3.1</a></li>
                         <li><a href="javascript:void(0)">Link 3.2</a></li>
                         <li><a href="javascript:void(0)">Link 3.3</a></li>

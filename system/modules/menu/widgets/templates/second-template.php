@@ -50,7 +50,7 @@ if (!empty($menu)) : ?>
                                 <div class="link-name"><?= $item['name'] ?></div>
                                 <div class="triangle-right"></div>
                             </a>
-                            <ul class="nav collapse submenu">
+                            <ul class="nav submenu">
                                 <? showSecondTemplate($menu, $item['id'], $parents); ?>
                             </ul>
                         </li>
@@ -68,11 +68,11 @@ if (!empty($menu)) : ?>
         <ul class="nav second-template-nav">
             <li><a href="javascript:void(0)">Menu Item A</a></li>
             <li class="dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="collapse">
+                <a href="javascript:void(0);">
                     <div class="link-name">Menu Item B</div>
                     <div class="triangle-right"></div>
                 </a>
-                <ul class="nav collapse submenu">
+                <ul class="nav submenu">
                     <li class="sub-wrap">
                         <ul class="nav sub-item">
                             <li class="menu-subheader"><a href="javascript:void(0)">SUB-HEADER 1</a></li>
