@@ -95,32 +95,53 @@
 
 <?php //endif; ?>
 
-<nav class="fourth-template-navbar navbar navbar-default">
+<nav class="fourth-template-navbar navbar" role="navigation">
 
-    <ul class="nav navbar-nav">
-        <li><a href="javascript:void(0)" class="text-md-start"><i class="fa fa-home" aria-hidden="true"></i>ГЛАВНАЯ</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-table" aria-hidden="true"></i>ПРОДУКЦИЯ</a>
-            <ul class="dropdown-menu">
-                <li><a href="javascript:void(0)">BEST DINNER</a></li>
-                <li>
-                    <a href="javascript:void(0)">СЧАЧТЛИВЫЙ ПЁС</a>
-                    <ul class="nav dropdown-menu">
-                        <li><a href="javascript:void(0)">СУХИЕ КОРМА</a></li>
-                        <li><a href="javascript:void(0)">ВЛАЖНЫЕ КОРМА</a></li>
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li><a href="javascript:void(0)" class="text-md-start"><i class="fa fa-home" aria-hidden="true"></i>ГЛАВНАЯ</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-table" aria-hidden="true"></i>ПРОДУКЦИЯ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)">BEST DINNER</a></li>
+                        <li>
+                            <a href="javascript:void(0)">СЧАЧТЛИВЫЙ ПЁС</a>
+                            <ul class="nav dropdown-menu">
+                                <li><a href="javascript:void(0)">СУХИЕ КОРМА</a></li>
+                                <li><a href="javascript:void(0)">ВЛАЖНЫЕ КОРМА</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0)">HOLISTYC BLEND</a></li>
+                        <li><a href="javascript:void(0)">НАПОЛНИТЕЛИ DR.ELSEY'S</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0)">HOLISTYC BLEND</a></li>
-                <li><a href="javascript:void(0)">НАПОЛНИТЕЛИ DR.ELSEY'S</a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-newspaper-o" aria-hidden="true"></i>НОВОСТИ</a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-users" aria-hidden="true"></i>НАША КОМАНДА</a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-map-marker" aria-hidden="true"></i>КОНТАКТЫ</a></li>
             </ul>
-        </li>
-        <li><a href="javascript:void(0)"><i class="fa fa-newspaper-o" aria-hidden="true"></i>НОВОСТИ</a></li>
-        <li><a href="javascript:void(0)"><i class="fa fa-users" aria-hidden="true"></i>НАША КОМАНДА</a></li>
-        <li><a href="javascript:void(0)"><i class="fa fa-map-marker" aria-hidden="true"></i>КОНТАКТЫ</a></li>
-    </ul>
+        </div>
+    </div>
 </nav>
 
 <style>
+    .fourth-template-navbar button {
+        border: 2px solid #fff!important;
+    }
+
+    .fourth-template-navbar .icon-bar {
+        background-color: #fff;
+    }
+
     .fourth-template-navbar.navbar {
         background-color: #576472;
         border: unset;
