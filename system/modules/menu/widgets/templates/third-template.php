@@ -145,8 +145,4 @@ if (!empty($menu)) : ?>
     .third-template-nav li > ul {
         display: none;
     }
-
-    /*.third-template-nav li.dropdown:hover > ul {*/
-    /*    display: block !important;*/
-    /*}*/
 </style>
