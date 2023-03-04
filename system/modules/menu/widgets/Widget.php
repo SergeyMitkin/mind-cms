@@ -16,18 +16,31 @@ class Widget extends Menu {
         return self::$instance;
     }
 
-    function showMenu($id = -1, $template='first-template') {
+    function showMenu($id = -1, $template=false) {
 
+        // Если не создаётся новое меню
         if ($id != -1) {
             $menu_stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $id";
             $menu_items = parent::instance()->pdo->query($menu_stm)->fetchAll();
 
-            $root_stm = "SELECT id FROM menu WHERE type = 'root' AND menu_id = $id";
-            $root_id = parent::instance()->pdo->query($root_stm)->fetchColumn();
+            $root_stm = "SELECT menu.id, templates.`name` FROM menu
+                        LEFT JOIN templates ON menu.template_id = templates.id
+                        WHERE type = 'root' AND menu_id = $id";
+            $root_id = parent::instance()->pdo->query($root_stm)->fetch()['id'];
+
+            // Если меню вывоодится не в форме создания основного меню.
+            if (!$template) {
+                $template = parent::instance()->pdo->query($root_stm)->fetch()['name'];
+            } else {
+//                $template = 'first-template';
+            }
+
         } else {
             $menu_items = [];
             $root_id = 0;
+            $template = 'first_template';
         }
+
         // Id родительских элментов
         $parents = [];
         foreach ($menu_items as $item) {

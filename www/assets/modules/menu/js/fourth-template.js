@@ -1,4 +1,5 @@
 $(function(){
+    console.log('ggggggggg');
 
     // В мобильной версии, подменю открывается при клике
     $('.templates-tabs a').on('shown.bs.tab', function(){

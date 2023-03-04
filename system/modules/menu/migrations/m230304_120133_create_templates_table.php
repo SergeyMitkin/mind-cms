@@ -15,7 +15,13 @@ class m230304_120133_create_templates_table extends Migration
         ;");
 
          $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
-            'first_template', 'second_template', 'third_template', 'fourth_template');");
+            'first-template');");
+         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+            'second-template');");
+         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+            'third-template');");
+         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+            'fourth-template');");
      }
                  
      public function down() {

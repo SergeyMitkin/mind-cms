@@ -29,8 +29,13 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
         <?php
+//        $left_menu = new modules\menu\widgets\Widget();
+//        $menu = $left_menu->showMenu(1, 'test');
+
         $left_menu = new modules\menu\widgets\Widget();
-        $menu = $left_menu->showMenu(1, 'test');
+                $menu = $left_menu->showMenu(4);
+//        \modules\menu\widgets\Widget::instance()->showMenu(4);
+
         if ($menu != false) {
             echo $menu;
         } else {
