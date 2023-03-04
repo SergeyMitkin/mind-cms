@@ -65,7 +65,7 @@ class Menu extends Model
     }
 
     /**
-     * Прежде чем вставлять  сделаем урл, и проставим ключи границ
+     * Прежде чем вставлять сделаем урл, и проставим ключи границ
      * @return bool
      */
     public function beforeInsert()
