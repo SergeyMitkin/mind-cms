@@ -13,6 +13,9 @@ class m230304_120133_create_templates_table extends Migration
         COLLATE='utf8mb4_unicode_ci'
         ENGINE=InnoDB
         ;");
+
+         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+            'first_template', 'second_template', 'third_template', 'fourth_template');");
      }
                  
      public function down() {
