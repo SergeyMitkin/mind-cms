@@ -1,5 +1,4 @@
 $(function(){
-
     // В мобильной версии, подменю открывается при клике
     $('.templates-tabs a').on('shown.bs.tab', function(){
         if( $(".second-template-navbar").is(":visible") ) {

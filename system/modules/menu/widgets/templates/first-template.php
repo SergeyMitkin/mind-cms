@@ -81,8 +81,8 @@ if (!empty($menu)) : ?>
             </ul>
         </li>
         <li><a href="javascript:void(0)">Link 3</a></li>
-        <div class="first-menu-mobile"></div>
     </ul>
+    <div class="first-menu-mobile"></div>
 </nav>
 
 <?php endif; ?>

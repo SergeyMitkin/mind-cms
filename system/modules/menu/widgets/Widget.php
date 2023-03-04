@@ -16,7 +16,7 @@ class Widget extends Menu {
         return self::$instance;
     }
 
-    function showMenu($id, $template='first-template') {
+    function showMenu($id = -1, $template='first-template') {
 
         if ($id != -1) {
             $menu_stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $id";

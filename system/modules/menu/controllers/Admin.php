@@ -64,6 +64,8 @@ class Admin extends Controller
                 header('Location:/menu/admin');
             }
         } elseif ($id=='root') {
+            $this->html->setCss('/assets/modules/menu/css/templates-tabs.css');
+            $this->html->setJs('/assets/modules/menu/js/templates-tabs.js');
             $this->html->content = $this->render(
                 'addRootMenu.php', [
                     'topmenu'   => $this->render($this->menu, [
