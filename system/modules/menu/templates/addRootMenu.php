@@ -33,11 +33,11 @@
 
                         <div class="templates-tabs">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#first-template" data-toggle="tab">Первый шаблон</a></li>
-                                <li><a href="#second-template" data-toggle="tab">Второй шаблон</a></li>
-                                <li><a href="#therd-template" data-toggle="tab">Третий шаблон</a></li>
-                                <li><a href="#fourth-template" data-toggle="tab">Четвертый шаблон</a></li>
-                                <li><a href="#fifth-template" data-toggle="tab">Пятый шаблон</a></li>
+                                <li class="active"><a href="#first-template" data-id="1" data-toggle="tab">Первый шаблон</a></li>
+                                <li><a href="#second-template" data-id="2" data-toggle="tab">Второй шаблон</a></li>
+                                <li><a href="#therd-template" data-id="3" data-toggle="tab">Третий шаблон</a></li>
+                                <li><a href="#fourth-template" data-id="4" data-toggle="tab">Четвертый шаблон</a></li>
+                                <li><a href="#fifth-template" data-id="5" data-toggle="tab">Пятый шаблон</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="template_id" value="root">
+                        <input type="hidden" name="template_id" value="1">
                     </fieldset>
 
                     <div class="form-group">

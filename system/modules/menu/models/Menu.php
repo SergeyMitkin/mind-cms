@@ -28,6 +28,7 @@ use modules\user\models\USER;
  * @property integer parent_id
  * @property string type
  * @property integer menu_id
+ * @property integer template_id
  * @property integer is_subheader
  * @property string extData
  */
@@ -56,6 +57,7 @@ class Menu extends Model
             $this->type = "";
             $this->parent_id = 0;
             $this->menu_id = 0;
+            $this->template_id = 0;
             $this->is_subheader = 0;
 			$this->extData = null;
         }
