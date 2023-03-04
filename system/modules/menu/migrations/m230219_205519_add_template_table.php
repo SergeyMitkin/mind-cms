@@ -5,7 +5,7 @@ class m230219_205519_add_template_table extends Migration
 {
     public function up() {
         $this->query("ALTER TABLE `menu`
-	ADD COLUMN `template` VARCHAR(250) DEFAULT '' AFTER `icon`;");
+	ADD COLUMN `template` INTEGER(11) NULL AFTER `icon`;");
     }
 
     public function down() {
