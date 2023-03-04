@@ -71,11 +71,10 @@ $(function(){
 });
 
 function fourthSubmenuEvent(element){
-    console.log('test');
     if ( $(element).siblings(".dropdown-menu").is(":visible") ){
         $(element).siblings(".dropdown-menu").hide();
     } else {
-        $(element).siblings(".dropdown-menu").show();
+        $(element).siblings(".dropdown-menu").attr('style', 'display: block;');
     }
 }
 

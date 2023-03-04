@@ -210,12 +210,6 @@ if (!empty($menu)) : ?>
         .fourth-menu-mobile {
             display: none;
         }
-        .fourth-template-navbar .navbar-nav > li > a:focus {
-            background: #576472 !important;
-        }
-        .fourth-template-navbar .navbar-nav > li > a:hover {
-            background: #323a42 !important;
-        }
     }
     @media (max-width: 767px) {
         .fourth-menu-mobile {
