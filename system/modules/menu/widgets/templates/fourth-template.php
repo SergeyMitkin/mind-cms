@@ -137,11 +137,6 @@ if (!empty($menu)) : ?>
         margin-right: 3px;
     }
 
-    .fourth-template-navbar .navbar-nav > li {
-        width: 100%;
-        float: left;
-    }
-
     .fourth-template-navbar .navbar-nav > li a {
         color: #fff !important;
         padding: 20px 25px !important;
@@ -225,9 +220,11 @@ if (!empty($menu)) : ?>
             position: relative;
             width: 100%;
         }
-        /*.fourth-template-navbar li:hover > ul {*/
-        /*    display: none !important;*/
-        /*}*/
+
+        .fourth-template-navbar .navbar-nav > li {
+            width: 100%;
+            float: left;
+        }
     }
 
 </style>
