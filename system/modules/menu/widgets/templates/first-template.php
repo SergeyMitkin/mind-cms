@@ -3,6 +3,7 @@
 use modules\menu\models\ShowTemplate;
 
 if (!empty($menu)) : ?>
+
 <nav class="navbar first-template-navbar">
     <ul class="nav first-template-nav">
         <?php  $template = new ShowTemplate();

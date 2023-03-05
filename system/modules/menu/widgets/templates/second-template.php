@@ -1,6 +1,9 @@
-
 <?php
+
+use modules\menu\models\ShowTemplate;
+
 if (!empty($menu)) : ?>
+
     <nav class="navbar second-template-navbar">
         <ul class="nav second-template-nav">
             <?php $template = new ShowTemplate();
