@@ -19,15 +19,15 @@
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
 
-<!--    <div class="navbar-header">-->
-<!--        <a href="/" class="navbar-brand">TOOLS</a>-->
-<!--        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">-->
-<!--            <span class="icon-bar"></span>-->
-<!--            <span class="icon-bar"></span>-->
-<!--            <span class="icon-bar"></span>-->
-<!--        </button>-->
-<!--    </div>-->
-<!--    <div class="navbar-collapse collapse" id="navbar-main">-->
+    <div class="navbar-header">
+        <a href="/" class="navbar-brand">TOOLS</a>
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
         <?php
 //        $left_menu = new modules\menu\widgets\Widget();
 //        $menu = $left_menu->showMenu(1, 'test');
@@ -41,32 +41,18 @@
 //            echo 'Меню не найдено!';
 //        }
         ?>
-<!--        <ul class="nav navbar-nav navbar-right">-->
-<!--            --><?// if (\core\User::current()->isAdmin()) { ?>
-<!--                <li><a href="/admin" target="_blank">В административную панель</a></li> --><?// } ?>
-<!--            --><?// if (\core\User::current()->isAuthorized()) { ?>
-<!--                <li><a href="/user/profile" target="_blank">Мой профиль</a></li>-->
-<!--                <li><a href="/user/logout" target="_blank">Выйти</a></li>--><?// } ?>
-<!--        </ul>-->
-<!--    </div>-->
+        <ul class="nav navbar-nav navbar-right">
+            <? if (\core\User::current()->isAdmin()) { ?>
+                <li><a href="/admin" target="_blank">В административную панель</a></li> <? } ?>
+            <? if (\core\User::current()->isAuthorized()) { ?>
+                <li><a href="/user/profile" target="_blank">Мой профиль</a></li>
+                <li><a href="/user/logout" target="_blank">Выйти</a></li><? } ?>
+        </ul>
+    </div>
 </div>
 
 <div class="clearfix panel-body">
     <div class="wrapper">
-        <div class="left-manu">
-
-            <?php
-            $manu_widget = new modules\menu\widgets\Widget();
-                $left_menu = $manu_widget->showMenu(1);
-
-                    if ($left_menu != false) {
-                        echo $left_menu;
-                    } else {
-                        echo 'Меню не найдено!';
-                    }
-            ?>
-
-        </div>
         <?= \core\Html::instance()->content; ?>
     </div>
 
