@@ -1,28 +1,10 @@
 $(function(){
-    console.log('ggggggggg');
-
-    // В мобильной версии, подменю открывается при клике
-    $('.templates-tabs a').on('shown.bs.tab', function(){
-
-        if ( $(".fourth-menu-mobile").is(":visible") ) {
-            $(".fourth-template-navbar li.dropdown > a").on("touchstart click", function(e){
-                e.preventDefault();
-                fourthSubmenuEvent(this);
-            });
-        } else {
-            $('.fourth-template-navbar li.dropdown').on('mouseover', function() {
-                let child_menu = $(this).children('.dropdown-menu');
-                $(this).addClass('open');
-                if ($(this).parent().hasClass('dropdown-menu')) {
-                    child_menu.attr('style', 'display: block; top: 0px; left: ' + $(this).width() + 'px;');
-                } else {
-                    child_menu.show();
-                }
-            }).on('mouseleave', function (){
-                if(!$(this).children('.dropdown-menu').hide().is(":visible")){
-                    $(this).removeClass('open');
-                }
-            });
+    // События прикрепляются к меню либо при загрузке страницы, либо при открытии вкладки с шаблоном
+    fourthMenuEvent();
+    $('.templates-tabs a').on('shown.bs.tab', function(e){
+        let template_id = $(e.target).attr("data-id");
+        if (template_id === 4) {
+            fourthMenuEvent();
         }
     });
 
@@ -70,6 +52,30 @@ $(function(){
         }
     });
 });
+
+function fourthMenuEvent() {
+    // В мобильной версии, подменю открывается при клике
+    if ( $(".fourth-menu-mobile").is(":visible") ) {
+        $(".fourth-template-navbar li.dropdown > a").on("touchstart click", function(e){
+            e.preventDefault();
+            fourthSubmenuEvent(this);
+        });
+    } else {
+        $('.fourth-template-navbar li.dropdown').on('mouseover', function() {
+            let child_menu = $(this).children('.dropdown-menu');
+            $(this).addClass('open');
+            if ($(this).parent().hasClass('dropdown-menu')) {
+                child_menu.attr('style', 'display: block; top: 0px; left: ' + $(this).width() + 'px;');
+            } else {
+                child_menu.show();
+            }
+        }).on('mouseleave', function (){
+            if(!$(this).children('.dropdown-menu').hide().is(":visible")){
+                $(this).removeClass('open');
+            }
+        });
+    }
+}
 
 function fourthSubmenuEvent(element){
     if ( $(element).siblings(".dropdown-menu").is(":visible") ){

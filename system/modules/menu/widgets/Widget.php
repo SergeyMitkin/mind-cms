@@ -31,13 +31,18 @@ class Widget extends Menu {
             // Если меню вывоодится не в форме создания основного меню.
             if (!$template) {
                 $template = parent::instance()->pdo->query($root_stm)->fetch()['name'];
-            } else {
-                $template = $template;
             }
         } else {
             $menu_items = [];
             $root_id = 0;
         }
+
+        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump($template);
+//        echo'</pre>';
+//        die;
+        // --- Отладка конец
 
         // Id родительских элментов
         $parents = [];

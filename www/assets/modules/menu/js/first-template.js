@@ -1,12 +1,12 @@
 $(function (){
 
-    // В мобильной версии, подменю открывается при клике
-    if ( $(".first-menu-mobile").is(":visible") ) {
-        $(".first-template-nav li.dropdown > a").on("touchstart click", function(e){
-            e.preventDefault();
-            firstSubmenuEvent(this);
-        });
-    }
+    firstMenuEvent();
+    $('.templates-tabs a').on('shown.bs.tab', function(e){
+        let template_id = $(e.target).attr("data-id");
+        if (template_id === 1) {
+            firstMenuEvent();
+        }
+    });
 
     $( window ).resize(function() {
         if ( !$(".first-menu-mobile").is(":visible")) {
@@ -36,6 +36,16 @@ $(function (){
         }
     });
 });
+
+function firstMenuEvent(){
+    if ( $(".first-menu-mobile").is(":visible") ) {
+        // В мобильной версии, подменю открывается при клике
+        $(".first-template-nav li.dropdown > a").on("touchstart click", function(e){
+            e.preventDefault();
+            firstSubmenuEvent(this);
+        });
+    }
+}
 
 function firstSubmenuEvent(element){
     if ( $(element).siblings(".submenu").is(":visible") ){
