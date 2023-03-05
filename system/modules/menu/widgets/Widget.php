@@ -32,7 +32,7 @@ class Widget extends Menu {
             if (!$template) {
                 $template = parent::instance()->pdo->query($root_stm)->fetch()['name'];
             } else {
-                $template = 'first-template';
+                $template = $template;
             }
         } else {
             $menu_items = [];

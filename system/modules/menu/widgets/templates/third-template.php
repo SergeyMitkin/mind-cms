@@ -1,50 +1,12 @@
-
 <?php
+
+use modules\menu\models\ShowTemplate;
+
 if (!empty($menu)) : ?>
     <nav class="navbar third-template-navbar">
         <ul class="nav third-template-nav">
-            <?php function showThirdTemplate($menu, $root_id, $parents) {
-                $sub_index = 0;
-            foreach ($menu as $item) {
-                if ($item['parent_id'] == $root_id
-                && array_search($item['id'], $parents) === false
-                && $item['is_subheader']){
-                    if($sub_index !== 0) {?>
-                        </div>
-                    <?}?>
-                    <? if ($sub_index == 0) {?>
-                        <div class="sub-wrap">
-                            <div class="nav sub-item">
-                                <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                    <?} else if ($sub_index > 0){?>
-                        <div class="nav sub-item">
-                            <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                    <?}?>
-                            <? $sub_index++;
-                    if ($sub_index > 0 && $sub_index == count($menu)){?>
-                            </div>
-                        </div>
-                    <?}
-                    } else if($item['parent_id'] == $root_id
-                        && array_search($item['id'], $parents) === false
-                    ){?>
-                        <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
-                    <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
-                        <li class="dropdown">
-                            <a href="<?= $item['url'] ?>">
-                                <div class="link-name"><?= $item['name'] ?></div>
-                                <div class="fa-angle-wrap">
-                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                </div>
-                            </a>
-                            <ul class="nav submenu">
-                                <? showThirdTemplate($menu, $item['id'], $parents); ?>
-                            </ul>
-                        </li>
-                    <?}
-                }
-            }?>
-            <?php showThirdTemplate($menu, $root_id, $parents); ?>
+            <?php $template_model = new ShowTemplate();
+            $template_model->showThirdTemplate($menu, $root_id, $parents); ?>
         </ul>
     </nav>
 

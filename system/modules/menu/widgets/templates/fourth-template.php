@@ -1,5 +1,7 @@
-
 <?php
+
+namespace modules\menu\models;
+
 if (!empty($menu)) : ?>
     <nav class="navbar fourth-template-navbar">
         <div class="container-fluid">
@@ -14,43 +16,8 @@ if (!empty($menu)) : ?>
 
             <div class="collapse navbar-collapse" id="navbar-main">
                 <ul class="fourth-template-nav nav navbar-nav">
-                    <?php function showFourthTemplate($menu, $root_id, $parents) {
-                    $sub_index = 0;
-                    foreach ($menu as $item) {
-                        if ($item['parent_id'] == $root_id
-                        && array_search($item['id'], $parents) === false
-                        && $item['is_subheader']){
-                            if($sub_index !== 0) {?>
-                                </div>
-                            <?}?>
-                            <? if ($sub_index == 0) {?>
-                            <div class="sub-wrap">
-                                <div class="nav sub-item">
-                                    <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                            <?} else if ($sub_index > 0){?>
-                                <div class="nav sub-item">
-                                    <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-                            <?}?>
-                                <? $sub_index++;
-                            if ($sub_index > 0 && $sub_index == count($menu)){?>
-                                </div>
-                            </div>
-                            <?}
-                        } else if($item['parent_id'] == $root_id
-                                && array_search($item['id'], $parents) === false
-                            ){?>
-                                <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
-                        <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
-                            <li class="dropdown">
-                                <a href="<?= $item['url'] ?>"><?= $item['name'] ?></a>
-                                <ul class="nav dropdown-menu">
-                                    <? showFourthTemplate($menu, $item['id'], $parents); ?>
-                                </ul>
-                            </li>
-                        <?}
-                        }
-                    }?>
-                    <?php showFourthTemplate($menu, $root_id, $parents); ?>
+                    <?php $template_model = new ShowTemplate();
+                    $template_model->showFourthTemplate($menu, $root_id, $parents); ?>
                 </ul>
             </div>
         </div>
