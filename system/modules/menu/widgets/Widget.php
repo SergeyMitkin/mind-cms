@@ -17,12 +17,12 @@ class Widget extends Menu {
     }
 
     function showMenu($id = -1, $template=false) {
-
         // Если не создаётся новое меню
         if ($id != -1) {
             $menu_stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $id";
             $menu_items = parent::instance()->pdo->query($menu_stm)->fetchAll();
 
+            // Id root и имя шаблона
             $root_stm = "SELECT menu.id, templates.`name` FROM menu
                         LEFT JOIN templates ON menu.template_id = templates.id
                         WHERE type = 'root' AND menu_id = $id";
@@ -32,13 +32,11 @@ class Widget extends Menu {
             if (!$template) {
                 $template = parent::instance()->pdo->query($root_stm)->fetch()['name'];
             } else {
-//                $template = 'first-template';
+                $template = 'first-template';
             }
-
         } else {
             $menu_items = [];
             $root_id = 0;
-            $template = 'first_template';
         }
 
         // Id родительских элментов

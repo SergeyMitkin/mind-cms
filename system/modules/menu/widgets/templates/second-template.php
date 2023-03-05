@@ -3,61 +3,8 @@
 if (!empty($menu)) : ?>
     <nav class="navbar second-template-navbar">
         <ul class="nav second-template-nav">
-            <?php function showSecondTemplate($menu, $root_id, $parents) {
-
-            $children_count = 0;
-            foreach ($menu as $menu_item) {
-                if ($menu_item['parent_id'] == $root_id){
-                    $children_count++;
-                }
-            }
-
-            $sub_index = 0;
-            foreach ($menu as $item) {
-                if ($item['parent_id'] == $root_id
-                    && $item['is_subheader']
-                ){
-                    if ($sub_index == 0) {?>
-                        <li class="sub-wrap">
-                    <?} else {?>
-                        </ul> <!-- закрывается предыдущий .sub-item -->
-                    <?}?>
-
-                    <? $sub_index++; ?>
-                    <ul class="nav sub-item">
-                        <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
-
-                    <?} else if($item['parent_id'] == $root_id
-                        && array_search($item['id'], $parents) === false
-                    ){?>
-
-                        <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
-                        <? if ($sub_index !== 0){$sub_index++;} ?>
-
-                        <? if ($sub_index > 2 &&
-                                $sub_index == $children_count-1
-                        ){?>
-                                </ul> <!-- закрываются .sub-wrap и .sub-item -->
-                            </li>
-                        <?} else if ($sub_index == $children_count) {?>
-                                </ul> <!-- закрываются .sub-wrap и .sub-item -->
-                            </li>
-                        <?}?>
-
-                    <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
-                        <li class="dropdown">
-                            <a href="<?= $item['url'] ?>">
-                                <div class="link-name"><?= $item['name'] ?></div>
-                                <div class="triangle-right"></div>
-                            </a>
-                            <ul class="nav submenu">
-                                <? showSecondTemplate($menu, $item['id'], $parents); ?>
-                            </ul>
-                        </li>
-                    <?}
-                    }
-                }?>
-            <?php showSecondTemplate($menu, $root_id, $parents); ?>
+            <?php $template = new ShowTemplate();
+            $template->showSecondTemplate($menu, $root_id, $parents); ?>
         </ul>
         <div class="second-menu-mobile"></div>
     </nav>

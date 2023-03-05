@@ -19,7 +19,6 @@ $(function (){
                     $(this).children(".fa-angle-wrap").html("<i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>");
                 }
             });
-
         } else {
             $(".first-template-nav li.dropdown > a").each(function(){
                 if ( !checkEvent($(this), 'touchstart') || !checkEvent($(this), 'click') ) {
