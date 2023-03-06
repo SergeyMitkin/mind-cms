@@ -51,7 +51,7 @@ if (!empty($menu)) : ?>
 
 <style>
     .first-template-nav .nav.submenu,
-    .first-template-nav .nav.sub-item-wrap
+    .first-template-nav .nav.sub-item
     {
         margin: 0 !important;
         padding: 0 !important;
@@ -80,22 +80,22 @@ if (!empty($menu)) : ?>
             border-width: 2px 2px 2px 2px !important;
         }
 
-        .first-template-nav noindex:last-child>li {
+        .first-template-nav noindex:last-child > li {
+            border-width: 2px 2px 2px 2px !important;
+        }
+
+        .first-template-nav .sub-item-wrap:last-child>li:last-child {
             border-width: 2px 2px 2px 2px !important;
         }
     }
     @media (max-width: 600px) {
-        .first-template-nav li:not(noindex>li):last-child {
+        .first-template-nav > li:last-child {
             border-width: 2px 2px 2px 2px !important;
         }
 
-        .first-template-nav noindex:last-child>li {
+        .first-template-nav > noindex:last-child>li {
             border-width: 2px 2px 2px 2px !important;
         }
-    }
-
-    .first-template-nav .sub-item-wrap:last-child>li:last-child {
-        border-width: 2px 2px 2px 2px !important;
     }
 
     .first-template-nav li.menu-subheader {

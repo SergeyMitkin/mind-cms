@@ -15,10 +15,10 @@ class ShowTemplate
                 <?}?>
                 <? if ($sub_index == 0) {?>
                     <div class="sub-wrap">
-                        <div class="nav sub-item-wrap">
+                        <div class="nav sub-item">
                             <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                 <?} else if ($sub_index > 0){?>
-                    <div class="nav sub-item-wrap">
+                    <div class="nav sub-item">
                         <li class="menu-subheader"><a href="javascript:void(0)"><?= $item['name'] ?></a></li>
                 <?}?>
                 <? $sub_index++;
