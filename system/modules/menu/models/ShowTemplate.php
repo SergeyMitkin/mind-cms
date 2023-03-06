@@ -209,6 +209,7 @@ class ShowTemplate
                         </ul>
                     </li>
                 <?}?>
+
             <?}
         }
     }
@@ -238,16 +239,34 @@ class ShowTemplate
             } else if($item['parent_id'] == $root_id
                     && array_search($item['id'], $parents) === false
                 ){?>
-                    <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
+
+                <? if($item['is_noindex'] == 1) {?>
+                    <noindex>
+                        <li><a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a></li>
+                    </noindex>
+                <?} else {?>
+                    <li><a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a></li>
+                <?}?>
+
             <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
-                <li class="dropdown">
-                    <a href="<?= $item['url'] ?>"><?= $item['name'] ?></a>
-                    <ul class="nav dropdown-menu">
-                        <? $this->showFourthTemplate($menu, $item['id'], $parents); ?>
-                    </ul>
-                </li>
+                <? if($item['is_noindex'] == 1) {?>
+                    <noindex>
+                        <li class="dropdown">
+                            <a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a>
+                            <ul class="nav dropdown-menu">
+                                <? $this->showFourthTemplate($menu, $item['id'], $parents); ?>
+                            </ul>
+                        </li>
+                    </noindex>
+                <?} else {?>
+                    <li class="dropdown">
+                        <a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a>
+                        <ul class="nav dropdown-menu">
+                            <? $this->showFourthTemplate($menu, $item['id'], $parents); ?>
+                        </ul>
+                    </li>
+                <?}?>
             <?}
         }
     }
-
 }
