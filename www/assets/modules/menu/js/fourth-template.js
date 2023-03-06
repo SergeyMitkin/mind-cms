@@ -16,7 +16,7 @@ $(function(){
                         let child_menu = $(this).children('.dropdown-menu');
                         $(this).addClass('open');
                         if ($(this).parent().hasClass('dropdown-menu')) {
-                            child_menu.attr('style', 'display: block; top: 0px; left: ' + $(this).width() + 'px;');
+                            child_menu.attr('style', 'top: 0px; left: ' + $(this).width() + 'px;');
                         } else {
                             child_menu.show();
                         }
@@ -65,7 +65,7 @@ function fourthMenuEvent() {
             let child_menu = $(this).children('.dropdown-menu');
             $(this).addClass('open');
             if ($(this).parent().hasClass('dropdown-menu')) {
-                child_menu.attr('style', 'display: block; top: 0px; left: ' + $(this).width() + 'px;');
+                child_menu.attr('style', 'top: 0px; left: ' + $(this).width() + 'px;');
             } else {
                 child_menu.show();
             }

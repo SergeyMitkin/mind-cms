@@ -108,6 +108,11 @@
     .fourth-menu-mobile {
         display: none;
     }
+    .fourth-template-navbar li:hover > .dropdown-menu
+    {
+        display: block !important;
+    }
+
 }
 @media (max-width: 767px) {
     .fourth-menu-mobile {
