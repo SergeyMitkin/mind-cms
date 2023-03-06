@@ -76,12 +76,20 @@ if (!empty($menu)) : ?>
     }
 
     @media (min-width: 601px) {
-        .first-template-nav li:not(.sub-item-wrap>li):last-child {
+        .first-template-nav li:not(noindex>li):not(.sub-item-wrap>li):last-child {
+            border-width: 2px 2px 2px 2px !important;
+        }
+
+        .first-template-nav noindex:last-child>li {
             border-width: 2px 2px 2px 2px !important;
         }
     }
     @media (max-width: 600px) {
         .first-template-nav li:not(noindex>li):last-child {
+            border-width: 2px 2px 2px 2px !important;
+        }
+
+        .first-template-nav noindex:last-child>li {
             border-width: 2px 2px 2px 2px !important;
         }
     }
