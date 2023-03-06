@@ -40,6 +40,7 @@ class Admin extends Controller
                 'topmenu'   => $this->render($this->menu, [
                     'action' => 'index'
                 ]),
+                'admin_menu' => $this->model->GetForList(),
                 'listMenus' => Menu::getRootMenu(),
             ]
         );
