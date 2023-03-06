@@ -2,29 +2,29 @@
 
 namespace modules\menu\models;
 
-//if (!empty($menu)) : ?>
-<!--    <nav class="navbar fourth-template-navbar">-->
-<!--        <div class="container-fluid">-->
-<!---->
-<!--            <div class="navbar-header">-->
-<!--                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">-->
-<!--                    <span class="icon-bar"></span>-->
-<!--                    <span class="icon-bar"></span>-->
-<!--                    <span class="icon-bar"></span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="collapse navbar-collapse" id="navbar-main">-->
-<!--                <ul class="fourth-template-nav nav navbar-nav">-->
-<!--                    --><?php //$template_model = new ShowTemplate();
-//                    $template_model->showFourthTemplate($menu, $root_id, $parents); ?>
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="fourth-menu-mobile"></div>-->
-<!--    </nav>-->
-<!---->
-<?// else : ?>
+if (!empty($menu)) : ?>
+    <nav class="navbar fourth-template-navbar">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-main">
+                <ul class="fourth-template-nav nav navbar-nav">
+                    <?php $template_model = new ShowTemplate();
+                    $template_model->showFourthTemplate($menu, $root_id, $parents); ?>
+                </ul>
+            </div>
+        </div>
+        <div class="fourth-menu-mobile"></div>
+    </nav>
+
+<? else : ?>
 
 <nav class="fourth-template-navbar navbar">
     <div class="container-fluid">
@@ -64,5 +64,5 @@ namespace modules\menu\models;
     <div class="fourth-menu-mobile"></div>
 </nav>
 
-<?php //endif; ?>
+<?php endif; ?>
 
