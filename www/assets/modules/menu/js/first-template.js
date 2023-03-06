@@ -3,14 +3,13 @@ $(function (){
     firstMenuEvent();
     $('.templates-tabs a').on('shown.bs.tab', function(e){
         let template_id = $(e.target).attr("data-id");
-        if (template_id === 1) {
+        if (template_id === '1') {
             firstMenuEvent();
         }
     });
 
     $( window ).resize(function() {
         if ( !$(".first-menu-mobile").is(":visible")) {
-
             $(".first-template-nav li.dropdown > a").each(function () {
                 if ( checkEvent($(this), 'click') || checkEvent($(this), 'touchstart') ) {
                     $(this).off("touchstart click");

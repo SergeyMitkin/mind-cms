@@ -2,7 +2,7 @@ $(function(){
     secondMenuEvent();
     $('.templates-tabs a').on('shown.bs.tab', function(e){
         let template_id = $(e.target).attr("data-id");
-        if (template_id === 2) {
+        if (template_id === '2') {
             secondMenuEvent();
         }
     });

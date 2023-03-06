@@ -29,19 +29,43 @@ class ShowTemplate
             } else if($item['parent_id'] == $root_id
                 && array_search($item['id'], $parents) === false
                 ){?>
-                <li><a href="<?= $item['url'] ?>"><?= $item['name'] ?></a></li>
+
+                <? if($item['is_noindex'] == 1) {?>
+                    <noindex>
+                        <li><a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a></li>
+                    </noindex>
+                <?} else {?>
+                    <li><a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a></li>
+                <?}?>
+
             <?} else if ($item['parent_id'] == $root_id) {?>
-                <li class="dropdown">
-                    <a href="<?= $item['url'] ?>">
-                        <div class="link-name"><?= $item['name'] ?></div>
-                        <div class="fa-angle-wrap">
-                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                        </div>
-                    </a>
-                    <ul class="nav submenu">
-                        <? $this->showFirstTemplate($menu, $item['id'], $parents); ?>
-                    </ul>
-                </li>
+                <? if($item['is_noindex'] == 1) {?>
+                    <noindex>
+                        <li class="dropdown">
+                            <a href="<?= $item['url'] ?>" <?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>>
+                                <div class="link-name"><?= $item['name'] ?></div>
+                                <div class="fa-angle-wrap">
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </div>
+                            </a>
+                            <ul class="nav submenu">
+                                <? $this->showFirstTemplate($menu, $item['id'], $parents); ?>
+                            </ul>
+                        </li>
+                    </noindex>
+                <?} else {?>
+                    <li class="dropdown">
+                        <a href="<?= $item['url'] ?>" <?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>>
+                            <div class="link-name"><?= $item['name'] ?></div>
+                            <div class="fa-angle-wrap">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                        <ul class="nav submenu">
+                            <? $this->showFirstTemplate($menu, $item['id'], $parents); ?>
+                        </ul>
+                    </li>
+                <?}?>
             <?}
         }
     }
