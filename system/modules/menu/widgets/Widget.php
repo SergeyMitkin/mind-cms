@@ -37,13 +37,6 @@ class Widget extends Menu {
             $root_id = 0;
         }
 
-        // --- ОТЛАДКА НАЧАЛО
-//        echo '<pre>';
-//        var_dump($template);
-//        echo'</pre>';
-//        die;
-        // --- Отладка конец
-
         // Id родительских элментов
         $parents = [];
         foreach ($menu_items as $item) {

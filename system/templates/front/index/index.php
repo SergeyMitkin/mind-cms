@@ -30,17 +30,14 @@
     <div class="navbar-collapse collapse" id="navbar-main">
         <?php
 //        $left_menu = new modules\menu\widgets\Widget();
-//        $menu = $left_menu->showMenu(1, 'test');
+//        $top_menu = $left_menu->showMenu(1);
 
-//        $manu_widget = new modules\menu\widgets\Widget();
-//                $top_menu = $manu_widget->showMenu(4);
-
-//        if ($menu != false) {
+//        if ($top_menu != false) {
 //            echo $top_menu;
 //        } else {
 //            echo 'Меню не найдено!';
 //        }
-        ?>
+//        ?>
         <ul class="nav navbar-nav navbar-right">
             <? if (\core\User::current()->isAdmin()) { ?>
                 <li><a href="/admin" target="_blank">В административную панель</a></li> <? } ?>

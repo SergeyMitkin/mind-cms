@@ -5,16 +5,34 @@
     <div class="col-sm-12 panel-body clearfix">
 
         <div class="main-info">
-    			<? if (!empty($data['menuItems'])) { ?>
-    				<ol id="result" class="list-group" data-id="<?= $data['parent_id'] ?>">
-    					<?= $data['menuItems']; ?>
-    				</ol>
-    			<? } else { ?>
-    				<div class="warning">Меню на сайте нет! Создать новое меню?</div>
-    			<? } ?>
+            <? if (!empty($data['menuItems'])) { ?>
+                <ol id="result" class="list-group" data-id="<?= $data['parent_id'] ?>">
+                    <?= $data['menuItems']; ?>
+                </ol>
+            <div>*Меню сортируется путем перетаскивания строк, зажмите левю кнопку мышки над строкой и тянетие на новое место.</div>
+
+            <?php
+            $formText = '
+                Вставляем код                    
+                            
+                $menu_widget = new modules\menu\widgets\Widget();
+                $menu = $manu_widget->showMenu();
+                
+                if ($menu != false) {
+                    echo $menu;
+                } else {
+                    echo \'Меню не найдено!\';
+                }
+            '?>
+            <p><?= nl2br(htmlspecialchars($formText)) ?></p>
+
+
+            <? } else { ?>
+                <div class="warning">Меню на сайте нет! Создать новое меню?</div>
+            <? } ?>
 
         </div>
-        <div>*Меню сортируется путем перетаскивания строк, зажмите левю кнопку мышки над строкой и тянетие на новое место.</div>
+
     </div>
 </div>
 
