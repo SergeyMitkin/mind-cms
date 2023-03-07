@@ -11,8 +11,11 @@
     background: #39b2a9 !important;
 }
 
-.nav-tabs > li.active > a {
+.nav-tabs > li > a {
     color: #fff !important;
+}
+
+.nav-tabs > li.active > a {
     background: #204d74 !important;
 }
 
