@@ -3,12 +3,10 @@
         <?= $data['topmenu']; ?>
         <?
         $id = isset($data['menuinfo']) && !empty($data['menuinfo']) ? $data['menuinfo']->id : FALSE;
-//        $parent_id = !empty($data['parent_id']) ? $data['parent_id'] : FALSE;
         $parent_id = !empty($data['parent_id']) ? $data['parent_id'] : $data['menuinfo']->parent_id;
         $menu_id = !empty($data['menu_id']) || (isset($data['menu_id']) && $data['menu_id'] == '0') ? $data['menu_id'] : '';
         $name = !empty($data['menuinfo']->name) ? $data['menuinfo']->name : FALSE;
         $link = !empty($data['menuinfo']->url) ? $data['menuinfo']->url : FALSE;
-        $icon = !empty($data['menuinfo']->icon) ? $data['menuinfo']->icon : FALSE;
         $noindex = !empty($data['menuinfo']->is_noindex) ? $data['menuinfo']->is_noindex : FALSE;
         $nofollow = !empty($data['menuinfo']->is_nofollow) ? $data['menuinfo']->is_nofollow : FALSE;
         $subheader = !empty($data['menuinfo']->is_subheader) ? $data['menuinfo']->is_subheader : FALSE;
@@ -28,12 +26,6 @@
                             <label for="link" class="col-sm-2 control-label">Ссылка</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="link" name="url" placeholder="Ссылка на меню" value="<?= $link; ?>"<?= !$subheader ? ' required' : ''; ?>>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="icon" class="col-sm-2 control-label">Иконка</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="icon" name="icon" placeholder="Glyphicons" value="<?= $icon; ?>">
                             </div>
                         </div>
                         <div class="">
