@@ -14,7 +14,7 @@
 
     <div class="control-links">
         <a href="/menu/admin" class="btn btn-primary<?=(isset($action) && $action == 'index') ? ' active' : '' ?>">
-            <?= (!isset($action) || $action !== 'rootMenu') ? 'Список меню':'Вернуться к списку' ?>
+            <?= (isset($action) && $action == 'index') ? 'Список меню':'Вернуться к списку' ?>
         </a>
 
         <?if (!isset($action) || $action !== 'rootMenu'):?>
