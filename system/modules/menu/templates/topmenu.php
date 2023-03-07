@@ -17,9 +17,6 @@
         <a href="/menu/admin/add/root" class="btn btn-primary<?=(isset($action) && $action == 'addRootMenu') ? ' active' : '' ?>">
             Создать основное меню
         </a>
-        <a href="/menu/admin/templateslist" class="btn btn-primary<?=(isset($action) && $action == 'templatesList') ? ' active' : '' ?>">
-            Управление шаблонами вывода
-        </a>
 
         <?if (isset($action) && $action == 'rootMenu'):?>
             <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
