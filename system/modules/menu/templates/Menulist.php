@@ -46,27 +46,6 @@
     </div>
 </div>
 
-<div class="panel row">
-    <div class="panel-heading clearfix">
-        <div class="pull-left">Меню сайта</div>
-        <div class="pull-right">
-            <a href="/menu/admin/form/0/ajax" class="btn btn-sm btn-success ajax">
-                <i class="fa fa-plus"></i> Создать пункт меню</a>
-            <a href="/menu/admin/parameters" class="btn  btn-sm btn-warning"><i class="fa fa-cogs"></i> Настройки</a></div>
-    </div>
-    <div class="panel-body">
-        <div class="col-sm-3">
-            <div class="clear clearfix">Поиск<br>
-                <input type="text" name="finded" id="finded">
-            </div>
-            <div class="clear clearfix" id="list_pages">
-                <?php \modules\menu\helpers\Nested::printNestedTree($data['admin_menu'], 0, false); ?>
-            </div>
-        </div>
-        <div class="col-sm-9" id="contentZone"></div>
-    </div>
-</div>
-
 <?
 \core\Html::instance()->setCss("/assets/vendors/jstree/themes/default/style.css");
 \core\Html::instance()->setJs("/assets/vendors/jstree/jstree.min.js");

@@ -35,12 +35,13 @@ class Admin extends Controller
 
 	public function actionIndex()
 	{
+
 		Html::instance()->content = $this->render(
             "Menulist.php", [
                 'topmenu'   => $this->render($this->menu, [
                     'action' => 'index'
                 ]),
-                'admin_menu' => $this->model->GetForList(),
+//                'admin_menu' => $this->model->GetForList(),
                 'listMenus' => Menu::getRootMenu(),
             ]
         );
