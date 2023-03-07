@@ -178,7 +178,7 @@ class Admin extends Controller
     function actionListMenu($id = false)
     {
         $this->html->title = 'Список пунктов в выбранном меню';
-        $this->html->setJs('/assets/vendors/jquery-sortable/jquery-sortable.js');
+        $this->html->setJs('/assets/modules/menu/js/jquery-sortable/jquery-sortable.js');
         $this->html->setJs('/assets/modules/menu/js/menu.js');
         $menuId              = Menu::getMenuId($id);
         Html::instance()->content = $this->render(

@@ -1,9 +1,9 @@
 <?php
 return [
-    'version' => '1.5',
+    'version' => '1.6',
     'ModuleInfo' => [
         'name' => 'menu',
-        'version_description' => 'Исправление пула ошибок + расширение доп параметрами',
+        'version_description' => 'Выбор шаблонов для меню',
         'link_home' => '/menu',
     ],
     'Folders' => [ // папки для архивации. По умолчанию system/modules/NameModule и www/assets/modules/NameModule
