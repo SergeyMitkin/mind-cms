@@ -12,11 +12,14 @@
 
     <div class="control-links">
         <a href="/menu/admin" class="btn btn-primary<?=(isset($action) && $action == 'index') ? ' active' : '' ?>">
-            Список меню
+            <?= (!isset($action) || $action !== 'rootMenu') ? 'Список меню':'Вернуться к списку' ?>
         </a>
-        <a href="/menu/admin/add/root" class="btn btn-primary<?=(isset($action) && $action == 'addRootMenu') ? ' active' : '' ?>">
-            Создать основное меню
-        </a>
+
+        <?if (!isset($action) || $action !== 'rootMenu'):?>
+            <a href="/menu/admin/add/root" class="btn btn-primary<?=(isset($action) && $action == 'addRootMenu') ? ' active' : '' ?>">
+                Создать основное меню
+            </a>
+        <?endif;?>
 
         <?if (isset($action) && $action == 'rootMenu'):?>
             <a href="/menu/admin/add/<?= $data['parent_id']; ?>"
