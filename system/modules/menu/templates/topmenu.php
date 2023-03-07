@@ -5,6 +5,7 @@
         </div>
     </div>
 <?php } ?>
+
 <div class="col-sm-4 pull-left module-title">
     <span><a href="/menu/admin">Menu</a></span>
 </div>
