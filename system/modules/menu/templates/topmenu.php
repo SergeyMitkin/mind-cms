@@ -5,10 +5,11 @@
         </div>
     </div>
 <?php } ?>
-<div class="col-sm-12">
-    <div class="highlight">
-        <span><a href="/menu/admin">Menu</a></span>
-    </div>
+<div class="col-sm-4 pull-left module-title">
+    <span><a href="/menu/admin">Menu</a></span>
+</div>
+
+<div class="col-sm-8 pull-right" style="text-align: right;">
 
     <div class="control-links">
         <a href="/menu/admin" class="btn btn-primary<?=(isset($action) && $action == 'index') ? ' active' : '' ?>">
