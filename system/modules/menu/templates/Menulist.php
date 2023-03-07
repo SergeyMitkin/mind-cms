@@ -13,8 +13,7 @@
     </div>
 
     <div class="panel-body">
-        <?php if (!empty($data['listMenus'])) {
-            ?>
+        <?php if (!empty($data['listMenus'])) { ?>
             <table class="table table-bordered table-striped table-hover" id="result">
                 <thead>
                 <tr class="info">

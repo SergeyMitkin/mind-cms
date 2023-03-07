@@ -1,8 +1,8 @@
-<div class="row">
-    <div class="col-sm-12 panel-heading">
+<div class="panel">
+    <div class="panel-heading clearfix">
         <?= $data['topmenu']; ?>
-
-    <div class="col-sm-12 panel-body clearfix">
+    </div>
+    <div class="panel-body">
 
         <div class="main-info">
             <? if (!empty($data['menuItems'])) { ?>
@@ -25,7 +25,6 @@
                 }
             '?>
             <p><?= nl2br(htmlspecialchars($formText)) ?></p>
-
 
             <? } else { ?>
                 <div class="warning">Меню на сайте нет! Создать новое меню?</div>
