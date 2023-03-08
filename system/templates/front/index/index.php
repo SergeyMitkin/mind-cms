@@ -29,15 +29,15 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
         <?php
-//        $left_menu = new modules\menu\widgets\Widget();
-//        $top_menu = $left_menu->showMenu(1);
+        $left_menu = new modules\menu\widgets\Widget();
+        $top_menu = $left_menu->showMenu(1);
 
-//        if ($top_menu != false) {
-//            echo $top_menu;
-//        } else {
-//            echo 'Меню не найдено!';
-//        }
-//        ?>
+        if ($top_menu != false) {
+            echo $top_menu;
+        } else {
+            echo 'Меню не найдено!';
+        }
+        ?>
         <ul class="nav navbar-nav navbar-right">
             <? if (\core\User::current()->isAdmin()) { ?>
                 <li><a href="/admin" target="_blank">В административную панель</a></li> <? } ?>

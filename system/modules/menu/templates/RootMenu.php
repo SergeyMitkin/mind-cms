@@ -16,7 +16,7 @@
                 Вставляем код                    
                             
                 $menu_widget = new modules\menu\widgets\Widget();
-                $menu = $manu_widget->showMenu();
+                $menu = $menu_widget->showMenu(1);
                 
                 if ($menu != false) {
                     echo $menu;

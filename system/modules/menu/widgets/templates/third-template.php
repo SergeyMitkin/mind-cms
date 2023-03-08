@@ -55,3 +55,61 @@ if (!empty($menu)) : ?>
     </nav>
 
 <?php endif; ?>
+
+<style>
+    .third-template-nav .nav.submenu,
+    .third-template-nav .sub-item
+    {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .third-template-nav li {
+        border-width: 1px 1px 0 1px !important;
+        border-style: solid !important;
+        width: 250px;
+    }
+
+    .third-template-nav > li,
+    .third-template-nav > noindex > li
+    {
+        background: #48a7e2;
+        border-color: #438bbc !important;
+    }
+
+    .third-template-nav li:not(.submenu li):last-child {
+        border-width: 1px 1px 1px 1px !important;
+    }
+
+    .third-template-nav li a {
+        color: #f7f7f7;
+        font-weight: 700;
+        border-radius: 0 !important;
+        display: flex !important;
+        justify-content: space-between;
+        text-decoration: none;
+        padding: 10px 15px;
+    }
+    .third-template-nav li a:hover,
+    .third-template-nav>li>a:focus
+    {
+        background: #3c98d4 !important;
+        color: #f7f7f7 !important;
+    }
+
+    .third-template-nav .submenu  li {
+        left: -1px;
+        background: #424952;
+        border-color: #383e47 !important;
+        position: relative;
+    }
+    .third-template-nav .submenu li a:hover,
+    .third-template-nav .submenu li a:focus
+    {
+        background: #45545f !important;
+    }
+
+    .third-template-nav li > ul {
+        display: none;
+    }
+</style>

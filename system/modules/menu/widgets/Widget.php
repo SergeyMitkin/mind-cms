@@ -19,7 +19,7 @@ class Widget extends Menu {
     function showMenu($id = -1, $template=false) {
         // Если не создаётся новое меню
         if ($id != -1) {
-            $menu_stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $id";
+            $menu_stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $id ORDER BY position";
             $menu_items = parent::instance()->pdo->query($menu_stm)->fetchAll();
 
             // Id root и имя шаблона
@@ -45,7 +45,6 @@ class Widget extends Menu {
             }
         }
 
-        Html::instance()->setCss('/assets/modules/menu/css/' . $template . '.css');
         Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
         $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $menu_items, 'root_id' => $root_id, 'parents' => $parents]);
 
