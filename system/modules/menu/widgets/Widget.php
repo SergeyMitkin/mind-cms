@@ -16,16 +16,20 @@ class Widget extends Menu {
         return self::$instance;
     }
 
-    function showMenu($id = -1, $template=false) {
+    function showMenu($id=-1, $root_id=0,  $children_items=[], $parents=[], $template=false) {
         // Если не создаётся новое меню
         if ($id != -1) {
-            $children_items = Menu::getChildrenItems($id);
-            $root_item = Menu::getRootItem($id);
-            $root_id = $root_item['id'];
+            if (empty($children_items)) {
+                $children_items = Menu::getChildrenItems($id);
+            }
 
-            // Если меню вывоодится не в форме создания основного меню
-            if (!$template) {
-                $template = $root_item['template_name'];;
+            if ($root_id === 0) {
+                $root_item = Menu::getRootItem($id);
+                $root_id = $root_item['id'];
+                // Если меню вывоодится не в форме создания основного меню
+                if (!$template) {
+                    $template = $root_item['template_name'];;
+                }
             }
         } else {
             $children_items = [];
@@ -33,12 +37,22 @@ class Widget extends Menu {
         }
 
         // Id родительских элментов
-        $parents = [];
-        foreach ($children_items as $item) {
-            if ($item['type'] == 'child' && !in_array($item['parent_id'], $parents)){
-                $parents[] = $item['parent_id'];
+        if (empty($parents)) {
+            foreach ($children_items as $item) {
+                if ($item['type'] == 'child' && !in_array($item['parent_id'], $parents)){
+                    $parents[] = $item['parent_id'];
+                }
             }
         }
+
+        // --- ОТЛАДКА НАЧАЛО
+//        echo '<pre>';
+//        var_dump($children_items);
+//        var_dump($root_id);
+//        var_dump($parents);
+//        echo'</pre>';
+//        die;
+        // --- Отладка конец
 
         Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
         $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $children_items, 'root_id' => $root_id, 'parents' => $parents]);

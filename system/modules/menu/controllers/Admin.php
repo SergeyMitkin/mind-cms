@@ -105,12 +105,25 @@ class Admin extends Controller
             }
         } elseif ($id=='root') {
 
+            $menuInfo = Menu::getMenuInfo($_GET['menu']);
+            $menuId = $menuInfo->menu_id;
+
+            $children_items = Menu::getChildrenItems($menuId);
+            $parents = [];
+            foreach ($children_items as $item) {
+                if ($item['type'] == 'child' && !in_array($item['parent_id'], $parents)){
+                    $parents[] = $item['parent_id'];
+                }
+            }
+
             $this->html->setCss('/assets/modules/menu/css/templates-tabs.css');
             $this->html->setJs('/assets/modules/menu/js/templates-tabs.js');
             $this->html->content = $this->render(
                 'addRootMenu.php', [
                     'topmenu'    => $this->render($this->menu),
                     'menuinfo'   => Menu::getMenuInfo($_GET['menu']),
+                    'children_items' => $children_items,
+                    'parents' => $parents
                 ]
             );
 

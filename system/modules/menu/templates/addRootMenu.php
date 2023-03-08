@@ -1,4 +1,5 @@
 <?php
+    $id = isset($data['menuinfo']) ? $data['menuinfo']->id : 0;
     $menu_id = isset($data['menuinfo']) ? $data['menuinfo']->menu_id : -1;
     $template_id = isset($data['menuinfo']) ? $data['menuinfo']->template_id : 0;
 ?>
@@ -39,38 +40,31 @@
                         <li class="<?= ($template_id == 2) ? 'active' : '' ?>"><a href="#second-template" data-id="2" data-toggle="tab">Второй шаблон</a></li>
                         <li class="<?= ($template_id == 3) ? 'active' : '' ?>"><a href="#therd-template" data-id="3" data-toggle="tab">Третий шаблон</a></li>
                         <li class="<?= ($template_id == 4) ? 'active' : '' ?>"><a href="#fourth-template" data-id="4" data-toggle="tab">Четвертый шаблон</a></li>
-                        <li class="<?= ($template_id == 5) ? 'active' : '' ?>"><a href="#fifth-template" data-id="5" data-toggle="tab">Пятый шаблон</a></li>
                     </ul>
 
                     <div class="tab-content">
                         <div id="first-template" class="tab-pane<?= ($template_id == 1 || $template_id == 0) ? ' in active' : '' ?>">
                             <h3>Первый шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'first-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id,$id,  $children_items=[], $parents=[], 'first-template');?>
                             </div>
                         </div>
                         <div id="second-template" class="tab-pane<?= ($template_id == 2) ? ' in active' : '' ?>">
                             <h3>Второй шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'second-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, $id,  $children_items=[], $parents=[],'second-template');?>
                             </div>
                         </div>
                         <div id="therd-template" class="tab-pane<?= ($template_id == 3) ? ' in active' : '' ?>">
                             <h3>Третий шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'third-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, $id,  $children_items=[], $parents=[],'third-template');?>
                             </div>
                         </div>
                         <div id="fourth-template" class="tab-pane<?= ($template_id == 4) ? ' in active' : '' ?>">
                             <h3>Четвертый шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, 'fourth-template');?>
-                            </div>
-                        </div>
-                        <div id="fifth-template" class="tab-pane<?= ($template_id == 5) ? ' in active' : '' ?>">
-                            <h3>Пятый шаблон</h3>
-                            <div class="template-content">
-                                <?= core\Html::instance()->render(__DIR__ . '\..\widgets\templates\test.php');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id,$id,  $children_items=[], $parents=[],'fourth-template');?>
                             </div>
                         </div>
                     </div>

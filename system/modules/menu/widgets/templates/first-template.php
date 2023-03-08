@@ -7,7 +7,7 @@ if (!empty($menu)) : ?>
 <nav class="navbar first-template-navbar">
     <ul class="nav first-template-nav">
         <?php  $template_model = new ShowTemplate();
-        $template_model->showFirstTemplate($menu, $root_id, $parents); ?>
+        echo $template_model->showFirstTemplate($menu, $root_id, $parents); ?>
     </ul>
     <div class="first-menu-mobile"></div>
 </nav>
