@@ -245,29 +245,6 @@ class Menu extends Model
         }
     }
 
-    public static function getChildrenMenuItems($id, $children=[]) {
-
-        $sql_result = self::instance()
-            ->select('id')
-            ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.parent_id' => $id])
-            ->getAll();
-
-        foreach ($sql_result as $item) {
-            $children[] = $item->id;
-
-            $item_result = self::instance()
-                ->select('id')
-                ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.parent_id' => $item->id])
-                ->getAll();
-
-            if (!empty($item_result)) {
-                $children = self::getChildrenMenuItems($item->id, $children);
-            }
-        }
-
-        return $children;
-    }
-
     public static function getChildMenuInfo($id = FALSE, $widget = FALSE) {
         if ($widget == FALSE) {
             $sql_result = self::instance()
@@ -394,4 +371,19 @@ class Menu extends Model
         $this->query($sql);
         return true;
     }
+
+    public static function getRootItem($menu_id) {
+        $stm = "SELECT menu.id, templates.`name` AS template_name FROM menu
+                        LEFT JOIN templates ON menu.template_id = templates.id
+                        WHERE type = 'root' AND menu_id = $menu_id";
+        $item = self::instance()->pdo->query($stm)->fetch();
+        return $item;
+    }
+
+    public static function getChildrenItems($menu_id) {
+        $stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $menu_id ORDER BY position";
+        $items = self::instance()->pdo->query($stm)->fetchAll();
+        return $items;
+    }
+
 }

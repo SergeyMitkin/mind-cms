@@ -19,34 +19,29 @@ class Widget extends Menu {
     function showMenu($id = -1, $template=false) {
         // Если не создаётся новое меню
         if ($id != -1) {
-            $menu_stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $id ORDER BY position";
-            $menu_items = parent::instance()->pdo->query($menu_stm)->fetchAll();
+            $children_items = Menu::getChildrenItems($id);
+            $root_item = Menu::getRootItem($id);
+            $root_id = $root_item['id'];
 
-            // Id root и имя шаблона
-            $root_stm = "SELECT menu.id, templates.`name` FROM menu
-                        LEFT JOIN templates ON menu.template_id = templates.id
-                        WHERE type = 'root' AND menu_id = $id";
-            $root_id = parent::instance()->pdo->query($root_stm)->fetch()['id'];
-
-            // Если меню вывоодится не в форме создания основного меню.
+            // Если меню вывоодится не в форме создания основного меню
             if (!$template) {
-                $template = parent::instance()->pdo->query($root_stm)->fetch()['name'];
+                $template = $root_item['template_name'];;
             }
         } else {
-            $menu_items = [];
+            $children_items = [];
             $root_id = 0;
         }
 
         // Id родительских элментов
         $parents = [];
-        foreach ($menu_items as $item) {
+        foreach ($children_items as $item) {
             if ($item['type'] == 'child' && !in_array($item['parent_id'], $parents)){
                 $parents[] = $item['parent_id'];
             }
         }
 
         Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
-        $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $menu_items, 'root_id' => $root_id, 'parents' => $parents]);
+        $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $children_items, 'root_id' => $root_id, 'parents' => $parents]);
 
         return $result;
 
