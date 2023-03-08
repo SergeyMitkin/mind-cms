@@ -14,13 +14,13 @@ class m230304_120133_create_templates_table extends Migration
         ENGINE=InnoDB
         ;");
 
-         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+         $this->query("INSERT INTO `templates` (`name`) VALUES (
             'first-template');");
-         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+         $this->query("INSERT INTO `templates` (`name`) VALUES (
             'second-template');");
-         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+         $this->query("INSERT INTO `templates` (`name`) VALUES (
             'third-template');");
-         $this->query("INSERT INTO `mind`.`templates` (`name`) VALUES (
+         $this->query("INSERT INTO `templates` (`name`) VALUES (
             'fourth-template');");
      }
                  
