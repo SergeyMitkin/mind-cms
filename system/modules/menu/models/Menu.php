@@ -171,7 +171,7 @@ class Menu extends Model
     public static function getMenuInfo($id) {
         $sql_result = self::instance()
             ->where(self::$currentTable . '.id', $id)
-            ->getOne();;
+            ->getOne();
         return $sql_result;
     }
 
@@ -232,9 +232,7 @@ class Menu extends Model
     }
 
     public static function deleteMenu($id) {
-
         self::instance()->delete($id);
-
         // Удаление дочерних элементов
         $children_items = self::getChildrenMenuItems($id);
         if (!empty($children_items)){
@@ -243,6 +241,28 @@ class Menu extends Model
                WHERE `id` IN (" . $implode . ")";
             $result = self::instance()->pdo->query($stm)->execute();
         }
+    }
+
+    public static function getChildrenMenuItems($id, $children=[]) {
+        $sql_result = self::instance()
+            ->select('id')
+            ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.parent_id' => $id])
+            ->getAll();
+
+        foreach ($sql_result as $item) {
+            $children[] = $item->id;
+
+            $item_result = self::instance()
+                ->select('id')
+                ->where([self::$currentTable . '.type' => 'child', self::$currentTable . '.parent_id' => $item->id])
+                ->getAll();
+
+            if (!empty($item_result)) {
+                $children = self::getChildrenMenuItems($item->id, $children);
+            }
+        }
+
+        return $children;
     }
 
     public static function getChildMenuInfo($id = FALSE, $widget = FALSE) {
@@ -384,6 +404,16 @@ class Menu extends Model
         $stm = "SELECT * FROM menu WHERE visible = 1 AND type = 'child' AND menu_id = $menu_id ORDER BY position";
         $items = self::instance()->pdo->query($stm)->fetchAll();
         return $items;
+    }
+
+    public static function getParentsItems($items) {
+        $parents = [];
+        foreach ($items as $item) {
+            if ($item['type'] == 'child' && !in_array($item['parent_id'], $parents)){
+                $parents[] = $item['parent_id'];
+            }
+        }
+        return $parents;
     }
 
 }

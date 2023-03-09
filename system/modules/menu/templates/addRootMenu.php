@@ -46,25 +46,25 @@
                         <div id="first-template" class="tab-pane<?= ($template_id == 1 || $template_id == 0) ? ' in active' : '' ?>">
                             <h3>Первый шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id,$id,  $children_items=[], $parents=[], 'first-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id,$id,  $children_items, $parents, 'first-template');?>
                             </div>
                         </div>
                         <div id="second-template" class="tab-pane<?= ($template_id == 2) ? ' in active' : '' ?>">
                             <h3>Второй шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, $id,  $children_items=[], $parents=[],'second-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, $id,  $children_items, $parents,'second-template');?>
                             </div>
                         </div>
                         <div id="therd-template" class="tab-pane<?= ($template_id == 3) ? ' in active' : '' ?>">
                             <h3>Третий шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, $id,  $children_items=[], $parents=[],'third-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id, $id,  $children_items, $parents,'third-template');?>
                             </div>
                         </div>
                         <div id="fourth-template" class="tab-pane<?= ($template_id == 4) ? ' in active' : '' ?>">
                             <h3>Четвертый шаблон</h3>
                             <div class="template-content">
-                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id,$id,  $children_items=[], $parents=[],'fourth-template');?>
+                                <?= \modules\menu\widgets\Widget::instance()->showMenu($menu_id,$id,  $children_items, $parents,'fourth-template');?>
                             </div>
                         </div>
                     </div>

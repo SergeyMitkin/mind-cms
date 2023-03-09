@@ -62,7 +62,7 @@ class ShowTemplate
                             </div>
                         </a>
                         <ul class="nav submenu">
-<!--                            --><?// $this->showFirstTemplate($menu, $item['id'], $parents); ?>
+                            <? $this->showFirstTemplate($menu, $item['id'], $parents); ?>
                         </ul>
                     </li>
                 <?}?>
