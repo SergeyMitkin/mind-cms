@@ -17,8 +17,9 @@ class Widget extends Menu {
     }
 
     function showMenu($id=-1, $root_id=0,  $children_items=[], $parents=[], $template=false) {
-        // Если не создаётся новое меню
+        // При редактировании и выводе на фронтенде
         if ($id != -1) {
+            // При выводе на фронтенде
             if (empty($children_items)) {
                 $children_items = Menu::getChildrenItems($id);
             }
@@ -45,27 +46,10 @@ class Widget extends Menu {
             }
         }
 
-        // --- ОТЛАДКА НАЧАЛО
-//        echo '<pre>';
-//        var_dump($children_items);
-//        var_dump($root_id);
-//        var_dump($parents);
-//        echo'</pre>';
-//        die;
-        // --- Отладка конец
-
         Html::instance()->setJs('/assets/modules/menu/js/' . $template . '.js');
         $result = Html::instance()->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $children_items, 'root_id' => $root_id, 'parents' => $parents]);
 
         return $result;
-
-        /*if (empty($template)) {
-            $template = "menu";
-        }
-        $result = parent::getChildMenuInfo($id, true);
-        $result = $result ? $this->app->html->render(__DIR__ . '/templates/' . $template . '.php', ['menu' => $result]) : FALSE;
-
-        return $result;*/
 
 //        if ($id > 0) {
 //            $model = new Menu();
