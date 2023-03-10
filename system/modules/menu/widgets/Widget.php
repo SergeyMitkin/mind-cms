@@ -31,6 +31,9 @@ class Widget extends Menu {
                 if (!$template) {
                     $template = $root_item['template_name'];;
                 }
+                if ($template == null) {
+                    $template = 'first-template';
+                }
             }
         } else {
             $children_items = [];
