@@ -2,7 +2,7 @@
     <div class="panel-heading clearfix">
         <?= $data['topmenu']; ?>
     </div>
-    <div class="panel-body">
+    <div class="col-md-12 panel-body clearfix">
 
         <div class="main-info">
             <? if (!empty($data['menuItems'])) { ?>
