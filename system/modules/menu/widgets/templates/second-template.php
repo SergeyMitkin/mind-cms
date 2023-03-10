@@ -130,7 +130,7 @@ if (!empty($menu)) : ?>
     .second-template-nav .submenu {
         position: absolute;
         top: -2px;
-        right: -250px;
+        left: 250px;
     }
 
     .second-template-nav li > .submenu {
@@ -168,7 +168,6 @@ if (!empty($menu)) : ?>
 
         .second-template-nav .sub-wrap {
             background: #4b4b4b;
-            position: absolute;
             display: flex;
             flex-wrap: wrap;
             width: max-content;
@@ -176,7 +175,7 @@ if (!empty($menu)) : ?>
             align-content: flex-start;
             padding-right: 100px;
             padding-bottom: 50px;
-            left: -250px;
+            left: -2px;
         }
     }
 
