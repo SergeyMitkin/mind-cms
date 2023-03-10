@@ -180,7 +180,7 @@ class ShowTemplate
                     <li><a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a></li>
                 <?}?>
 
-            <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
+            <?} else if ($item['parent_id'] == $root_id) {?>
 
                 <? if($item['is_noindex'] == 1) {?>
                     <noindex>
@@ -248,7 +248,7 @@ class ShowTemplate
                     <li><a href="<?= $item['url'] ?>"<?=($item['is_nofollow'] == 1)?' rel="nofollow"':''?>><?= $item['name'] ?></a></li>
                 <?}?>
 
-            <?} else if ($item['parent_id'] == $root_id && $sub_index == 0) {?>
+            <?} else if ($item['parent_id'] == $root_id) {?>
                 <? if($item['is_noindex'] == 1) {?>
                     <noindex>
                         <li class="dropdown">
