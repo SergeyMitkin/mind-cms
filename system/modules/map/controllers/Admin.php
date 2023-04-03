@@ -19,6 +19,8 @@ class Admin extends Controller
 
 	public function actionIndex()
 	{
+        $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
+        $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
         $this->html->content = $this->render(
             "MapList.php", [
                 'topmenu'   => $this->render($this->menu, [
@@ -28,5 +30,4 @@ class Admin extends Controller
         );
         $this->html->renderTemplate("@admin")->show();
 	}
-
 }
