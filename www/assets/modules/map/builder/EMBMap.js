@@ -31652,7 +31652,7 @@ var EMBMap = (function () {
         });
 
         function draw() {
-            let imgData = '/fon.jpg';
+            let imgData = '/assets/modules/map/img/fon.jpg';
 
             fabric_1.fabric.util.loadImage(imgData, function (img) {
                 let oImg = new fabric_1.fabric.Image(img);
