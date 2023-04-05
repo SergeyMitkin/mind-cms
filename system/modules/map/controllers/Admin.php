@@ -4,6 +4,7 @@ namespace modules\map\controllers;
 
 use core\Controller;
 use core\Html;
+use modules\menu\models\Menu;
 
 class Admin extends Controller
 {
@@ -30,4 +31,38 @@ class Admin extends Controller
         );
         $this->html->renderTemplate("@admin")->show();
 	}
+
+    function actionAdd($id = false)
+    {
+        if (!empty($_POST)) {
+            // К url добавляется слэш
+            if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
+                $_POST['url'] = "/".$_POST['url'];
+            }
+
+            Menu::instance()->saveMenu('add', $_POST);
+
+            // Направляем на страницу корневой категории
+            if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
+                $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
+                header('Location:/menu/admin/listmenu/' . $root_id);
+            } else {
+                header('Location:/menu/admin');
+            }
+        } else {
+            $newMenu             = !empty($menuId)?$menuId:Menu::getMenuId($id);
+            $this->html->setJs('/assets/modules/menu/js/addMenuItem.js');
+            $this->html->content = $this->render(
+                'addMenuItem.php', [
+                    'topmenu'   => $this->render($this->menu, [
+                        'action' => 'addMenuItem'
+                    ]),
+                    'parent_id'  => $id,
+                    'menu_id'    => $newMenu,
+                ]
+            );
+        }
+        $this->showTemplate();
+//        Html::instance()->renderTemplate("@admin")->show();
+    }
 }
