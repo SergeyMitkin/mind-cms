@@ -4,7 +4,7 @@ namespace modules\map\controllers;
 
 use core\Controller;
 use core\Html;
-use modules\menu\models\Menu;
+use modules\map\models\Map;
 
 class Admin extends Controller
 {
@@ -39,13 +39,10 @@ class Admin extends Controller
             $img_dir = '/assets/modules/map/img/';
             $file_name = $_FILES['background']['name'];
 
-            // --- ОТЛАДКА НАЧАЛО
-            echo '<pre>';
-            var_dump(file_exists($_SERVER['DOCUMENT_ROOT'] . $img_dir . $file_name));
+            $data['name'] = 'test';
+            $data['background_path'] = $file_name;
 
-            echo'</pre>';
-            die;
-            // --- Отладка конец
+            Map::instance()->save($data);
 
             header('Location:/map/admin');
             // К url добавляется слэш
