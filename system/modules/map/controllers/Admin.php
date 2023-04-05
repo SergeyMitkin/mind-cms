@@ -50,19 +50,16 @@ class Admin extends Controller
                 header('Location:/menu/admin');
             }
         } else {
-            $newMenu             = !empty($menuId)?$menuId:Menu::getMenuId($id);
-            $this->html->setJs('/assets/modules/menu/js/addMenuItem.js');
+            $this->html->setJs('/assets/modules/map/js/addMap.js');
             $this->html->content = $this->render(
-                'addMenuItem.php', [
+                'addMap.php', [
                     'topmenu'   => $this->render($this->menu, [
-                        'action' => 'addMenuItem'
+                        'action' => 'addMap'
                     ]),
-                    'parent_id'  => $id,
-                    'menu_id'    => $newMenu,
                 ]
             );
         }
-        $this->showTemplate();
-//        Html::instance()->renderTemplate("@admin")->show();
+
+        $this->html->renderTemplate("@admin")->show();
     }
 }
