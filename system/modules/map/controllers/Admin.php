@@ -36,20 +36,21 @@ class Admin extends Controller
     {
         if (!empty($_POST)) {
             // К url добавляется слэш
-            if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
-                $_POST['url'] = "/".$_POST['url'];
-            }
-
-            Menu::instance()->saveMenu('add', $_POST);
-
-            // Направляем на страницу корневой категории
-            if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
-                $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
-                header('Location:/menu/admin/listmenu/' . $root_id);
-            } else {
-                header('Location:/menu/admin');
-            }
-        } else {
+//            if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
+//                $_POST['url'] = "/".$_POST['url'];
+//            }
+//
+//            Menu::instance()->saveMenu('add', $_POST);
+//
+//            // Направляем на страницу корневой категории
+//            if (isset($_POST['parent_id']) && isset($_POST['menu_id'])){
+//                $root_id = Menu::getParentIdByMenuId($_POST['menu_id']);
+//                header('Location:/menu/admin/listmenu/' . $root_id);
+//            } else {
+//                header('Location:/menu/admin');
+//            }
+        }
+        else {
             $this->html->setJs('/assets/modules/map/js/addMap.js');
             $this->html->content = $this->render(
                 'addMap.php', [

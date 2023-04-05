@@ -4,12 +4,9 @@
     </div>
 
     <div class="panel-body">
-<!--        <div id="ContentZone"></div>-->
-<!--        <script>-->
-<!--            let APP = "";-->
-<!--            document.addEventListener("DOMContentLoaded", function () {-->
-<!--                APP = EMBMap(document.getElementById('ContentZone'))-->
-<!--            });-->
-<!--        </script>-->
+        <form class="form-horizontal" method="POST" action="" id="sumbit_form">
+            <input name="test" type="text">
+            <button type="submit">test</button>
+        </form>
     </div>
 </div>
