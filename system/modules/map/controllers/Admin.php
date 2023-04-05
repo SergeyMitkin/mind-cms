@@ -35,6 +35,7 @@ class Admin extends Controller
     function actionAdd($id = false)
     {
         if (!empty($_POST)) {
+            header('Location:/map/admin');
             // К url добавляется слэш
 //            if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {
 //                $_POST['url'] = "/".$_POST['url'];
