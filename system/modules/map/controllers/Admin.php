@@ -35,6 +35,18 @@ class Admin extends Controller
     function actionAdd($id = false)
     {
         if (!empty($_POST)) {
+
+            $img_dir = '/assets/modules/map/img/';
+            $file_name = $_FILES['background']['name'];
+
+            // --- ОТЛАДКА НАЧАЛО
+            echo '<pre>';
+            var_dump(file_exists($_SERVER['DOCUMENT_ROOT'] . $img_dir . $file_name));
+
+            echo'</pre>';
+            die;
+            // --- Отладка конец
+
             header('Location:/map/admin');
             // К url добавляется слэш
 //            if (isset($_POST['url']) && substr($_POST['url'], 0, 1)!="/") {

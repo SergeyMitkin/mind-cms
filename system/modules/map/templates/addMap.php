@@ -4,13 +4,21 @@
     </div>
 
     <div class="panel-body">
-        <form class="form-horizontal" method="POST" action="" id="sumbit_form">
+        <form class="form-horizontal" method="POST" action="" id="sumbit_form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Название карты</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Название карты" required >
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="background" class="col-sm-2 control-label">Загрузить файл</label>
+                <div class="col-sm-10">
+                    <input type="file" id="background" name="background">
+                </div>
+            </div>
+
             <button class="btn btn-success pull-right" type="submit">Сохранить карту</button>
         </form>
     </div>
