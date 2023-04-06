@@ -21,13 +21,15 @@ class Admin extends Controller
 
 	public function actionIndex()
 	{
-        $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
-        $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
+//        $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
+//        $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
+
         $this->html->content = $this->render(
             "MapList.php", [
                 'topmenu'   => $this->render($this->menu, [
                     'action' => 'index'
                 ]),
+                'mapList' => Map::instance()->getAll()
             ]
         );
         $this->html->renderTemplate("@admin")->show();
