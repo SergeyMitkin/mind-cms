@@ -1,3 +1,9 @@
+<?
+$id = isset($data['mapInfo']) && !empty($data['mapInfo']) ? $data['mapInfo']->id : FALSE;
+$name = !empty($data['mapInfo']->name) ? $data['mapInfo']->name : FALSE;
+$background_path = !empty($data['mapInfo']->background_path) ? $data['mapInfo']->background_path : FALSE;
+?>
+
 <div class="panel">
     <div class="panel-heading clearfix">
         <?= $data['topmenu']; ?>
@@ -8,7 +14,7 @@
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Название карты</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Название карты" required >
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Название карты" value="<?= $name; ?>" required >
                 </div>
             </div>
 

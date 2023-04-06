@@ -35,7 +35,7 @@ class Admin extends Controller
         $this->html->renderTemplate("@admin")->show();
 	}
 
-    function actionAdd($id = false)
+    function actionAdd()
     {
         if (!empty($_POST)) {
             if (isset($_FILES['background']) && $_FILES['background']['error'] === 0) {
@@ -55,6 +55,23 @@ class Admin extends Controller
                 ]
             );
         }
+
+        $this->html->renderTemplate("@admin")->show();
+    }
+
+    public function actionEdit($id=false)
+    {
+        $mapInfo = Map::instance()->getOne($id);
+
+        $this->html->setJs('/assets/modules/map/js/addMap.js');
+        $this->html->content = $this->render(
+            'addMap.php', [
+                'topmenu'   => $this->render($this->menu, [
+                    'action' => 'addMap',
+                ]),
+                'mapInfo' => $mapInfo
+            ]
+        );
 
         $this->html->renderTemplate("@admin")->show();
     }
