@@ -25,6 +25,20 @@ $background_path = !empty($data['mapInfo']->background_path) ? $data['mapInfo']-
                 </div>
             </div>
 
+            <div class="hidden-inputs">
+                <input id="background_path" type="hidden" name="background_path" value="<?= $data['img_dir'] . $background_path ?>">
+            </div>
+
+            <div class="form-group">
+                <div id="ContentZone"></div>
+                <script>
+                    let APP = "";
+                    document.addEventListener("DOMContentLoaded", function () {
+                        APP = EMBMap(document.getElementById('ContentZone'))
+                    });
+                </script>
+            </div>
+
             <button class="btn btn-success pull-right" type="submit">Сохранить карту</button>
         </form>
     </div>

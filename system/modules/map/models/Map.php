@@ -26,14 +26,18 @@ class Map extends Model
         return $this;
     }
 
-    public function uploadBackground()
+    /**
+     * Загрузка фона
+     *
+     * @return string
+     */
+    public function uploadBackground($img_dir)
     {
         $file_name = mb_substr(basename($_FILES['background']['name']), 0, mb_stripos(basename($_FILES['background']['name']), '.'));
         $file_extension = mb_substr(basename($_FILES['background']['name']), mb_stripos(basename($_FILES['background']['name']), '.')+1);
         $file_type = mb_substr($_FILES['background']['type'], mb_stripos($_FILES['background']['type'], '/')+1);
         $file_tmp_name = $_FILES['background']['tmp_name'];
-        $img_dir = '/assets/modules/map/img/';
-        $array_ext_access = array('png', 'jpeg');  //Разрешённые расширения
+        $array_ext_access = array('png', 'jpg', 'jpeg');  //Разрешённые расширения
 
         if (array_search($file_type, $array_ext_access) !== false) {
             // Кириллические символы заменяются латинскими
