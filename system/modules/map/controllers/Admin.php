@@ -63,6 +63,7 @@ class Admin extends Controller
         $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
         $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
         $this->html->setJs('/assets/modules/map/js/addMap.js');
+
         $this->html->content = $this->render(
         'addMap.php', [
                 'topmenu'   => $this->render($this->menu, [
