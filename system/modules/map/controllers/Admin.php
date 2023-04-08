@@ -35,11 +35,13 @@ class Admin extends Controller
     function actionAdd()
     {
         if (!empty($_POST)) {
+            $data['name'] = $_POST['name'];
             if (isset($_FILES['background']) && $_FILES['background']['error'] === 0) {
-                $data['name'] = $_POST['name'];
                 $data['background_path'] = Map::instance()->uploadBackground($this->background_dir);
-                Map::instance()->save($data);
             }
+            $data['canvas_json'] = $_POST['canvas_json'];
+            Map::instance()->save($data);
+
             header('Location:/map/admin');
         }
         else {
@@ -63,6 +65,18 @@ class Admin extends Controller
         $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
         $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
         $this->html->setJs('/assets/modules/map/js/addMap.js');
+
+        if (!empty($_POST)) {
+            $data['id'] = $id;
+            $data['name'] = $_POST['name'];
+            $data['canvas_json'] = $_POST['canvas_json'];
+            if (isset($_FILES['background']) && $_FILES['background']['error'] === 0) {
+                $data['background_path'] = Map::instance()->uploadBackground($this->background_dir);
+            }
+            Map::instance()->update($data);
+
+            header('Location:/map/admin');
+        }
 
         $this->html->content = $this->render(
         'addMap.php', [

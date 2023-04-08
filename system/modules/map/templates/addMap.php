@@ -27,6 +27,7 @@ $canvas_json = !empty($data['mapInfo']->canvas_json) ? $data['mapInfo']->canvas_
             </div>
 
             <div class="hidden-inputs">
+                <input id="map_id" type="hidden" name="id" value="<?= $id ?>">
                 <input id="background_path" type="hidden" name="background_path" value="<?= $data['img_dir'] . $background_path ?>">
                 <input id="canvas_json" type="hidden" name="canvas_json" value='<?= $canvas_json ?>'>
             </div>
