@@ -10,6 +10,7 @@ use core\Tools;
  * @property integer id -
  * @property string name -
  * @property string background_path -
+ * @property string canvas_json -
  */
 
 class Map extends Model
@@ -22,6 +23,7 @@ class Map extends Model
             $this->id = "";
             $this->name = "";
             $this->background_path = "";
+            $this->canvas_json = "";
         }
         return $this;
     }

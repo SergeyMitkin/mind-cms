@@ -2,6 +2,7 @@
 $id = isset($data['mapInfo']) && !empty($data['mapInfo']) ? $data['mapInfo']->id : FALSE;
 $name = !empty($data['mapInfo']->name) ? $data['mapInfo']->name : FALSE;
 $background_path = !empty($data['mapInfo']->background_path) ? $data['mapInfo']->background_path : FALSE;
+$canvas_json = !empty($data['mapInfo']->canvas_json) ? $data['mapInfo']->canvas_json : FALSE;
 ?>
 
 <div class="panel">
@@ -10,7 +11,7 @@ $background_path = !empty($data['mapInfo']->background_path) ? $data['mapInfo']-
     </div>
 
     <div class="panel-body">
-        <form class="form-horizontal" method="POST" action="" id="sumbit_form" enctype="multipart/form-data">
+        <form class="form-horizontal" method="POST" action="" id="map-form" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Название карты</label>
                 <div class="col-sm-10">
@@ -27,6 +28,7 @@ $background_path = !empty($data['mapInfo']->background_path) ? $data['mapInfo']-
 
             <div class="hidden-inputs">
                 <input id="background_path" type="hidden" name="background_path" value="<?= $data['img_dir'] . $background_path ?>">
+                <input id="canvas_json" type="hidden" name="canvas_json" value='<?= $canvas_json ?>'>
             </div>
 
             <div class="form-group">
