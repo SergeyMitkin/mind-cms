@@ -7,7 +7,7 @@
 <?php } ?>
 
 <div class="col-sm-4 pull-left module-title">
-    <span><a href="/menu/admin">Map</a></span>
+    <span><a href="/map/admin">Map</a></span>
 </div>
 
 <div class="col-sm-8 pull-right" style="text-align: right;">
