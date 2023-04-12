@@ -58,7 +58,7 @@ class Admin extends Controller
         $this->html->renderTemplate("@admin")->show();
     }
 
-    public function actionEdit($id=false)
+    public function actionEdit($id)
     {
         $mapInfo = Map::instance()->getOne($id);
 
@@ -89,5 +89,9 @@ class Admin extends Controller
         );
 
         $this->html->renderTemplate("@admin")->show();
+    }
+
+    public function actionView($id) {
+
     }
 }
