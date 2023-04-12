@@ -32,14 +32,16 @@ $canvas_json = !empty($data['mapInfo']->canvas_json) ? $data['mapInfo']->canvas_
                 <input id="canvas_json" type="hidden" name="canvas_json" value='<?= $canvas_json ?>'>
             </div>
 
-            <div class="form-group">
-                <div id="ContentZone"></div>
-                <script>
-                    let APP = "";
-                    document.addEventListener("DOMContentLoaded", function () {
-                        APP = EMBMap(document.getElementById('ContentZone'))
-                    });
-                </script>
+            <div class="form-group canvas-group">
+                <div id="canvas-wrap">
+                    <div id="ContentZone"></div>
+                    <script>
+                        let APP = "";
+                        document.addEventListener("DOMContentLoaded", function () {
+                            APP = EMBMap(document.getElementById('ContentZone'))
+                        });
+                    </script>
+                </div>
             </div>
 
             <button class="btn btn-success pull-right" type="submit">Сохранить карту</button>

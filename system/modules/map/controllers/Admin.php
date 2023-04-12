@@ -64,7 +64,7 @@ class Admin extends Controller
 
         $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
         $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
-        $this->html->setJs('/assets/modules/map/js/addMap.js');
+        $this->html->setCss('/assets/modules/map/css/form.css');
 
         if (!empty($_POST)) {
             $data['id'] = $id;
