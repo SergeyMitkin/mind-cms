@@ -40,9 +40,9 @@ class Admin extends Controller
                 $data['background_path'] = Map::instance()->uploadBackground($this->background_dir);
             }
             $data['canvas_json'] = $_POST['canvas_json'];
-            Map::instance()->save($data);
+            $map_id = Map::instance()->save($data);
 
-            header('Location:/map/admin');
+            header('Location:/map/admin/edit/' . $map_id);
         }
         else {
             $this->html->setJs('/assets/modules/map/js/addMap.js');
@@ -108,5 +108,10 @@ class Admin extends Controller
         );
 
         $this->html->renderTemplate("@admin")->show();
+    }
+
+    public function actionDelete($id) {
+        Map::instance()->delete($id);
+        header('Location:/map/admin');
     }
 }
