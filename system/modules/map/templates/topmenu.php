@@ -16,7 +16,7 @@
             <?= (isset($action) && $action == 'index') ? 'Список карт':'Вернуться к списку' ?>
         </a>
 
-        <a href="/map/admin/add" class="btn btn-primary<?=(isset($action) && $action == 'addMap') ? ' active' : '' ?>">
+        <a href="/map/admin/add" class="btn btn-primary<?=(isset($action) && $action == 'add') ? ' active' : '' ?>">
             Создать карту
         </a>
     </div>

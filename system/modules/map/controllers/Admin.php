@@ -24,7 +24,7 @@ class Admin extends Controller
         $this->html->content = $this->render(
             "MapList.php", [
                 'topmenu'   => $this->render($this->menu, [
-                    'action' => 'index'
+                    'action' => $this->action
                 ]),
                 'mapList' => Map::instance()->getAll()
             ]
@@ -49,7 +49,7 @@ class Admin extends Controller
             $this->html->content = $this->render(
                 'addMap.php', [
                     'topmenu'   => $this->render($this->menu, [
-                        'action' => 'addMap'
+                        'action' => $this->action
                     ])
                 ]
             );
@@ -81,7 +81,7 @@ class Admin extends Controller
         $this->html->content = $this->render(
         'addMap.php', [
                 'topmenu'   => $this->render($this->menu, [
-                    'action' => 'addMap',
+                    'action' => $this->action,
                 ]),
                 'mapInfo' => $mapInfo,
                 'img_dir' => $this->background_dir
