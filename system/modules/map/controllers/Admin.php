@@ -50,7 +50,7 @@ class Admin extends Controller
                 'addMap.php', [
                     'topmenu'   => $this->render($this->menu, [
                         'action' => 'addMap'
-                    ]),
+                    ])
                 ]
             );
         }
@@ -92,6 +92,21 @@ class Admin extends Controller
     }
 
     public function actionView($id) {
+        $mapInfo = Map::instance()->getOne($id);
 
+        $this->html->setCss('/assets/modules/map/builder/EMBMap.css');
+        $this->html->setJs('/assets/modules/map/builder/EMBMap.js');
+        $this->html->setCss('/assets/modules/map/css/form.css');
+
+        $this->html->content = $this->render(
+            'viewMap.php', [
+                'topmenu'   => $this->render($this->menu),
+                'action' => $this->action,
+                'mapInfo' => $mapInfo,
+                'img_dir' => $this->background_dir
+            ]
+        );
+
+        $this->html->renderTemplate("@admin")->show();
     }
 }
