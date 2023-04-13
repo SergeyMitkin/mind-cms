@@ -112,7 +112,9 @@ class Admin extends Controller
     }
 
     public function actionDelete($id) {
+        $background_path = Map::instance()->getOne($id)->background_path;
         Map::instance()->delete($id);
+        unlink($_SERVER['DOCUMENT_ROOT'] . $this->background_dir . $background_path);
         header('Location:/map/admin');
     }
 }
