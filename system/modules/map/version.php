@@ -1,14 +1,14 @@
 <?php
 return [
-    'version' => '1.6',
+    'version' => '1.0',
     'ModuleInfo' => [
-        'name' => 'menu',
-        'version_description' => 'Выбор шаблонов для меню',
-        'link_home' => '/menu',
+        'name' => 'map',
+        'version_description' => 'Создание, редактирование, просмотр карт',
+        'link_home' => '/map',
     ],
     'Folders' => [ // папки для архивации. По умолчанию system/modules/NameModule и www/assets/modules/NameModule
-        'system/modules/menu',
-        'www/assets/modules/menu',
+        'system/modules/map',
+        'www/assets/modules/map',
     ],
     'requireModules' => [ // дополнительные модули, которые требует данный модуль чтобы работать. По умолчанию их нет
     ],
