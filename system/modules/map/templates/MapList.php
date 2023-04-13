@@ -27,7 +27,7 @@
                 $message = json_decode($value->name, TRUE);
             ?>
                 <tr>
-                    <td><a href="/map/admin/edit/<?= $value->id; ?>"><?= $value->name ?></a></td>
+                    <td><a href="/map/admin/view/<?= $value->id; ?>"><?= $value->name ?></a></td>
                     <td>
                         <a href="/map/admin/edit/<?= $value->id; ?>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></a>
                         <a href="/map/admin/delete/<?= $value->id; ?>" class="btn btn-xs btn-danger" onclick="return confirm('Вы уверены, что хотите удалить карту?') ? true : false;"><i class="fa fa-trash-o"></i></a>
