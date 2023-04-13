@@ -20,8 +20,8 @@ $canvas_json = !empty($data['mapInfo']->canvas_json) ? $data['mapInfo']->canvas_
             </div>
 
             <div class="form-group">
-                <label for="background" class="col-sm-2 control-label">Загрузить файл</label>
-                <div class="col-sm-10">
+                <label for="background" class="col-sm-2 control-label">Загрузить фон</label>
+                <div class="col-sm-10 upload-wrap">
                     <input type="file" id="background" name="background">
                 </div>
             </div>
