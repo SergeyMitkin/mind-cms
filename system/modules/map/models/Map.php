@@ -5,7 +5,6 @@ namespace modules\map\models;
 use core\FS;
 use core\Model;
 use core\Tools;
-use League\Flysystem\File;
 
 /**
  * Class Page
