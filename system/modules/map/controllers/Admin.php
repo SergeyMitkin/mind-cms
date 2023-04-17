@@ -47,7 +47,7 @@ class Admin extends Controller
         else {
             $this->html->setCss('/assets/modules/map/css/form.css');
             $this->html->content = $this->render(
-                'addMap.php', [
+                'addBackground.php', [
                     'topmenu'   => $this->render($this->menu, [
                         'action' => $this->action
                     ])
@@ -76,7 +76,7 @@ class Admin extends Controller
             }
 
             Map::instance()->update($data);
-            header('Location:/map/admin');
+            header('Location:/map/admin/edit/' . $id);
         }
 
         $this->html->content = $this->render(

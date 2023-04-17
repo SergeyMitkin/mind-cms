@@ -19,13 +19,6 @@ $canvas_json = !empty($data['mapInfo']->canvas_json) ? $data['mapInfo']->canvas_
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="background" class="col-sm-2 control-label">Загрузить фон</label>
-                <div class="col-sm-10 upload-wrap">
-                    <input type="file" id="background" name="background">
-                </div>
-            </div>
-
             <div class="hidden-inputs">
                 <input id="map_id" type="hidden" name="id" value="<?= $id ?>">
                 <input id="background_path" type="hidden" name="background_path" value="<?= $data['img_dir'] . $background_path ?>">
