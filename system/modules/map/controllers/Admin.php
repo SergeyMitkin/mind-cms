@@ -80,7 +80,7 @@ class Admin extends Controller
         }
 
         $this->html->content = $this->render(
-        'addMap.php', [
+        'editMap.php', [
                 'topmenu'   => $this->render($this->menu, [
                     'action' => $this->action,
                 ]),

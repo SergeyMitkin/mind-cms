@@ -36,8 +36,6 @@ $canvas_json = !empty($data['mapInfo']->canvas_json) ? $data['mapInfo']->canvas_
                     </script>
                 </div>
             </div>
-
-            <button class="btn btn-success pull-right" type="submit">Сохранить карту</button>
         </form>
     </div>
 </div>
